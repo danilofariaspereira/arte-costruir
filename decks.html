@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decks de Madeira - Mais de 500 Entregues no RJ | Arte Construir</title>
+    <meta name="description" content="Especialistas em decks de madeira natural e plástica no Rio de Janeiro. Mais de 500 decks entregues. Peça seu orçamento agora!">
+    <meta name="keywords" content="decks de madeira, madeira plástica, decks RJ, madeira natural, sustentabilidade, Rio de Janeiro">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/images/icone-arte-construir.png">
+    <link rel="apple-touch-icon" href="assets/images/icone-arte-construir.png">
+    
+    <!-- UIKit CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.17.11/dist/css/uikit.min.css" />
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header Component -->
+    <header id="header"></header>
+    
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-section decks-hero" id="hero">
+            <div class="uk-container">
+                <div class="hero-content">
+                    <h1 class="hero-title">Decks de Madeira no Rio de Janeiro</h1>
+                    <p class="hero-subtitle">Mais de 500 decks entregues no RJ. Especialistas em madeira natural e plástica sustentável.</p>
+                    <div class="hero-buttons">
+                        <a href="#tipos-madeira" class="uk-button uk-button-primary uk-button-large" id="cta_hero_tipos">
+                            Conheça Nossos Tipos
+                        </a>
+                        <a href="#contato" class="uk-button uk-button-secondary uk-button-large" id="cta_hero_orcamento">
+                            Peça Seu Orçamento
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tipos de Madeira Section -->
+        <section class="tipos-madeira-section" id="tipos-madeira">
+            <div class="uk-container">
+                <div class="section-header">
+                    <h2>Tipos de Madeira para Decks</h2>
+                    <p>Escolha entre madeira natural premium ou madeira plástica sustentável</p>
+                </div>
+                
+                <div class="uk-grid-match uk-child-width-1-2@m" uk-grid>
+                    <!-- Madeira Natural -->
+                    <div class="material-card natural">
+                        <div class="material-image">
+                            <img src="assets/images/madeira-natural.jpg" alt="Deck de Madeira Natural" loading="lazy">
+                            <div class="material-badge">
+                                <span>Premium</span>
+                            </div>
+                        </div>
+                        <div class="material-content">
+                            <h3>Madeira Natural</h3>
+                            <p class="material-description">
+                                Madeira de primeira qualidade com acabamento natural único. 
+                                Cada peça possui características próprias, criando decks únicos e elegantes.
+                            </p>
+                            
+                            <div class="material-features">
+                                <h4>Características:</h4>
+                                <ul>
+                                    <li>Acabamento natural e elegante</li>
+                                    <li>Durabilidade excepcional</li>
+                                    <li>Textura única em cada peça</li>
+                                    <li>Resistente a intempéries</li>
+                                    <li>Fácil manutenção</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="material-specs">
+                                <div class="spec-item">
+                                    <strong>Durabilidade:</strong>
+                                    <span>20+ anos</span>
+                                </div>
+                                <div class="spec-item">
+                                    <strong>Manutenção:</strong>
+                                    <span>Anual</span>
+                                </div>
+                                <div class="spec-item">
+                                    <strong>Ecologicamente:</strong>
+                                    <span>Sustentável</span>
+                                </div>
+                            </div>
+                            
+                            <div class="material-cta">
+                                <button class="uk-button uk-button-primary" data-modal-trigger="galeria-natural" id="cta_natural_galeria">
+                                    Ver Galeria
+                                </button>
+                                <a href="#contato" class="uk-button uk-button-secondary" id="cta_natural_orcamento">
+                                    Solicitar Orçamento
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Madeira Plástica -->
+                    <div class="material-card plastic">
+                        <div class="material-image">
+                            <img src="assets/images/madeira-plastica.jpg" alt="Deck de Madeira Plástica" loading="lazy">
+                            <div class="material-badge">
+                                <span>Sustentável</span>
+                            </div>
+                        </div>
+                        <div class="material-content">
+                            <h3>Madeira Plástica</h3>
+                            <p class="material-description">
+                                Excelente custo-benefício com sustentabilidade garantida. 
+                                Feita com materiais reciclados, oferece praticidade e baixa manutenção.
+                            </p>
+                            
+                            <div class="material-features">
+                                <h4>Características:</h4>
+                                <ul>
+                                    <li>Excelente custo-benefício</li>
+                                    <li>Baixa manutenção</li>
+                                    <li>Resistente à umidade</li>
+                                    <li>Não apodrece</li>
+                                    <li>Material reciclado</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="material-specs">
+                                <div class="spec-item">
+                                    <strong>Durabilidade:</strong>
+                                    <span>15+ anos</span>
+                                </div>
+                                <div class="spec-item">
+                                    <strong>Manutenção:</strong>
+                                    <span>Mínima</span>
+                                </div>
+                                <div class="spec-item">
+                                    <strong>Ecologicamente:</strong>
+                                    <span>100% Reciclável</span>
+                                </div>
+                            </div>
+                            
+                            <div class="material-cta">
+                                <button class="uk-button uk-button-primary" data-modal-trigger="galeria-plastica" id="cta_plastica_galeria">
+                                    Ver Galeria
+                                </button>
+                                <a href="#contato" class="uk-button uk-button-secondary" id="cta_plastica_orcamento">
+                                    Solicitar Orçamento
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Comparação Section -->
+        <section class="comparacao-section" id="comparacao">
+            <div class="uk-container">
+                <div class="section-header">
+                    <h2>Comparação: Natural vs Plástica</h2>
+                    <p>Veja as principais diferenças entre os tipos de madeira para decks</p>
+                </div>
+                
+                <div class="comparison-table">
+                    <div class="table-header">
+                        <div class="table-cell">Características</div>
+                        <div class="table-cell">Madeira Natural</div>
+                        <div class="table-cell">Madeira Plástica</div>
+                    </div>
+                    
+                    <div class="table-row">
+                        <div class="table-cell"><strong>Durabilidade</strong></div>
+                        <div class="table-cell">20+ anos</div>
+                        <div class="table-cell">15+ anos</div>
+                    </div>
+                    
+                    <div class="table-row">
+                        <div class="table-cell"><strong>Manutenção</strong></div>
+                        <div class="table-cell">Anual (verniz)</div>
+                        <div class="table-cell">Mínima</div>
+                    </div>
+                    
+                    <div class="table-row">
+                        <div class="table-cell"><strong>Resistência à Umidade</strong></div>
+                        <div class="table-cell">Alta</div>
+                        <div class="table-cell">Muito Alta</div>
+                    </div>
+                    
+                    <div class="table-row">
+                        <div class="table-cell"><strong>Custo Inicial</strong></div>
+                        <div class="table-cell">Alto</div>
+                        <div class="table-cell">Médio</div>
+                    </div>
+                    
+                    <div class="table-row">
+                        <div class="table-cell"><strong>Custo Total</strong></div>
+                        <div class="table-cell">Alto (com manutenção)</div>
+                        <div class="table-cell">Baixo</div>
+                    </div>
+                    
+                    <div class="table-row">
+                        <div class="table-cell"><strong>Sustentabilidade</strong></div>
+                        <div class="table-cell">Alta</div>
+                        <div class="table-cell">Muito Alta</div>
+                    </div>
+                    
+                    <div class="table-row">
+                        <div class="table-cell"><strong>Aparência</strong></div>
+                        <div class="table-cell">Natural única</div>
+                        <div class="table-cell">Uniforme</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Galeria de Projetos Section -->
+        <section class="galeria-section" id="galeria">
+            <div class="uk-container">
+                <div class="section-header">
+                    <h2>Nossos Projetos de Decks</h2>
+                    <p>Mais de 500 decks entregues no Rio de Janeiro</p>
+                </div>
+                
+                <div class="gallery-filters">
+                    <button class="filter-btn active" data-filter="all" id="cta_filter_all">Todos</button>
+                    <button class="filter-btn" data-filter="natural" id="cta_filter_natural">Madeira Natural</button>
+                    <button class="filter-btn" data-filter="plastic" id="cta_filter_plastic">Madeira Plástica</button>
+                    <button class="filter-btn" data-filter="before-after" id="cta_filter_before_after">Antes/Depois</button>
+                </div>
+                
+                <div class="gallery-grid" id="gallery-grid">
+                    <!-- Gallery items will be populated by JavaScript -->
+                    <div class="gallery-item" data-category="natural">
+                        <img src="assets/images/deck-natural-1.jpg" alt="Deck de Madeira Natural - Projeto 1" loading="lazy">
+                        <div class="gallery-overlay">
+                            <h4>Deck Natural Premium</h4>
+                            <p>Residencial em Teresópolis</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="plastic">
+                        <img src="assets/images/deck-plastica-1.jpg" alt="Deck de Madeira Plástica - Projeto 1" loading="lazy">
+                        <div class="gallery-overlay">
+                            <h4>Deck Plástico Sustentável</h4>
+                            <p>Residencial em Petrópolis</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="before-after">
+                        <img src="assets/images/deck-before-after-1.jpg" alt="Transformação de Deck - Antes e Depois" loading="lazy">
+                        <div class="gallery-overlay">
+                            <h4>Transformação Completa</h4>
+                            <p>Antes e Depois</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="natural">
+                        <img src="assets/images/deck-natural-2.jpg" alt="Deck de Madeira Natural - Projeto 2" loading="lazy">
+                        <div class="gallery-overlay">
+                            <h4>Deck Natural Moderno</h4>
+                            <p>Residencial em Nova Friburgo</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="plastic">
+                        <img src="assets/images/deck-plastica-2.jpg" alt="Deck de Madeira Plástica - Projeto 2" loading="lazy">
+                        <div class="gallery-overlay">
+                            <h4>Deck Plástico Econômico</h4>
+                            <p>Residencial em Teresópolis</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item" data-category="before-after">
+                        <img src="assets/images/deck-before-after-2.jpg" alt="Transformação de Deck - Antes e Depois 2" loading="lazy">
+                        <div class="gallery-overlay">
+                            <h4>Reforma Completa</h4>
+                            <p>Antes e Depois</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Processo Section -->
+        <section class="processo-section" id="processo">
+            <div class="uk-container">
+                <div class="section-header">
+                    <h2>Nosso Processo de Construção</h2>
+                    <p>Da consulta inicial até a entrega do seu deck</p>
+                </div>
+                
+                <div class="processo-steps">
+                    <div class="step-item">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>Consulta Inicial</h3>
+                            <p>Visita técnica para avaliar o local e entender suas necessidades.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step-item">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>Projeto e Orçamento</h3>
+                            <p>Desenvolvimento do projeto personalizado e apresentação do orçamento.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step-item">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>Aprovação</h3>
+                            <p>Revisão do projeto, ajustes finais e aprovação do cliente.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step-item">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h3>Construção</h3>
+                            <p>Execução do projeto com acompanhamento e comunicação constante.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step-item">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h3>Entrega</h3>
+                            <p>Entrega final com vistoria e orientações de manutenção.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contato Section -->
+        <section class="contato-section" id="contato">
+            <div class="uk-container">
+                <div class="uk-grid-match uk-child-width-1-2@m" uk-grid>
+                    <div>
+                        <h2>Peça Seu Orçamento de Deck</h2>
+                        <div class="contact-info">
+                            <div class="contact-item">
+                                <strong>Telefones:</strong>
+                                <p>(11) 94311-2721 / (21) 96017-1061</p>
+                            </div>
+                            <div class="contact-item">
+                                <strong>E-mail:</strong>
+                                <p>artechales@gmail.com</p>
+                            </div>
+                            <div class="contact-item">
+                                <strong>Endereço:</strong>
+                                <p>Av. Feliciano Sodré, 300 - Várzea, Teresópolis - RJ, 25963-081</p>
+                            </div>
+                        </div>
+                        
+                        <div class="stats-container">
+                            <div class="stat-item">
+                                <h3>500+</h3>
+                                <p>Decks Entregues</p>
+                            </div>
+                            <div class="stat-item">
+                                <h3>5+</h3>
+                                <p>Anos de Experiência</p>
+                            </div>
+                            <div class="stat-item">
+                                <h3>100%</h3>
+                                <p>Clientes Satisfeitos</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <form class="contact-form" id="contact-form">
+                            <div class="uk-margin">
+                                <input class="uk-input" type="text" name="name" placeholder="Seu nome" required>
+                            </div>
+                            <div class="uk-margin">
+                                <input class="uk-input" type="tel" name="phone" placeholder="Seu telefone" required>
+                            </div>
+                            <div class="uk-margin">
+                                <select class="uk-select" name="deck-type" required>
+                                    <option value="">Tipo de deck desejado</option>
+                                    <option value="natural">Madeira Natural</option>
+                                    <option value="plastic">Madeira Plástica</option>
+                                    <option value="consulta">Consulta para decidir</option>
+                                </select>
+                            </div>
+                            <div class="uk-margin">
+                                <input class="uk-input" type="text" name="area" placeholder="Área aproximada (m²)">
+                            </div>
+                            <div class="uk-margin">
+                                <textarea class="uk-textarea" name="message" rows="5" placeholder="Conte-nos sobre seu projeto de deck..." required></textarea>
+                            </div>
+                            <button type="submit" class="uk-button uk-button-primary uk-width-1-1" id="cta_form_decks">
+                                Solicitar Orçamento
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Component -->
+    <footer id="footer"></footer>
+
+
+    <!-- UIKit JS -->
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.17.11/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.17.11/dist/js/uikit-icons.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="assets/js/components.js"></script>
+    <script src="assets/js/main.js"></script>
+
+    <style>
+        /* Page-specific styles */
+        .decks-hero {
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(184, 134, 11, 0.3)), url('assets/images/decks-hero-bg.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .material-card {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: all var(--transition-normal);
+            height: 100%;
+        }
+
+        .material-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .material-image {
+            position: relative;
+            height: 300px;
+            overflow: hidden;
+        }
+
+        .material-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform var(--transition-slow);
+        }
+
+        .material-card:hover .material-image img {
+            transform: scale(1.05);
+        }
+
+        .material-badge {
+            position: absolute;
+            top: var(--spacing-md);
+            right: var(--spacing-md);
+            background: var(--primary-color);
+            color: var(--white);
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: 20px;
+            font-size: var(--font-size-xs);
+            font-weight: 600;
+        }
+
+        .material-content {
+            padding: var(--spacing-xl);
+        }
+
+        .material-features {
+            margin: var(--spacing-lg) 0;
+        }
+
+        .material-features h4 {
+            color: var(--text-dark);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .material-features ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .material-features li {
+            padding: var(--spacing-xs) 0;
+            position: relative;
+            padding-left: var(--spacing-lg);
+        }
+
+        .material-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .material-specs {
+            background: var(--light-gray);
+            padding: var(--spacing-lg);
+            border-radius: 8px;
+            margin: var(--spacing-lg) 0;
+        }
+
+        .spec-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .spec-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .material-cta {
+            display: flex;
+            gap: var(--spacing-sm);
+            margin-top: var(--spacing-lg);
+        }
+
+        .material-cta .uk-button {
+            flex: 1;
+        }
+
+        .comparison-table {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            margin-top: var(--spacing-xl);
+        }
+
+        .table-header {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            background: var(--primary-color);
+            color: var(--white);
+        }
+
+        .table-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .table-row:nth-child(even) {
+            background: var(--light-gray);
+        }
+
+        .table-cell {
+            padding: var(--spacing-lg);
+            text-align: center;
+        }
+
+        .table-header .table-cell {
+            font-weight: 600;
+        }
+
+        .table-row:last-child {
+            border-bottom: none;
+        }
+
+        .gallery-filters {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-xl);
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: var(--spacing-sm) var(--spacing-lg);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            font-weight: 500;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--primary-color);
+            color: var(--white);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: all var(--transition-normal);
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: var(--white);
+            padding: var(--spacing-lg);
+            transform: translateY(100%);
+            transition: transform var(--transition-normal);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        .gallery-overlay h4 {
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .gallery-overlay p {
+            margin: 0;
+            font-size: var(--font-size-sm);
+            opacity: 0.9;
+        }
+
+        .processo-section {
+            background-color: var(--light-gray);
+        }
+
+        .processo-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-xl);
+            margin-top: var(--spacing-xl);
+        }
+
+        .step-item {
+            text-align: center;
+            background: var(--white);
+            padding: var(--spacing-xl);
+            border-radius: 12px;
+            box-shadow: var(--shadow-md);
+            transition: all var(--transition-normal);
+        }
+
+        .step-item:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: var(--primary-color);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: var(--font-size-xl);
+            font-weight: 700;
+            margin: 0 auto var(--spacing-lg);
+        }
+
+        .step-content h3 {
+            color: var(--text-dark);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-xl);
+        }
+
+        .stat-item {
+            text-align: center;
+            background: var(--white);
+            padding: var(--spacing-lg);
+            border-radius: 12px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .stat-item h3 {
+            color: var(--primary-color);
+            font-size: var(--font-size-3xl);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .stat-item p {
+            margin: 0;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .table-header,
+            .table-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .table-cell {
+                text-align: left;
+            }
+            
+            .table-header .table-cell:not(:first-child) {
+                display: none;
+            }
+            
+            .table-row .table-cell:not(:first-child) {
+                display: none;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .material-cta {
+                flex-direction: column;
+            }
+        }
+    </style>
+</body>
+</html>

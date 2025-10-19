@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parceiros - TW Brazil, Inbrasil e Equipe | Arte Construir</title>
+    <meta name="description" content="Conheça nossos parceiros estratégicos TW Brazil e Inbrasil, além da nossa equipe especializada com Letícia (arquiteta) e Tiago (corretor).">
+    <meta name="keywords" content="parceiros, TW Brazil, Inbrasil, arquiteta, corretor, equipe, madeireiras, fornecedores">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/images/icone-arte-construir.png">
+    <link rel="apple-touch-icon" href="assets/images/icone-arte-construir.png">
+    
+    <!-- UIKit CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.17.11/dist/css/uikit.min.css" />
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header Component -->
+    <header id="header"></header>
+    
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-section parceiros-hero" id="hero">
+            <div class="uk-container">
+                <div class="hero-content">
+                    <h1 class="hero-title">Nossos Parceiros e Equipe</h1>
+                    <p class="hero-subtitle">Trabalhamos com os melhores fornecedores e temos uma equipe especializada para atender você</p>
+                    <div class="hero-buttons">
+                        <a href="#parceiros" class="uk-button uk-button-primary uk-button-large" id="cta_hero_parceiros">
+                            Conheça Nossos Parceiros
+                        </a>
+                        <a href="#equipe" class="uk-button uk-button-secondary uk-button-large" id="cta_hero_equipe">
+                            Nossa Equipe
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Parceiros Section -->
+        <section class="parceiros-section" id="parceiros">
+            <div class="uk-container">
+                <div class="section-header">
+                    <h2>Nossos Parceiros Estratégicos</h2>
+                    <p>Parcerias com as melhores madeireiras e fornecedores do país</p>
+                </div>
+                
+                <div class="parceiros-content">
+                    <div class="parceiros-intro">
+                        <p>
+                            A Arte Construir mantém parcerias estratégicas com as principais madeireiras e fornecedores do Brasil, 
+                            garantindo acesso a materiais de primeira qualidade e as mais recentes tecnologias em construção sustentável. 
+                            Essas parcerias nos permitem oferecer produtos exclusivos e inovadores aos nossos clientes.
+                        </p>
+                    </div>
+                    
+                    <div class="uk-grid-match uk-child-width-1-2@m" uk-grid>
+                        <!-- TW Brazil -->
+                        <div class="parceiro-card">
+                            <div class="parceiro-logo">
+                                <img src="assets/images/logo-tw-brazil.jpg" alt="TW Brazil - Parceiro Estratégico" loading="lazy">
+                            </div>
+                            <div class="parceiro-content">
+                                <h3>TW Brazil</h3>
+                                <p class="parceiro-description">
+                                    Uma das principais madeireiras do país, especializada em madeira certificada e sustentável. 
+                                    A TW Brazil fornece matéria-prima de alta qualidade para nossos projetos de chalés e decks.
+                                </p>
+                                <div class="parceiro-benefits">
+                                    <h4>Benefícios da Parceria:</h4>
+                                    <ul>
+                                        <li>Madeira certificada FSC</li>
+                                        <li>Qualidade garantida</li>
+                                        <li>Preços competitivos</li>
+                                        <li>Suporte técnico especializado</li>
+                                        <li>Entrega rápida e confiável</li>
+                                    </ul>
+                                </div>
+                                <div class="parceiro-actions">
+                                    <a href="https://twbrazil.com.br" target="_blank" class="uk-button uk-button-primary" id="cta_tw_website">
+                                        Visitar Site
+                                    </a>
+                                    <button class="uk-button uk-button-secondary" data-modal-trigger="tw-info" id="cta_tw_info">
+                                        Mais Informações
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Inbrasil -->
+                        <div class="parceiro-card">
+                            <div class="parceiro-logo">
+                                <img src="assets/images/logo-inbrasil.jpg" alt="Inbrasil - Parceiro Estratégico" loading="lazy">
+                            </div>
+                            <div class="parceiro-content">
+                                <h3>Inbrasil</h3>
+                                <p class="parceiro-description">
+                                    Referência em madeira plástica e materiais sustentáveis. A Inbrasil nos fornece produtos 
+                                    inovadores que combinam durabilidade, sustentabilidade e excelente custo-benefício.
+                                </p>
+                                <div class="parceiro-benefits">
+                                    <h4>Benefícios da Parceria:</h4>
+                                    <ul>
+                                        <li>Madeira plástica de alta qualidade</li>
+                                        <li>Materiais 100% recicláveis</li>
+                                        <li>Baixa manutenção</li>
+                                        <li>Resistência superior</li>
+                                        <li>Variedade de cores e texturas</li>
+                                    </ul>
+                                </div>
+                                <div class="parceiro-actions">
+                                    <a href="https://inbrasil.com.br" target="_blank" class="uk-button uk-button-primary" id="cta_inbrasil_website">
+                                        Visitar Site
+                                    </a>
+                                    <button class="uk-button uk-button-secondary" data-modal-trigger="inbrasil-info" id="cta_inbrasil_info">
+                                        Mais Informações
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Equipe Section -->
+        <section class="equipe-section" id="equipe">
+            <div class="uk-container">
+                <div class="section-header">
+                    <h2>Nossa Equipe Especializada</h2>
+                    <p>Profissionais qualificados para atender todas as suas necessidades</p>
+                </div>
+                
+                <div class="uk-grid-match uk-child-width-1-2@m" uk-grid>
+                    <!-- Letícia - Arquiteta -->
+                    <div class="team-card">
+                        <div class="team-photo">
+                            <img src="assets/images/leticia-arquiteta.png" alt="Letícia - Arquiteta" loading="lazy">
+                        </div>
+                        <div class="team-content">
+                            <h3>Letícia</h3>
+                            <p class="team-role">Arquiteta</p>
+                            <p class="team-description">
+                                Arquiteta especializada em projetos sustentáveis e construção com madeira. 
+                                Responsável pelo desenvolvimento de projetos personalizados que atendem às necessidades 
+                                específicas de cada cliente, sempre priorizando sustentabilidade e funcionalidade.
+                            </p>
+                            <div class="team-expertise">
+                                <h4>Especialidades:</h4>
+                                <ul>
+                                    <li>Projetos arquitetônicos</li>
+                                    <li>Design sustentável</li>
+                                    <li>Consultoria em materiais</li>
+                                    <li>Acompanhamento de obra</li>
+                                    <li>Projetos personalizados</li>
+                                </ul>
+                            </div>
+                            <div class="team-contact-info">
+                                <p><strong>Telefone:</strong> (11) 94311-2721</p>
+                                <p><strong>E-mail:</strong> artechales@gmail.com</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tiago - Corretor -->
+                    <div class="team-card">
+                        <div class="team-photo">
+                            <img src="assets/images/tiago-corretor.jpeg" alt="Tiago - Corretor" loading="lazy">
+                        </div>
+                        <div class="team-content">
+                            <h3>Tiago</h3>
+                            <p class="team-role">Corretor de Imóveis</p>
+                            <p class="team-description">
+                                Corretor especializado em imóveis rurais e terrenos para construção. 
+                                Conhece as melhores localidades do Rio de Janeiro para construção de chalés e 
+                                pode ajudar tanto na compra quanto na venda de propriedades.
+                            </p>
+                            <div class="team-expertise">
+                                <h4>Especialidades:</h4>
+                                <ul>
+                                    <li>Compra e venda de terrenos</li>
+                                    <li>Consultoria imobiliária</li>
+                                    <li>Financiamento</li>
+                                    <li>Documentação</li>
+                                    <li>Investimentos rurais</li>
+                                </ul>
+                            </div>
+                            <div class="team-contact-info">
+                                <p><strong>Telefone:</strong> (21) 96017-1061</p>
+                                <p><strong>E-mail:</strong> artechales@gmail.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Contato Section -->
+        <section class="contato-section" id="contato">
+            <div class="uk-container">
+                <div class="uk-grid-match uk-child-width-1-2@m" uk-grid>
+                    <div>
+                        <h2>Entre em Contato</h2>
+                        <div class="contact-info">
+                            <div class="contact-item">
+                                <strong>Telefones:</strong>
+                                <p>(11) 94311-2721 / (21) 96017-1061</p>
+                            </div>
+                            <div class="contact-item">
+                                <strong>E-mail:</strong>
+                                <p>artechales@gmail.com</p>
+                            </div>
+                            <div class="contact-item">
+                                <strong>Endereço:</strong>
+                                <p>Av. Feliciano Sodré, 300 - Várzea, Teresópolis - RJ, 25963-081</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <form class="contact-form" id="contact-form">
+                            <div class="uk-margin">
+                                <input class="uk-input" type="text" name="name" placeholder="Seu nome" required>
+                            </div>
+                            <div class="uk-margin">
+                                <input class="uk-input" type="tel" name="phone" placeholder="Seu telefone" required>
+                            </div>
+                            <div class="uk-margin">
+                                <select class="uk-select" name="contact-reason" required>
+                                    <option value="">Motivo do contato</option>
+                                    <option value="projeto">Falar com Letícia - Projeto</option>
+                                    <option value="imovel">Falar com Tiago - Imóvel</option>
+                                    <option value="orcamento">Solicitar Orçamento</option>
+                                    <option value="duvida">Tirar Dúvidas</option>
+                                </select>
+                            </div>
+                            <div class="uk-margin">
+                                <textarea class="uk-textarea" name="message" rows="5" placeholder="Sua mensagem..." required></textarea>
+                            </div>
+                            <button type="submit" class="uk-button uk-button-primary uk-width-1-1" id="cta_form_parceiros">
+                                Enviar Mensagem
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Component -->
+    <footer id="footer"></footer>
+
+
+    <!-- UIKit JS -->
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.17.11/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.17.11/dist/js/uikit-icons.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="assets/js/components.js"></script>
+    <script src="assets/js/main.js"></script>
+
+    <style>
+        /* Page-specific styles */
+        .parceiros-hero {
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(184, 134, 11, 0.3)), url('assets/images/parceiros-hero-bg.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .parceiros-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto var(--spacing-3xl);
+            font-size: var(--font-size-lg);
+            color: var(--text-light);
+        }
+
+        .parceiro-card {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: all var(--transition-normal);
+            height: 100%;
+        }
+
+        .parceiro-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .parceiro-logo {
+            padding: var(--spacing-xl);
+            text-align: center;
+            background: var(--light-gray);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .parceiro-logo img {
+            max-height: 80px;
+            max-width: 200px;
+            object-fit: contain;
+        }
+
+        .parceiro-content {
+            padding: var(--spacing-xl);
+        }
+
+        .parceiro-benefits {
+            margin: var(--spacing-lg) 0;
+        }
+
+        .parceiro-benefits h4 {
+            color: var(--text-dark);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .parceiro-benefits ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .parceiro-benefits li {
+            padding: var(--spacing-xs) 0;
+            position: relative;
+            padding-left: var(--spacing-lg);
+        }
+
+        .parceiro-benefits li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .parceiro-actions {
+            display: flex;
+            gap: var(--spacing-sm);
+            margin-top: var(--spacing-lg);
+        }
+
+        .parceiro-actions .uk-button {
+            flex: 1;
+        }
+
+        .equipe-section {
+            background-color: var(--light-gray);
+        }
+
+        .team-card {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: all var(--transition-normal);
+            height: 100%;
+        }
+
+        .team-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .team-photo {
+            position: relative;
+            height: 300px;
+            overflow: hidden;
+        }
+
+        .team-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform var(--transition-slow);
+        }
+
+        .team-card:hover .team-photo img {
+            transform: scale(1.05);
+        }
+
+        .team-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity var(--transition-normal);
+        }
+
+        .team-card:hover .team-overlay {
+            opacity: 1;
+        }
+
+        .team-contact {
+            display: flex;
+            gap: var(--spacing-md);
+        }
+
+        .contact-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-decoration: none;
+            transition: all var(--transition-fast);
+            font-size: var(--font-size-lg);
+        }
+
+        .contact-btn.whatsapp {
+            background: #25D366;
+        }
+
+        .contact-btn.email {
+            background: var(--primary-color);
+        }
+
+        .contact-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .team-content {
+            padding: var(--spacing-xl);
+        }
+
+        .team-role {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .team-expertise {
+            margin: var(--spacing-lg) 0;
+        }
+
+        .team-expertise h4 {
+            color: var(--text-dark);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .team-expertise ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .team-expertise li {
+            padding: var(--spacing-xs) 0;
+            position: relative;
+            padding-left: var(--spacing-lg);
+        }
+
+        .team-expertise li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .team-contact-info {
+            background: var(--light-gray);
+            padding: var(--spacing-lg);
+            border-radius: 8px;
+            margin: var(--spacing-lg) 0;
+        }
+
+        .team-contact-info p {
+            margin-bottom: var(--spacing-xs);
+            font-size: var(--font-size-sm);
+        }
+
+        .team-contact-info p:last-child {
+            margin-bottom: 0;
+        }
+
+        .team-actions {
+            display: flex;
+            gap: var(--spacing-sm);
+            margin-top: var(--spacing-lg);
+        }
+
+        .team-actions .uk-button {
+            flex: 1;
+        }
+
+
+        .contact-method {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-lg);
+            padding: var(--spacing-lg);
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+        }
+
+        .contact-method:last-child {
+            margin-bottom: 0;
+        }
+
+        .method-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: var(--font-size-lg);
+        }
+
+        .method-content h4 {
+            color: var(--white);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .method-content p {
+            margin: 0;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: var(--font-size-sm);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .parceiro-actions,
+            .team-actions {
+                flex-direction: column;
+            }
+            
+            .contact-method {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .team-contact {
+                flex-direction: column;
+                gap: var(--spacing-sm);
+            }
+        }
+    </style>
+
+    <script>
+        // Page-specific JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+
+            // WhatsApp contact tracking
+            const whatsappLinks = document.querySelectorAll('a[href*="wa.me"]');
+            whatsappLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    const phoneNumber = this.href.match(/wa\.me\/(\d+)/)?.[1];
+                    if (phoneNumber) {
+                        ArteConstruirApp.trackEvent('Contact', 'whatsapp_click', phoneNumber);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

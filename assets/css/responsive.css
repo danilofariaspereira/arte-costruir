@@ -1,0 +1,406 @@
+/* ==============================================
+   ARTE CONSTRUIR - RESPONSIVE STYLES
+   ============================================== */
+
+/* Mobile First Approach */
+
+/* Extra Small Devices (phones, 576px and down) */
+@media (max-width: 575.98px) {
+    :root {
+        --spacing-xl: 1.5rem;
+        --spacing-2xl: 2rem;
+        --spacing-3xl: 2.5rem;
+    }
+    
+    .hero-title {
+        font-size: var(--font-size-3xl);
+    }
+    
+    .hero-subtitle {
+        font-size: var(--font-size-lg);
+    }
+    
+    .hero-section {
+        min-height: 80vh;
+        padding: var(--spacing-lg) 0;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        gap: var(--spacing-md);
+    }
+    
+    .hero-buttons .uk-button {
+        width: 100%;
+        max-width: 280px;
+    }
+    
+    section {
+        padding: var(--spacing-2xl) 0;
+    }
+    
+    .section-header h2 {
+        font-size: var(--font-size-2xl);
+    }
+    
+    .contact-form {
+        padding: var(--spacing-lg);
+    }
+    
+    .map-container {
+        height: 250px;
+    }
+    
+    .project-card .card-image {
+        height: 200px;
+    }
+    
+    .card-content {
+        padding: var(--spacing-lg);
+    }
+    
+    .chatbot {
+        bottom: 10px;
+        right: 10px;
+        left: 10px;
+        max-width: none;
+    }
+    
+    .chatbot-header {
+        padding: var(--spacing-sm);
+    }
+    
+    .chatbot-body {
+        max-height: 300px;
+    }
+}
+
+/* Small Devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .hero-title {
+        font-size: var(--font-size-4xl);
+    }
+    
+    .hero-buttons {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .hero-buttons .uk-button {
+        flex: 1;
+        max-width: 250px;
+        min-width: 200px;
+    }
+    
+    .section-image img {
+        height: 350px;
+    }
+    
+    .project-card .card-image {
+        height: 220px;
+    }
+    
+    .map-container {
+        height: 300px;
+    }
+}
+
+/* Medium Devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .hero-section {
+        min-height: 90vh;
+    }
+    
+    .hero-title {
+        font-size: var(--font-size-4xl);
+    }
+    
+    .hero-buttons {
+        flex-direction: row;
+        gap: var(--spacing-xl);
+    }
+    
+    .section-image img {
+        height: 400px;
+    }
+    
+    .project-card .card-image {
+        height: 240px;
+    }
+    
+    .map-container {
+        height: 350px;
+    }
+    
+    .chatbot {
+        max-width: 320px;
+    }
+}
+
+/* Large Devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .hero-section {
+        min-height: 100vh;
+    }
+    
+    .hero-title {
+        font-size: var(--font-size-4xl);
+    }
+    
+    .section-image img {
+        height: 450px;
+    }
+    
+    .project-card .card-image {
+        height: 250px;
+    }
+    
+    .map-container {
+        height: 400px;
+    }
+    
+    .chatbot {
+        max-width: 350px;
+    }
+}
+
+/* Extra Large Devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    .hero-section {
+        min-height: 100vh;
+    }
+    
+    .hero-title {
+        font-size: 3.5rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.5rem;
+    }
+    
+    .section-image img {
+        height: 500px;
+    }
+    
+    .project-card .card-image {
+        height: 280px;
+    }
+    
+    .map-container {
+        height: 450px;
+    }
+    
+    .chatbot {
+        max-width: 380px;
+    }
+    
+    .uk-container {
+        max-width: 1200px;
+    }
+}
+
+/* Landscape Orientation */
+@media (orientation: landscape) and (max-height: 500px) {
+    .hero-section {
+        min-height: 100vh;
+        padding: var(--spacing-md) 0;
+    }
+    
+    .hero-title {
+        font-size: var(--font-size-2xl);
+        margin-bottom: var(--spacing-md);
+    }
+    
+    .hero-subtitle {
+        font-size: var(--font-size-base);
+        margin-bottom: var(--spacing-lg);
+    }
+    
+    .hero-buttons {
+        flex-direction: row;
+        gap: var(--spacing-md);
+    }
+    
+    section {
+        padding: var(--spacing-xl) 0;
+    }
+}
+
+/* High DPI Displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .hero-section {
+        background-attachment: scroll; /* Better performance on mobile */
+    }
+}
+
+/* Print Styles */
+@media print {
+    .header,
+    .footer,
+    .chatbot,
+    .hero-buttons,
+    .contact-form {
+        display: none !important;
+    }
+    
+    .hero-section {
+        background: none !important;
+        color: var(--text-dark) !important;
+        min-height: auto !important;
+        padding: var(--spacing-lg) 0 !important;
+    }
+    
+    .hero-title,
+    .hero-subtitle {
+        color: var(--text-dark) !important;
+        text-shadow: none !important;
+    }
+    
+    section {
+        padding: var(--spacing-md) 0 !important;
+    }
+    
+    .project-card,
+    .card {
+        box-shadow: none !important;
+        border: 1px solid var(--border-color) !important;
+    }
+    
+    .map-container {
+        display: none !important;
+    }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    .hero-section::before {
+        animation: none !important;
+    }
+    
+    .floating {
+        animation: none !important;
+    }
+    
+    .loading-spinner {
+        animation: none !important;
+    }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --white: #1a1a1a;
+        --light-gray: #2d2d2d;
+        --text-dark: #e0e0e0;
+        --text-light: #b0b0b0;
+        --border-color: #404040;
+    }
+    
+    .header {
+        background: rgba(26, 26, 26, 0.95);
+        border-bottom-color: var(--border-color);
+    }
+    
+    .header.scrolled {
+        background: rgba(26, 26, 26, 0.98);
+    }
+    
+    .card,
+    .project-card {
+        background: var(--light-gray);
+        border: 1px solid var(--border-color);
+    }
+    
+    .contact-form {
+        background: var(--light-gray);
+    }
+    
+    .chatbot {
+        background: var(--light-gray);
+        border: 1px solid var(--border-color);
+    }
+    
+    .chatbot-input input {
+        background: var(--white);
+        border-color: var(--border-color);
+        color: var(--text-dark);
+    }
+    
+    .modal {
+        background: var(--light-gray);
+        border: 1px solid var(--border-color);
+    }
+    
+    .toast {
+        background: var(--light-gray);
+        border-left-color: var(--primary-color);
+    }
+}
+
+/* Container Queries (Modern Browsers) */
+@supports (container-type: inline-size) {
+    .project-grid {
+        container-type: inline-size;
+    }
+    
+    @container (max-width: 300px) {
+        .project-card .card-content {
+            padding: var(--spacing-md);
+        }
+        
+        .project-card .card-content h3 {
+            font-size: var(--font-size-lg);
+        }
+    }
+    
+    @container (min-width: 301px) {
+        .project-card .card-content {
+            padding: var(--spacing-xl);
+        }
+    }
+}
+
+/* Focus Styles for Accessibility */
+@media (prefers-reduced-motion: no-preference) {
+    .uk-button:focus,
+    .uk-input:focus,
+    .uk-textarea:focus,
+    .nav-menu a:focus {
+        outline: 2px solid var(--primary-color);
+        outline-offset: 2px;
+    }
+}
+
+/* Touch Device Optimizations */
+@media (hover: none) and (pointer: coarse) {
+    .uk-button {
+        min-height: 44px; /* iOS touch target minimum */
+    }
+    
+    .nav-menu li a {
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+    }
+    
+    .chatbot-option {
+        min-height: 44px;
+    }
+    
+    .project-card:hover {
+        transform: none;
+    }
+    
+    .card:hover {
+        transform: none;
+    }
+}
