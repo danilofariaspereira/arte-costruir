@@ -403,24 +403,24 @@ section {
 /* Estatísticas Section */
 .stats-section {
     background-color: var(--primary-color);
-    padding: var(--spacing-2xl) 0;
+    padding: var(--spacing-3xl) 0;
 }
 
 .stats-section .uk-container {
     max-width: 1000px;
     margin: 0 auto;
-    padding: 0 30px;
+    padding: 0 50px;
 }
 
 .stat-card {
     background: linear-gradient(135deg, var(--accent-color), var(--gold-dark));
     border-radius: 8px;
-    padding: var(--spacing-lg);
+    padding: var(--spacing-xl);
     text-align: center;
     box-shadow: 0 4px 20px rgba(184, 134, 11, 0.2);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    margin: 0 10px;
-    max-width: 280px;
+    margin: 0 15px;
+    max-width: 300px;
 }
 
 .stat-card:hover {
