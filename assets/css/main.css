@@ -400,17 +400,117 @@ section {
     margin-top: var(--spacing-2xl);
 }
 
+/* Estatísticas Section */
+.stats-section {
+    background-color: var(--primary-color);
+    padding: var(--spacing-2xl) 0;
+}
+
+.stats-section .uk-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 30px;
+}
+
+.stat-card {
+    background: linear-gradient(135deg, var(--accent-color), var(--gold-dark));
+    border-radius: 8px;
+    padding: var(--spacing-lg);
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(184, 134, 11, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin: 0 10px;
+    max-width: 280px;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(184, 134, 11, 0.4);
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: var(--spacing-sm);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--white);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    line-height: 1.4;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .stat-number {
+        font-size: 2.5rem;
+    }
+    
+    .stat-label {
+        font-size: 0.9rem;
+    }
+    
+    .stat-card {
+        padding: var(--spacing-lg);
+    }
+}
+
 /* Contact Section */
 .contato-section {
     background-color: var(--light-gray);
+    padding: 20px 0;
+}
+
+.contato-section .uk-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Cores específicas da seção de contato */
+.contato-section h2 {
+    color: var(--accent-color);
+    font-weight: 700;
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-md);
+}
+
+.contato-section .contact-item strong {
+    color: var(--accent-color);
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.contato-section .contact-item p {
+    color: var(--text-dark);
+    font-weight: 500;
+    font-size: 0.9rem;
+    margin-bottom: var(--spacing-sm);
+}
+
+/* Ajustar altura da área de contato para igualar ao mapa */
+.contato-section .uk-grid > div:first-child {
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 20px;
 }
 
 .contact-info {
-    margin-bottom: var(--spacing-2xl);
+    margin-bottom: 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .contact-item {
-    margin-bottom: var(--spacing-lg);
+    margin-bottom: var(--spacing-sm);
 }
 
 .contact-item strong {

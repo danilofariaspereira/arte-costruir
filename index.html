@@ -70,11 +70,30 @@
             </div>
         </section>
 
+        <!-- Estatísticas Section -->
+        <section class="stats-section" id="stats">
+            <div class="uk-container">
+                <div class="uk-grid-small uk-child-width-1-3@m uk-child-width-1-1@s uk-flex-center" uk-grid>
+                    <div class="stat-card">
+                        <div class="stat-number">0</div>
+                        <div class="stat-label">Ano Fundado</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">0</div>
+                        <div class="stat-label">Projetos Completos</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">0</div>
+                        <div class="stat-label">Metros Quadrados Construídos</div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <!-- Contato Section -->
         <section class="contato-section" id="contato">
             <div class="uk-container">
-                <div class="uk-grid-match uk-child-width-1-2@m" uk-grid>
+                <div class="uk-grid-match uk-child-width-1-2@m uk-grid-small" uk-grid>
                     <div>
                         <h2>Entre em Contato</h2>
                         <div class="contact-info">
@@ -91,33 +110,19 @@
                                 <p>Av. Feliciano Sodré, 300 - Várzea, Teresópolis - RJ, 25963-081</p>
                             </div>
                         </div>
+                    </div>
+                    <div>
                         <div class="map-container">
                             <iframe 
                                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3691.2345678901234!2d-42.987654321!3d-22.123456789!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjLCsDA3JzI0LjQiUyA0MsKwNTknMTUuNiJX!5e0!3m2!1spt-BR!2sbr!4v1234567890123!5m2!1spt-BR!2sbr"
                                 width="100%" 
-                                height="300" 
+                                height="400" 
                                 style="border:0;" 
                                 allowfullscreen="" 
                                 loading="lazy" 
                                 referrerpolicy="no-referrer-when-downgrade">
                             </iframe>
                         </div>
-                    </div>
-                    <div>
-                        <form class="contact-form" id="contact-form">
-                            <div class="uk-margin">
-                                <input class="uk-input" type="text" placeholder="Seu nome" required>
-                            </div>
-                            <div class="uk-margin">
-                                <input class="uk-input" type="tel" placeholder="Seu telefone" required>
-                            </div>
-                            <div class="uk-margin">
-                                <textarea class="uk-textarea" rows="5" placeholder="Sua mensagem" required></textarea>
-                            </div>
-                            <button type="submit" class="uk-button uk-button-primary uk-width-1-1" id="cta_form_contato">
-                                Enviar Mensagem
-                            </button>
-                        </form>
                     </div>
                 </div>
             </div>
@@ -135,5 +140,73 @@
     <!-- Custom JS -->
     <script src="assets/js/components.js"></script>
     <script src="assets/js/main.js"></script>
+    
+    <!-- Number Animation Script -->
+    <script>
+        // Função para animar números
+        function animateNumbers() {
+            const statNumbers = document.querySelectorAll('.stat-number');
+            const finalValues = [2005, 500, 1000000];
+            const finalFormats = ['2005', '+500', '+1M'];
+            const duration = 2000; // 2 segundos para todos terminarem juntos
+            
+            statNumbers.forEach((element, index) => {
+                const finalValue = finalValues[index];
+                const finalFormat = finalFormats[index];
+                const startTime = performance.now();
+                
+                function updateNumber(currentTime) {
+                    const elapsed = currentTime - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+                    
+                    // Função de easing para movimento suave
+                    const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+                    const currentValue = Math.floor(easeOutQuart * finalValue);
+                    
+                    // Formatar número baseado no tipo
+                    if (index === 0) {
+                        // Ano: mostrar o valor completo
+                        element.textContent = currentValue.toString();
+                    } else if (index === 1) {
+                        // +500: mostrar com sinal de mais
+                        element.textContent = '+' + currentValue;
+                    } else if (index === 2) {
+                        // +1M: mostrar em milhões
+                        if (currentValue >= 1000000) {
+                            element.textContent = '+' + Math.floor(currentValue / 1000000) + 'M';
+                        } else {
+                            element.textContent = '+' + Math.floor(currentValue / 1000) + 'K';
+                        }
+                    }
+                    
+                    if (progress < 1) {
+                        requestAnimationFrame(updateNumber);
+                    } else {
+                        // Garantir que o valor final seja exato
+                        element.textContent = finalFormat;
+                    }
+                }
+                
+                requestAnimationFrame(updateNumber);
+            });
+        }
+        
+        // Executar animação quando a seção estiver visível
+        document.addEventListener('DOMContentLoaded', function() {
+            const statsSection = document.querySelector('.stats-section');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateNumbers();
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            if (statsSection) {
+                observer.observe(statsSection);
+            }
+        });
+    </script>
 </body>
 </html>
