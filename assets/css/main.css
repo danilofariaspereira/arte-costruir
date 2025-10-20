@@ -400,6 +400,129 @@ section {
     margin-top: var(--spacing-2xl);
 }
 
+/* Parceiros Section */
+.parceiros-section {
+    background-color: var(--primary-color);
+    padding: var(--spacing-3xl) 0;
+}
+
+.parceiros-section .uk-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Cards Container - Exatamente como a referência da Alterdata */
+.cards-pai {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+    grid-gap: 10px;
+}
+
+/* Flip Card Styles - Baseado na referência da Alterdata */
+.flip-card {
+    background-color: transparent;
+    width: 300px;
+    height: 350px;
+    perspective: 1000px;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+}
+
+.flip-card-front {
+    background: linear-gradient(135deg, var(--accent-color), var(--gold-dark));
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 20px;
+}
+
+.flip-card-back {
+    background-color: #fff;
+    color: #333;
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 20px;
+    text-align: center;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid white;
+    margin-bottom: 25px;
+}
+
+.flip-card-front h3 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: white;
+    margin: 0;
+    line-height: 1.3;
+}
+
+.partner-cta {
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-top: 15px;
+    display: inline-block;
+}
+
+.partner-cta:hover {
+    color: var(--gold-dark);
+    text-decoration: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .cards-pai {
+        flex-direction: column;
+    }
+    
+    .flip-card {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+
 /* Estatísticas Section */
 .stats-section {
     background-color: var(--primary-color);
