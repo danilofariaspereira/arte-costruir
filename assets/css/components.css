@@ -128,8 +128,9 @@
 .footer-section p,
 .footer-section a {
     color: rgba(255, 255, 255, 0.8);
-    margin-bottom: var(--spacing-sm);
+    margin-bottom: 4px;
     display: block;
+    line-height: 1.3;
 }
 
 .footer-section a:hover {
@@ -144,7 +145,19 @@
 
 .footer-bottom p {
     color: rgba(255, 255, 255, 0.6);
-    margin: 0;
+    margin: var(--spacing-sm) 0;
+}
+
+.developer-link {
+    color: #B8860B !important;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.developer-link:hover {
+    color: #FFD700 !important;
+    text-decoration: underline;
 }
 
 .social-links {
@@ -154,7 +167,15 @@
     margin-top: var(--spacing-md);
 }
 
-.social-links a {
+.social-links-center {
+    display: flex;
+    gap: var(--spacing-lg);
+    justify-content: center;
+    margin-top: var(--spacing-lg);
+}
+
+.social-links a,
+.social-links-center a {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -166,7 +187,8 @@
     transition: all var(--transition-fast);
 }
 
-.social-links a:hover {
+.social-links a:hover,
+.social-links-center a:hover {
     background: var(--accent-color);
     transform: translateY(-2px);
 }

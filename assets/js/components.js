@@ -126,45 +126,37 @@ class FooterComponent {
                     <div class="footer-section">
                         <h4>Arte Construir</h4>
                         <p>Especialistas em construção de chalés de madeira e decks sustentáveis no Rio de Janeiro.</p>
-                        <div class="social-links">
-                            <a href="#" aria-label="Facebook">
-                                <i uk-icon="facebook"></i>
-                            </a>
-                            <a href="#" aria-label="Instagram">
+                        <div class="social-links-center">
+                            <a href="https://www.instagram.com/arteconstruir" target="_blank" aria-label="Instagram">
                                 <i uk-icon="instagram"></i>
                             </a>
-                            <a href="#" aria-label="WhatsApp">
+                            <a href="https://wa.me/5521960171061" target="_blank" aria-label="WhatsApp">
                                 <i uk-icon="whatsapp"></i>
                             </a>
                         </div>
                     </div>
                     
                     <div class="footer-section">
-                        <h4>Links Rápidos</h4>
-                        <a href="index.html">Home</a>
-                        <a href="projetos.html">Projetos</a>
-                        <a href="decks.html">Decks</a>
-                        <a href="parceiros.html">Parceiros</a>
+                        <h4>Telefones</h4>
+                        <p>(11) 94311-2721</p>
+                        <p>(21) 96017-1061</p>
                     </div>
                     
                     <div class="footer-section">
-                        <h4>Contato</h4>
-                        <p><strong>Telefones:</strong><br>(11) 94311-2721<br>(21) 96017-1061</p>
-                        <p><strong>E-mail:</strong><br>artechales@gmail.com</p>
-                        <p><strong>Endereço:</strong><br>Av. Feliciano Sodré, 300<br>Várzea, Teresópolis - RJ</p>
+                        <h4>E-mail</h4>
+                        <p>artechales@gmail.com</p>
                     </div>
                     
                     <div class="footer-section">
-                        <h4>Especialidades</h4>
-                        <p>Chalés de Madeira</p>
-                        <p>Decks Sustentáveis</p>
-                        <p>Casas Ecológicas</p>
-                        <p>Madeira Plástica</p>
+                        <h4>Endereço</h4>
+                        <p>Av. Feliciano Sodré, 300</p>
+                        <p>Várzea, Teresópolis - RJ</p>
+                        <p>CEP: 25963-081</p>
                     </div>
                 </div>
                 
                 <div class="footer-bottom">
-                    <p>&copy; ${new Date().getFullYear()} Arte Construir. Todos os direitos reservados.</p>
+                    <p>2025 - Criado por <a href="https://wa.me/5521993350228?text=Olá%2C%20Danilo%20Farias%2C%20tudo%20bem%3F%20Vim%20através%20do%20site%20Arte%20Construir%20e%20gostaria%20de%20saber%20mais%20sobre%20o%20seu%20trabalho." target="_blank" class="developer-link">Danilo Farias</a></p>
                 </div>
             </div>
         `;
