@@ -143,7 +143,8 @@
                 </div>
                 
                 <!-- Letícia - Arquiteta - SEÇÃO SUPERIOR -->
-                <div class="team-card" id="leticia-ia">
+                <a id="leticia-ia" style="display: block; position: relative; top: -80px; visibility: hidden;"></a>
+                <div class="team-card">
                     <div class="cintia-style-chatbot top" id="chatbot-leticia">
                         <!-- Left Panel - Profile Section -->
                         <div class="chatbot-left-panel">
@@ -231,7 +232,8 @@
                 </div>
 
                 <!-- Tiago - Corretor - SEÇÃO INFERIOR -->
-                <div class="team-card" id="tiago-ia">
+                <a id="tiago-ia" style="display: block; position: relative; top: -80px; visibility: hidden;"></a>
+                <div class="team-card">
                     <div class="cintia-style-chatbot bottom" id="chatbot-tiago">
                         <!-- Left Panel - Profile Section -->
                         <div class="chatbot-left-panel">
@@ -890,28 +892,9 @@
 
         /* Ajustes para cards vazios com chatbots */
 
-        /* Scroll suave para âncoras */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Ajuste de espaçamento para âncoras */
         .team-card {
-            scroll-margin-top: 80px;
-        }
-
-        /* Garantir que as âncoras funcionem */
-        #leticia-ia, #tiago-ia {
-            scroll-margin-top: 80px;
             position: relative;
-        }
-
-        .team-card#leticia-ia {
-            margin-bottom: 40px;
-        }
-
-        .team-card#tiago-ia {
-            margin-top: 40px;
+            padding: 40px 0;
         }
 
         /* Page-specific styles */
@@ -1194,31 +1177,5 @@
         }
     </style>
 
-    <script>
-        // Page-specific JavaScript
-        document.addEventListener('DOMContentLoaded', function() {
-            // Scroll para âncoras quando a página carrega
-            const hash = window.location.hash;
-            if (hash) {
-                setTimeout(() => {
-                    const element = document.querySelector(hash);
-                    if (element) {
-                        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }
-                }, 500);
-            }
-
-            // WhatsApp contact tracking
-            const whatsappLinks = document.querySelectorAll('a[href*="wa.me"]');
-            whatsappLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    const phoneNumber = this.href.match(/wa\.me\/(\d+)/)?.[1];
-                    if (phoneNumber) {
-                        ArteConstruirApp.trackEvent('Contact', 'whatsapp_click', phoneNumber);
-                    }
-                });
-            });
-        });
-    </script>
 </body>
 </html>

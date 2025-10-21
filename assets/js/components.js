@@ -411,11 +411,6 @@ class FormValidationComponent {
     constructor() {
         this.forms = [];
         this.rules = {};
-        this.init();
-    }
-
-    init() {
-        this.bindEvents();
     }
 
     addValidation(formSelector, rules) {
