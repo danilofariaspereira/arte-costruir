@@ -5,18 +5,24 @@
       <router-view />
     </main>
     <AppFooter />
+    <Chatbot />
+    <BackToTop />
   </div>
 </template>
 
 <script>
 import AppHeader from '@/components/AppHeader.vue'
 import AppFooter from '@/components/AppFooter.vue'
+import Chatbot from '@/components/Chatbot.vue'
+import BackToTop from '@/components/BackToTop.vue'
 
 export default {
   name: 'App',
   components: {
     AppHeader,
-    AppFooter
+    AppFooter,
+    Chatbot,
+    BackToTop
   }
 }
 </script>
