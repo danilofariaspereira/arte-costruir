@@ -9,13 +9,15 @@
           <p class="hero-subtitle">Não fazemos obras, realizamos sonhos</p>
         </div>
         <div class="hero-scroll-indicator">
-          <img src="/src/assets/images/seta-direita 1.png" alt="Seta para baixo" class="arrow-image">
+          <a href="#quem-somos" @click="scrollToSection">
+            <img src="/src/assets/images/seta-direita 1.png" alt="Seta para baixo" class="arrow-image">
+          </a>
         </div>
       </div>
     </section>
 
     <!-- Quem Somos Section -->
-    <section class="quem-somos-section section">
+    <section class="quem-somos-section section" id="quem-somos">
       <div class="container">
         <div class="grid grid-2">
           <div class="section-content">
@@ -180,7 +182,19 @@
 
 <script>
 export default {
-  name: 'Home'
+  name: 'Home',
+  methods: {
+    scrollToSection(event) {
+      event.preventDefault()
+      const element = document.getElementById('quem-somos')
+      if (element) {
+        element.scrollIntoView({ 
+          behavior: 'smooth',
+          block: 'start'
+        })
+      }
+    }
+  }
 }
 </script>
 
@@ -250,6 +264,16 @@ export default {
   transform: translateX(-50%);
   animation: bounce 2s infinite;
   z-index: 1;
+}
+
+.hero-scroll-indicator a {
+  display: block;
+  cursor: pointer;
+  transition: transform var(--transition-normal);
+}
+
+.hero-scroll-indicator a:hover {
+  transform: scale(1.1);
 }
 
 .arrow-image {
@@ -411,6 +435,15 @@ export default {
     max-width: 350px;
     height: 350px;
   }
+  
+  .flip-card-back p {
+    font-size: clamp(1.2rem, 2.2vw, 1.4rem);
+  }
+  
+  .partner-cta {
+    font-size: clamp(0.8rem, 1.6vw, 1rem);
+    padding: var(--spacing-xs) var(--spacing-sm);
+  }
 }
 
 .flip-card-inner {
@@ -466,19 +499,22 @@ export default {
 .flip-card-back p {
   margin-bottom: var(--spacing-md);
   line-height: 1.6;
-  font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+  font-size: clamp(1.4rem, 2.8vw, 1.8rem);
 }
 
 .partner-cta {
   color: var(--accent-color);
   font-weight: 600;
   text-decoration: none;
-  margin-top: auto;
-  padding: var(--spacing-md) var(--spacing-lg);
+  margin: var(--spacing-lg) auto 0;
+  padding: var(--spacing-sm) var(--spacing-md);
   border: 1px solid var(--accent-color);
   border-radius: 6px;
   transition: all var(--transition-fast);
-  font-size: clamp(1.1rem, 2.2vw, 1.4rem);
+  font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+  display: block;
+  text-align: center;
+  width: fit-content;
 }
 
 .partner-cta:hover {
