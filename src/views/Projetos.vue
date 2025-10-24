@@ -4,16 +4,14 @@
     <section class="hero-section projects-hero">
       <div class="container">
         <div class="hero-content">
-          <h1 class="hero-title">Nossos Projetos de Chalés e Lofts</h1>
-          <p class="hero-subtitle">Construções sustentáveis com madeira de qualidade ecológica no Rio de Janeiro</p>
-          <div class="hero-buttons">
-            <a href="#chales" class="btn btn-primary btn-large">
-              Ver Chalés
-            </a>
-            <a href="#lofts" class="btn btn-secondary btn-large">
-              Ver Lofts
-            </a>
-          </div>
+          <h1 class="hero-title">Bem-vindo à</h1>
+          <h2 class="hero-brand">Arte Construir</h2>
+          <p class="hero-subtitle">Não fazemos obras, realizamos sonhos</p>
+        </div>
+        <div class="hero-scroll-indicator">
+          <a href="#" @click="scrollToSection">
+            <img src="/src/assets/images/seta-direita 1.png" alt="Seta para baixo" class="arrow-image">
+          </a>
         </div>
       </div>
     </section>
@@ -26,7 +24,7 @@
           <p class="section-subtitle">Chalés de 90m² com 2 quartos e 2 banheiros, perfeitos para até 8 pessoas</p>
         </div>
         
-        <div class="grid grid-2 grid-4 projetos-grid">
+        <div class="grid grid-2 grid-4">
           <!-- Chalé Aimee -->
           <div class="project-card" id="chale-aimee">
             <div class="card-image">
@@ -166,7 +164,7 @@
           <p class="section-subtitle">Lofts modernos e funcionais, perfeitos para casais e pequenas famílias</p>
         </div>
         
-        <div class="grid grid-3 lofts-grid">
+        <div class="grid grid-3">
           <!-- Loft 30m² -->
           <div class="project-card" id="loft-30m">
             <div class="card-image">
@@ -512,6 +510,17 @@ export default {
       })
     }
 
+    const scrollToSection = (event) => {
+      event.preventDefault()
+      const element = document.getElementById('chales')
+      if (element) {
+        element.scrollIntoView({ 
+          behavior: 'smooth',
+          block: 'start'
+        })
+      }
+    }
+
     return {
       showGallery,
       showLightbox,
@@ -525,49 +534,110 @@ export default {
       closeLightbox,
       prevImage,
       nextImage,
-      submitForm
+      submitForm,
+      scrollToSection
     }
   }
 }
 </script>
 
 <style scoped>
-/* Grid específico para projetos */
-.projetos-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--spacing-lg);
-}
-
-@media (min-width: 768px) {
-  .projetos-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 1024px) {
-  .projetos-grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
-/* Grid específico para lofts */
-.lofts-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--spacing-lg);
-}
-
-@media (min-width: 768px) {
-  .lofts-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
 /* Page-specific styles */
 .projects-hero {
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(184, 134, 11, 0.3)), url('/src/assets/images/projects-hero-bg.jpg');
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.1)), url('/src/assets/images/background-projetos.png');
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  height: 633px;
+}
+
+/* Hero Section Styles */
+.hero-section {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 0;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  color: var(--white);
+}
+
+.hero-title {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 300;
+  margin-bottom: var(--spacing-sm);
+  color: var(--white);
+}
+
+.hero-brand {
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 900;
+  margin-bottom: var(--spacing-md);
+  background: linear-gradient(135deg, var(--accent-color), var(--gold-light));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-weight: 400;
+  margin-bottom: var(--spacing-xl);
+  color: var(--white);
+  opacity: 0.9;
+}
+
+.hero-scroll-indicator {
+  position: absolute;
+  bottom: var(--spacing-xl);
+  left: 50%;
+  transform: translateX(-50%);
+  animation: bounce 2s infinite;
+  z-index: 1;
+}
+
+.hero-scroll-indicator a {
+  display: block;
+  cursor: pointer;
+  transition: transform var(--transition-normal);
+}
+
+.hero-scroll-indicator a:hover {
+  transform: scale(1.1);
+}
+
+.arrow-image {
+  width: 30px;
+  height: auto;
+  filter: invert(1);
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  40% {
+    transform: translateX(-50%) translateY(-10px);
+  }
+  60% {
+    transform: translateX(-50%) translateY(-5px);
+  }
 }
 
 .project-card {

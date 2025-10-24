@@ -26,7 +26,7 @@
           <p class="section-subtitle">Escolha entre madeira natural premium ou madeira plástica sustentável</p>
         </div>
         
-        <div class="grid grid-2 utils-grid">
+        <div class="grid grid-2">
           <!-- Madeira Natural -->
           <div class="material-card natural">
             <div class="material-image">
@@ -581,23 +581,12 @@ export default {
 </script>
 
 <style scoped>
-/* Grid específico para utils */
-.utils-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--spacing-lg);
-}
-
-@media (min-width: 768px) {
-  .utils-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
 /* Page-specific styles */
 .decks-hero {
   background: linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(184, 134, 11, 0.3)), url('/src/assets/images/decks-hero-bg.jpg');
   background-size: cover;
   background-position: center;
+  height: 633px;
 }
 
 .material-card {

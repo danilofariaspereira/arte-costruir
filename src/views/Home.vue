@@ -9,7 +9,7 @@
           <p class="hero-subtitle">Não fazemos obras, realizamos sonhos</p>
         </div>
         <div class="hero-scroll-indicator">
-          <a href="#quem-somos" @click="scrollToSection">
+          <a href="#" @click="scrollToSection">
             <img src="/src/assets/images/seta-direita 1.png" alt="Seta para baixo" class="arrow-image">
           </a>
         </div>
@@ -17,7 +17,7 @@
     </section>
 
     <!-- Quem Somos Section -->
-    <section class="quem-somos-section section" id="quem-somos">
+    <section class="quem-somos-section section">
       <div class="container">
         <div class="grid grid-2">
           <div class="section-content">
@@ -186,7 +186,7 @@ export default {
   methods: {
     scrollToSection(event) {
       event.preventDefault()
-      const element = document.getElementById('quem-somos')
+      const element = document.querySelector('.quem-somos-section')
       if (element) {
         element.scrollIntoView({ 
           behavior: 'smooth',
@@ -202,7 +202,7 @@ export default {
 /* Hero Section Styles */
 .hero-section {
   position: relative;
-  height: 780px;
+  height: 633px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -409,43 +409,6 @@ export default {
   margin-right: var(--spacing-3xl);
 }
 
-/* Mobile Responsive Cards */
-@media (max-width: 768px) {
-  .cards-pai {
-    flex-direction: column;
-    align-items: center;
-    gap: var(--spacing-xl);
-  }
-
-  .flip-card {
-    width: 100%;
-    max-width: 400px;
-    height: 400px;
-  }
-
-  .margin-card {
-    margin-right: 0;
-    margin-bottom: var(--spacing-lg);
-  }
-}
-
-@media (max-width: 480px) {
-  .flip-card {
-    width: 100%;
-    max-width: 350px;
-    height: 350px;
-  }
-  
-  .flip-card-back p {
-    font-size: clamp(1.2rem, 2.2vw, 1.4rem);
-  }
-  
-  .partner-cta {
-    font-size: clamp(0.8rem, 1.6vw, 1rem);
-    padding: var(--spacing-xs) var(--spacing-sm);
-  }
-}
-
 .flip-card-inner {
   position: relative;
   width: 100%;
@@ -499,22 +462,19 @@ export default {
 .flip-card-back p {
   margin-bottom: var(--spacing-md);
   line-height: 1.6;
-  font-size: clamp(1.4rem, 2.8vw, 1.8rem);
+  font-size: clamp(1.2rem, 2.5vw, 1.6rem);
 }
 
 .partner-cta {
   color: var(--accent-color);
   font-weight: 600;
   text-decoration: none;
-  margin: var(--spacing-lg) auto 0;
-  padding: var(--spacing-sm) var(--spacing-md);
+  margin-top: auto;
+  padding: var(--spacing-md) var(--spacing-lg);
   border: 1px solid var(--accent-color);
   border-radius: 6px;
   transition: all var(--transition-fast);
-  font-size: clamp(0.9rem, 1.8vw, 1.1rem);
-  display: block;
-  text-align: center;
-  width: fit-content;
+  font-size: clamp(1.1rem, 2.2vw, 1.4rem);
 }
 
 .partner-cta:hover {
@@ -812,13 +772,6 @@ export default {
   .cards-pai {
     flex-direction: column;
     align-items: center;
-    gap: var(--spacing-xl);
-  }
-
-  .flip-card {
-    width: 100%;
-    max-width: 400px;
-    height: 400px;
   }
 
   .margin-card {

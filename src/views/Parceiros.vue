@@ -35,7 +35,7 @@
             </p>
           </div>
           
-          <div class="grid grid-2 parceiros-grid">
+          <div class="grid grid-2">
             <!-- TW Brazil -->
             <div class="parceiro-card">
               <div class="parceiro-logo">
@@ -609,23 +609,12 @@ export default {
 </script>
 
 <style scoped>
-/* Grid específico para parceiros */
-.parceiros-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--spacing-lg);
-}
-
-@media (min-width: 768px) {
-  .parceiros-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
 /* Page-specific styles */
 .parceiros-hero {
   background: linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(184, 134, 11, 0.3)), url('/src/assets/images/parceiros-hero-bg.jpg');
   background-size: cover;
   background-position: center;
+  height: 633px;
 }
 
 .parceiros-intro {
