@@ -20,8 +20,7 @@
     <section class="projetos-section section" id="chales">
       <div class="container">
         <div class="section-header">
-          <h2 class="section-title">Nossos Chalés de Madeira</h2>
-          <p class="section-subtitle">Chalés de 90m² com 2 quartos e 2 banheiros, perfeitos para até 8 pessoas</p>
+          <h2 class="section-title gold-text">Nossos Chalés de Madeira</h2>
         </div>
         
         <div class="chales-grid">
@@ -60,37 +59,42 @@
       </div>
     </section>
 
-    <!-- Lofts Section -->
-    <section class="lofts-section section" id="lofts">
+    <!-- Serviços Section -->
+    <section class="servicos-section section" id="servicos">
       <div class="container">
         <div class="section-header">
-          <h2 class="section-title">Nossos Lofts de Madeira</h2>
-          <p class="section-subtitle">Lofts modernos e funcionais, perfeitos para casais e pequenas famílias</p>
+          <h2 class="section-title gold-text servicos-title">SERVIÇOS</h2>
         </div>
-        
-        <div class="chales-grid lofts-grid">
-          <!-- Loft 30m² -->
-          <div class="simple-card" @click="openProjectModal('loft30')">
-            <div class="simple-card-image">
-              <img src="/src/assets/images/loft-30m.jpg" alt="Loft Compacto" loading="lazy">
+
+        <div class="servicos-grid">
+          <!-- Serviço 1 -->
+          <div class="servico-card" @click="openServiceModal('mentoria')">
+            <div class="servico-card-image">
+              <img src="/src/assets/images/planejamento-e-mentoria.jpg" alt="Planejamento e Mentoria" loading="lazy">
             </div>
-            <div class="simple-card-title">Loft Compacto</div>
+            <div class="servico-card-content">
+              <h3>Planejamento e Mentoria</h3>
+            </div>
           </div>
 
-          <!-- Loft 40m² -->
-          <div class="simple-card" @click="openProjectModal('loft40')">
-            <div class="simple-card-image">
-              <img src="/src/assets/images/loft-40m.jpg" alt="Loft Conforto" loading="lazy">
+          <!-- Serviço 2 -->
+          <div class="servico-card" @click="openServiceModal('execucao')">
+            <div class="servico-card-image">
+              <img src="/src/assets/images/execucao-de-obra-completa-projetos.jpg" alt="Execução de obra completa" loading="lazy">
             </div>
-            <div class="simple-card-title">Loft Conforto</div>
+            <div class="servico-card-content">
+              <h3>Execução de obra completa</h3>
+            </div>
           </div>
 
-          <!-- Loft 60m² -->
-          <div class="simple-card" @click="openProjectModal('loft60')">
-            <div class="simple-card-image">
-              <img src="/src/assets/images/loft-60m.jpg" alt="Loft Premium" loading="lazy">
+          <!-- Serviço 3 -->
+          <div class="servico-card" @click="openServiceModal('reuniao')">
+            <div class="servico-card-image">
+              <img src="/src/assets/images/reuniao-de-trabalho-projetos.jpg" alt="Reunião de trabalho" loading="lazy">
             </div>
-            <div class="simple-card-title">Loft Premium</div>
+            <div class="servico-card-content">
+              <h3>Reunião de trabalho</h3>
+            </div>
           </div>
         </div>
       </div>
@@ -234,6 +238,27 @@
         <button class="lightbox-next" @click="nextImage" v-if="lightboxImages.length > 1">›</button>
       </div>
     </div>
+
+    <!-- Service Modal -->
+    <div v-if="showServiceModal" class="service-modal" @click="closeServiceModal">
+      <div class="service-modal-content" @click.stop>
+        <button class="service-modal-close" @click="closeServiceModal">&times;</button>
+        <div class="service-modal-grid">
+          <div class="service-modal-image">
+            <img :src="currentService.image" :alt="currentService.title">
+          </div>
+          <div class="service-modal-info">
+            <h3 class="service-modal-title">{{ currentService.title }}</h3>
+            <div class="service-modal-body">
+              <p v-for="(p, i) in currentService.paragraphs" :key="i">{{ p }}</p>
+            </div>
+            <div class="service-modal-actions">
+              <a href="https://wa.me/5521960171061?text=Ol%C3%A1,%20vim%20atrav%C3%A9s%20do%20seu%20site%20e%20gostaria%20de%20saber%20mais%20informa%C3%A7%C3%B5es." class="btn btn-secondary" target="_blank" rel="noopener">Saiba Mais</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -250,6 +275,8 @@ export default {
     const currentProject = ref({})
     const currentLightboxIndex = ref(0)
     const lightboxImages = ref([])
+    const showServiceModal = ref(false)
+    const currentService = ref({ title: '', paragraphs: [], image: '' })
 
     const form = reactive({
       name: '',
@@ -468,6 +495,45 @@ export default {
         form[key] = ''
       })
     }
+    const serviceData = {
+      mentoria: {
+        title: 'Planejamento e Mentoria de montagem do seu chalé',
+        paragraphs: [
+          'Caso já possua empreiteiro de confiança, temos planos para venda do madeiramento (Kit) e projetos.',
+          'E além disso, podemos fazer uma mentoria durante toda sua obra para que siga todos os passos corretamente.'
+        ],
+        image: '/src/assets/images/planejamento-e-mentoria.jpg'
+      },
+      execucao: {
+        title: 'Execução de obra completa',
+        paragraphs: [
+          'Fazemos toda sua obra desde a fundação até a chave na mão!',
+          'Modalidade exclusiva para cidades da Região serrana, Angra dos Reis e Região dos lagos do RJ.',
+          'Opção para quem deseja uma obra completa sem dor de cabeça.'
+        ],
+        image: '/src/assets/images/execucao-de-obra-completa-projetos.jpg'
+      },
+      reuniao: {
+        title: 'Reunião de trabalho',
+        paragraphs: [
+          'Gestão de plano de negócios para empresários.',
+          'Você é empresário? Não sabe como aumentar o faturamento da empresa atualmente?',
+          'Temos planos de negócios que podem aumentar seu faturamento em até 600%! Agende sua reunião com nossos especialistas.'
+        ],
+        image: '/src/assets/images/reuniao-de-trabalho-projetos.jpg'
+      }
+    }
+
+    const openServiceModal = (key) => {
+      currentService.value = serviceData[key]
+      showServiceModal.value = true
+    }
+
+    const closeServiceModal = () => {
+      showServiceModal.value = false
+      currentService.value = { title: '', paragraphs: [], image: '' }
+    }
+
 
     const scrollToSection = (event) => {
       event.preventDefault()
@@ -498,7 +564,12 @@ export default {
       prevImage,
       nextImage,
       submitForm,
-      scrollToSection
+      scrollToSection,
+      // Serviços
+      showServiceModal,
+      currentService,
+      openServiceModal,
+      closeServiceModal
     }
   }
 }
@@ -513,6 +584,13 @@ export default {
   background-repeat: no-repeat;
   background-attachment: fixed;
   height: 633px;
+}
+
+.gold-text {
+  background: linear-gradient(135deg, var(--accent-color), var(--gold-light));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 /* Hero Section Styles */
@@ -715,6 +793,144 @@ export default {
 
 .lofts-section {
   background-color: var(--light-gray);
+}
+
+/* Serviços */
+.servicos-section {
+  background: var(--black);
+}
+
+.servicos-title {
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 900;
+}
+
+.servicos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-xl);
+}
+
+.servico-card {
+  cursor: pointer;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #00b377; /* fundo padrão verde para eliminar qualquer faixa preta */
+  box-shadow: 0 10px 25px rgba(0,0,0,0.45);
+  border: 1px solid var(--accent-color);
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.servico-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.6);
+}
+
+.servico-card-image {
+  height: 220px;
+  overflow: hidden;
+}
+
+.servico-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.servico-card-content {
+  padding: var(--spacing-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent; /* usa o verde do container */
+  border-top: 2px solid #008f63; /* linha de separação mais escura */
+}
+
+.servico-card-content h3 {
+  color: var(--white); /* texto branco */
+  margin: 0;
+}
+
+.service-modal {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.9);
+  z-index: 4000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-lg);
+}
+
+.service-modal-content {
+  background: var(--white);
+  color: var(--text-dark);
+  border-radius: 16px;
+  max-width: 800px;
+  width: 100%;
+  padding: var(--spacing-2xl);
+  position: relative;
+}
+
+.service-modal-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+
+.service-modal-image {
+  min-height: 320px;
+  overflow: hidden;
+}
+
+.service-modal-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.service-modal-info {
+  padding-left: var(--spacing-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.service-modal-title {
+  margin-top: 0;
+  margin-bottom: var(--spacing-lg);
+}
+
+.service-modal-close {
+  position: absolute;
+  top: var(--spacing-md);
+  right: var(--spacing-md);
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.service-modal-actions {
+  margin-top: auto;
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media (max-width: 768px) {
+  .service-modal-grid {
+    grid-template-columns: 1fr;
+  }
+  .service-modal-info {
+    padding: var(--spacing-xl);
+  }
+  .service-modal-actions {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 900px) {
+  .servicos-grid { grid-template-columns: 1fr; }
 }
 
 .diferenciais-section {
