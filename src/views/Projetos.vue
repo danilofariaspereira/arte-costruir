@@ -24,133 +24,37 @@
           <p class="section-subtitle">Chalés de 90m² com 2 quartos e 2 banheiros, perfeitos para até 8 pessoas</p>
         </div>
         
-        <div class="grid grid-2 grid-4">
+        <div class="chales-grid">
           <!-- Chalé Aimee -->
-          <div class="project-card" id="chale-aimee">
-            <div class="card-image">
-              <img src="/src/assets/images/chale-aimee.jpg" alt="Chalé Aimee - 90m²" loading="lazy">
-              <div class="card-overlay">
-                <div class="card-info">
-                  <span class="card-size">90m²</span>
-                  <span class="card-rooms">2 quartos, 2 banheiros</span>
-                </div>
-              </div>
+          <div class="simple-card" @click="openProjectModal('aimee')">
+            <div class="simple-card-image">
+              <img src="/src/assets/images/chale-aimee.avif" alt="Chalé Aimee" loading="lazy">
             </div>
-            <div class="card-content">
-              <h3>Chalé Aimee</h3>
-              <p>Chalé moderno com design contemporâneo, perfeito para famílias que buscam conforto e sofisticação.</p>
-              <ul class="card-features">
-                <li>90m² de área construída</li>
-                <li>2 quartos espaçosos</li>
-                <li>2 banheiros completos</li>
-                <li>Até 8 pessoas</li>
-                <li>Madeira ecológica</li>
-              </ul>
-              <div class="card-actions">
-                <a href="#contato" class="btn btn-primary">
-                  Solicitar Orçamento
-                </a>
-                <button class="btn btn-secondary" @click="openGallery('aimee')">
-                  Ver Galeria
-                </button>
-              </div>
-            </div>
+            <div class="simple-card-title">Chalé Aimee</div>
           </div>
 
           <!-- Chalé Suíço -->
-          <div class="project-card" id="chale-suico">
-            <div class="card-image">
-              <img src="/src/assets/images/chale-suico.jpg" alt="Chalé Suíço - 90m²" loading="lazy">
-              <div class="card-overlay">
-                <div class="card-info">
-                  <span class="card-size">90m²</span>
-                  <span class="card-rooms">2 quartos, 2 banheiros</span>
-                </div>
-              </div>
+          <div class="simple-card" @click="openProjectModal('suico')">
+            <div class="simple-card-image">
+              <img src="/src/assets/images/chale-suico.avif" alt="Chalé Suíço" loading="lazy">
             </div>
-            <div class="card-content">
-              <h3>Chalé Suíço</h3>
-              <p>Inspirado na arquitetura alpina, oferece aconchego e charme rústico em meio à natureza.</p>
-              <ul class="card-features">
-                <li>90m² de área construída</li>
-                <li>2 quartos espaçosos</li>
-                <li>2 banheiros completos</li>
-                <li>Até 8 pessoas</li>
-                <li>Design alpino</li>
-              </ul>
-              <div class="card-actions">
-                <a href="#contato" class="btn btn-primary">
-                  Solicitar Orçamento
-                </a>
-                <button class="btn btn-secondary" @click="openGallery('suico')">
-                  Ver Galeria
-                </button>
-              </div>
-            </div>
+            <div class="simple-card-title">Chalé Suíço</div>
           </div>
 
           <!-- Chalé da Montanha -->
-          <div class="project-card" id="chale-montanha">
-            <div class="card-image">
-              <img src="/src/assets/images/chale-montanha.jpg" alt="Chalé da Montanha - 90m²" loading="lazy">
-              <div class="card-overlay">
-                <div class="card-info">
-                  <span class="card-size">90m²</span>
-                  <span class="card-rooms">2 quartos, 2 banheiros</span>
-                </div>
-              </div>
+          <div class="simple-card" @click="openProjectModal('montanha')">
+            <div class="simple-card-image">
+              <img src="/src/assets/images/chale-da-montanha.avif" alt="Chalé da Montanha" loading="lazy">
             </div>
-            <div class="card-content">
-              <h3>Chalé da Montanha</h3>
-              <p>Ideal para regiões serranas, combina robustez e elegância com acabamentos de alta qualidade.</p>
-              <ul class="card-features">
-                <li>90m² de área construída</li>
-                <li>2 quartos espaçosos</li>
-                <li>2 banheiros completos</li>
-                <li>Até 8 pessoas</li>
-                <li>Resistente ao clima</li>
-              </ul>
-              <div class="card-actions">
-                <a href="#contato" class="btn btn-primary">
-                  Solicitar Orçamento
-                </a>
-                <button class="btn btn-secondary" @click="openGallery('montanha')">
-                  Ver Galeria
-                </button>
-              </div>
-            </div>
+            <div class="simple-card-title">Chalé da Montanha</div>
           </div>
 
           <!-- Chalé Aurora -->
-          <div class="project-card" id="chale-aurora">
-            <div class="card-image">
-              <img src="/src/assets/images/chale-aurora.jpg" alt="Chalé Aurora - 90m²" loading="lazy">
-              <div class="card-overlay">
-                <div class="card-info">
-                  <span class="card-size">90m²</span>
-                  <span class="card-rooms">2 quartos, 2 banheiros</span>
-                </div>
-              </div>
+          <div class="simple-card" @click="openProjectModal('aurora')">
+            <div class="simple-card-image">
+              <img src="/src/assets/images/chale-aurora.avif" alt="Chalé Aurora" loading="lazy">
             </div>
-            <div class="card-content">
-              <h3>Chalé Aurora</h3>
-              <p>Design único com grandes janelas, aproveitando a luz natural e proporcionando vista panorâmica.</p>
-              <ul class="card-features">
-                <li>90m² de área construída</li>
-                <li>2 quartos espaçosos</li>
-                <li>2 banheiros completos</li>
-                <li>Até 8 pessoas</li>
-                <li>Vista panorâmica</li>
-              </ul>
-              <div class="card-actions">
-                <a href="#contato" class="btn btn-primary">
-                  Solicitar Orçamento
-                </a>
-                <button class="btn btn-secondary" @click="openGallery('aurora')">
-                  Ver Galeria
-                </button>
-              </div>
-            </div>
+            <div class="simple-card-title">Chalé Aurora</div>
           </div>
         </div>
       </div>
@@ -164,101 +68,29 @@
           <p class="section-subtitle">Lofts modernos e funcionais, perfeitos para casais e pequenas famílias</p>
         </div>
         
-        <div class="grid grid-3">
+        <div class="chales-grid lofts-grid">
           <!-- Loft 30m² -->
-          <div class="project-card" id="loft-30m">
-            <div class="card-image">
-              <img src="/src/assets/images/loft-30m.jpg" alt="Loft 30m²" loading="lazy">
-              <div class="card-overlay">
-                <div class="card-info">
-                  <span class="card-size">30m²</span>
-                  <span class="card-rooms">1 ambiente</span>
-                </div>
-              </div>
+          <div class="simple-card" @click="openProjectModal('loft30')">
+            <div class="simple-card-image">
+              <img src="/src/assets/images/loft-30m.jpg" alt="Loft Compacto" loading="lazy">
             </div>
-            <div class="card-content">
-              <h3>Loft Compacto</h3>
-              <p>Ideal para casais ou uso como escritório, com design inteligente que maximiza o espaço.</p>
-              <ul class="card-features">
-                <li>30m² de área construída</li>
-                <li>Ambiente integrado</li>
-                <li>Banheiro completo</li>
-                <li>Até 2 pessoas</li>
-                <li>Design moderno</li>
-              </ul>
-              <div class="card-actions">
-                <a href="#contato" class="btn btn-primary">
-                  Solicitar Orçamento
-                </a>
-                <button class="btn btn-secondary" @click="openGallery('loft30')">
-                  Ver Galeria
-                </button>
-              </div>
-            </div>
+            <div class="simple-card-title">Loft Compacto</div>
           </div>
 
           <!-- Loft 40m² -->
-          <div class="project-card" id="loft-40m">
-            <div class="card-image">
-              <img src="/src/assets/images/loft-40m.jpg" alt="Loft 40m²" loading="lazy">
-              <div class="card-overlay">
-                <div class="card-info">
-                  <span class="card-size">40m²</span>
-                  <span class="card-rooms">1 quarto</span>
-                </div>
-              </div>
+          <div class="simple-card" @click="openProjectModal('loft40')">
+            <div class="simple-card-image">
+              <img src="/src/assets/images/loft-40m.jpg" alt="Loft Conforto" loading="lazy">
             </div>
-            <div class="card-content">
-              <h3>Loft Conforto</h3>
-              <p>Perfeito equilíbrio entre espaço e praticidade, com quarto separado e área social ampla.</p>
-              <ul class="card-features">
-                <li>40m² de área construída</li>
-                <li>1 quarto separado</li>
-                <li>Banheiro completo</li>
-                <li>Até 3 pessoas</li>
-                <li>Área social ampla</li>
-              </ul>
-              <div class="card-actions">
-                <a href="#contato" class="btn btn-primary">
-                  Solicitar Orçamento
-                </a>
-                <button class="btn btn-secondary" @click="openGallery('loft40')">
-                  Ver Galeria
-                </button>
-              </div>
-            </div>
+            <div class="simple-card-title">Loft Conforto</div>
           </div>
 
           <!-- Loft 60m² -->
-          <div class="project-card" id="loft-60m">
-            <div class="card-image">
-              <img src="/src/assets/images/loft-60m.jpg" alt="Loft 60m²" loading="lazy">
-              <div class="card-overlay">
-                <div class="card-info">
-                  <span class="card-size">60m²</span>
-                  <span class="card-rooms">2 quartos</span>
-                </div>
-              </div>
+          <div class="simple-card" @click="openProjectModal('loft60')">
+            <div class="simple-card-image">
+              <img src="/src/assets/images/loft-60m.jpg" alt="Loft Premium" loading="lazy">
             </div>
-            <div class="card-content">
-              <h3>Loft Premium</h3>
-              <p>Espaçoso e elegante, ideal para pequenas famílias que buscam conforto e modernidade.</p>
-              <ul class="card-features">
-                <li>60m² de área construída</li>
-                <li>2 quartos</li>
-                <li>Banheiro completo</li>
-                <li>Até 4 pessoas</li>
-                <li>Acabamento premium</li>
-              </ul>
-              <div class="card-actions">
-                <a href="#contato" class="btn btn-primary">
-                  Solicitar Orçamento
-                </a>
-                <button class="btn btn-secondary" @click="openGallery('loft60')">
-                  Ver Galeria
-                </button>
-              </div>
-            </div>
+            <div class="simple-card-title">Loft Premium</div>
           </div>
         </div>
       </div>
@@ -357,6 +189,27 @@
       </div>
     </section>
 
+    <!-- Project Modal -->
+    <div v-if="showProjectModal" class="project-modal" @click="closeProjectModal">
+      <div class="project-modal-content" @click.stop>
+        <button class="project-modal-close" @click="closeProjectModal">&times;</button>
+        <div class="project-modal-image">
+          <img :src="currentProject.image" :alt="currentProject.title">
+        </div>
+        <div class="project-modal-info">
+          <h3>{{ currentProject.title }}</h3>
+          <p>{{ currentProject.description }}</p>
+          <ul class="modal-features">
+            <li v-for="(feature, index) in currentProject.features" :key="index">{{ feature }}</li>
+          </ul>
+          <div class="modal-actions">
+            <a href="#contato" class="btn btn-primary" @click="closeProjectModal">Solicitar Orçamento</a>
+          <a v-if="currentProject.pdfUrl" :href="currentProject.pdfUrl" class="btn btn-secondary" target="_blank">Download</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Gallery Modal -->
     <div v-if="showGallery" class="gallery-modal" @click="closeGallery">
       <div class="gallery-content" @click.stop>
@@ -392,7 +245,9 @@ export default {
   setup() {
     const showGallery = ref(false)
     const showLightbox = ref(false)
+    const showProjectModal = ref(false)
     const currentGallery = ref({})
+    const currentProject = ref({})
     const currentLightboxIndex = ref(0)
     const lightboxImages = ref([])
 
@@ -402,6 +257,100 @@ export default {
       projectType: '',
       message: ''
     })
+
+    const projectData = {
+      aimee: {
+        title: 'Chalé Aimee',
+        image: '/src/assets/images/chale-aimee.avif',
+        description: 'Chalé moderno com design contemporâneo, perfeito para famílias que buscam conforto e sofisticação.',
+        features: [
+          '90m² de área construída',
+          '2 quartos espaçosos',
+          '2 banheiros completos',
+          'Até 8 pessoas',
+          'Madeira ecológica'
+        ],
+        pdfUrl: 'https://drive.google.com/file/d/14VnQ4uDXF1EJM_pjK2o5t_ss7Qv5-eEl/view'
+      },
+      suico: {
+        title: 'Chalé Suíço',
+        image: '/src/assets/images/chale-suico.avif',
+        description: 'Inspirado na arquitetura alpina, oferece aconchego e charme rústico em meio à natureza.',
+        features: [
+          '90m² de área construída',
+          '2 quartos espaçosos',
+          '2 banheiros completos',
+          'Até 8 pessoas',
+          'Design alpino'
+        ],
+        pdfUrl: ''
+      },
+      montanha: {
+        title: 'Chalé da Montanha',
+        image: '/src/assets/images/chale-da-montanha.avif',
+        description: 'Ideal para regiões serranas, combina robustez e elegância com acabamentos de alta qualidade.',
+        features: [
+          '90m² de área construída',
+          '2 quartos espaçosos',
+          '2 banheiros completos',
+          'Até 8 pessoas',
+          'Resistente ao clima'
+        ],
+        pdfUrl: 'https://drive.google.com/file/d/1-nGeXTGorijjRp6OCsSbd19Nmcq-acSj/view'
+      },
+      aurora: {
+        title: 'Chalé Aurora',
+        image: '/src/assets/images/chale-aurora.avif',
+        description: 'Design único com grandes janelas, aproveitando a luz natural e proporcionando vista panorâmica.',
+        features: [
+          '90m² de área construída',
+          '2 quartos espaçosos',
+          '2 banheiros completos',
+          'Até 8 pessoas',
+          'Vista panorâmica'
+        ],
+        pdfUrl: 'https://drive.google.com/file/d/13Uf4XLEMn7_3rWzMEnaTgAFwZ6UE2lp-/view'
+      },
+      loft30: {
+        title: 'Loft Compacto',
+        image: '/src/assets/images/loft-30m.jpg',
+        description: 'Ideal para casais ou uso como escritório, com design inteligente que maximiza o espaço.',
+        features: [
+          '30m² de área construída',
+          'Ambiente integrado',
+          'Banheiro completo',
+          'Até 2 pessoas',
+          'Design moderno'
+        ],
+        pdfUrl: '#'
+      },
+      loft40: {
+        title: 'Loft Conforto',
+        image: '/src/assets/images/loft-40m.jpg',
+        description: 'Perfeito equilíbrio entre espaço e praticidade, com quarto separado e área social ampla.',
+        features: [
+          '40m² de área construída',
+          '1 quarto separado',
+          'Banheiro completo',
+          'Até 3 pessoas',
+          'Área social ampla'
+        ],
+        pdfUrl: '#'
+      },
+      loft60: {
+        title: 'Loft Premium',
+        image: '/src/assets/images/loft-60m.jpg',
+        description: 'Espaçoso e elegante, ideal para pequenas famílias que buscam conforto e modernidade.',
+        features: [
+          '60m² de área construída',
+          '2 quartos',
+          'Banheiro completo',
+          'Até 4 pessoas',
+          'Acabamento premium'
+        ],
+        pdfUrl: '#'
+      }
+    }
 
     const galleryData = {
       aimee: {
@@ -460,6 +409,16 @@ export default {
           '/src/assets/images/loft-60m-3.jpg'
         ]
       }
+    }
+
+    const openProjectModal = (projectKey) => {
+      currentProject.value = projectData[projectKey]
+      showProjectModal.value = true
+    }
+
+    const closeProjectModal = () => {
+      showProjectModal.value = false
+      currentProject.value = {}
     }
 
     const openGallery = (galleryKey) => {
@@ -524,10 +483,14 @@ export default {
     return {
       showGallery,
       showLightbox,
+      showProjectModal,
       currentGallery,
+      currentProject,
       currentLightboxIndex,
       lightboxImages,
       form,
+      openProjectModal,
+      closeProjectModal,
       openGallery,
       closeGallery,
       openLightbox,
@@ -544,7 +507,7 @@ export default {
 <style scoped>
 /* Page-specific styles */
 .projects-hero {
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.1)), url('/src/assets/images/background-projetos.png');
+  background: url('/src/assets/images/background-projetos.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -963,7 +926,190 @@ export default {
   border-radius: 8px;
 }
 
+/* Chalés Grid 2x2 */
+.chales-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-xl);
+}
+
+.lofts-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-xl);
+}
+
+.simple-card {
+  cursor: pointer;
+  background: var(--white);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-normal);
+}
+
+.simple-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.simple-card-image {
+  height: 300px;
+  overflow: hidden;
+  position: relative;
+}
+
+.simple-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.simple-card:hover .simple-card-image img {
+  transform: scale(1.05);
+}
+
+.simple-card-title {
+  padding: var(--spacing-lg);
+  text-align: center;
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--text-dark);
+  background: var(--white);
+}
+
+/* Project Modal */
+.project-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-lg);
+}
+
+.project-modal-content {
+  background: var(--white);
+  border-radius: 16px;
+  max-width: 800px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+
+.project-modal-close {
+  position: absolute;
+  top: var(--spacing-md);
+  right: var(--spacing-md);
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: var(--text-dark);
+  z-index: 10;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background var(--transition-fast);
+}
+
+.project-modal-close:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.project-modal-image {
+  height: 100%;
+  min-height: 400px;
+  overflow: hidden;
+}
+
+.project-modal-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.project-modal-info {
+  padding: var(--spacing-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.project-modal-info h3 {
+  color: var(--text-dark);
+  font-size: var(--font-size-2xl);
+  margin: 0;
+}
+
+.project-modal-info p {
+  color: var(--text-light);
+  line-height: 1.6;
+}
+
+.modal-features {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.modal-features li {
+  padding: var(--spacing-xs) 0;
+  padding-left: var(--spacing-lg);
+  position: relative;
+  color: var(--text-light);
+}
+
+.modal-features li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--accent-color);
+  font-weight: 600;
+}
+
+.modal-actions {
+  display: flex;
+  gap: var(--spacing-md);
+  margin-top: auto;
+}
+
+.modal-actions .btn {
+  flex: 1;
+}
+
 /* Responsive adjustments */
+@media (max-width: 768px) {
+  .project-modal-content {
+    grid-template-columns: 1fr;
+    max-height: 95vh;
+  }
+
+  .project-modal-image {
+    min-height: 250px;
+  }
+
+  .lofts-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (max-width: 768px) {
   .grid-4 {
     grid-template-columns: repeat(2, 1fr);
@@ -999,6 +1145,11 @@ export default {
 }
 
 @media (max-width: 480px) {
+  .chales-grid,
+  .lofts-grid {
+    grid-template-columns: 1fr;
+  }
+
   .grid-4,
   .grid-2 {
     grid-template-columns: 1fr;
