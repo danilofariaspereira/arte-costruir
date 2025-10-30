@@ -45,6 +45,26 @@
       </div>
     </section>
 
+    <!-- Stats Section (Cards com contadores) - entre Quem Somos e Parceiros -->
+    <section class="stats-section section">
+      <div class="container">
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-number">{{ formattedStat(stats[0]) }}</div>
+            <div class="stat-label">Fundado</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">{{ formattedStat(stats[1]) }}</div>
+            <div class="stat-label">Projetos Completos</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">{{ formattedStat(stats[2]) }}</div>
+            <div class="stat-label">Sacolas Plásticas Retiradas da Natureza</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Parceiros Preview Section -->
     <section class="parceiros-preview-section section">
       <div class="container">
@@ -88,6 +108,8 @@
         </div>
       </div>
     </section>
+
+    
 
 
     <!-- Contato Section -->
@@ -183,6 +205,17 @@
 <script>
 export default {
   name: 'Home',
+  data() {
+    return {
+      stats: [
+        { prefix: '', value: 2005, current: 1, suffix: '' },
+        { prefix: '+', value: 500, current: 1, suffix: '' },
+        { prefix: '+', value: 1000000, current: 1, suffix: 'M', isAbbreviated: true }
+      ],
+      hasAnimatedStats: false,
+      statsObserver: null
+    }
+  },
   methods: {
     scrollToSection(event) {
       event.preventDefault()
@@ -193,7 +226,59 @@ export default {
           block: 'start'
         })
       }
+    },
+    formattedStat(stat) {
+      if (stat.isAbbreviated) {
+        // Formata 1.000.000 como +1M durante a animação
+        const target = stat.value
+        const million = 1000000
+        const base = Math.min(stat.current, target)
+        const ratio = base / million
+        const display = ratio >= 1 ? 1 : Math.max(0, ratio)
+        return `${stat.prefix}${display >= 1 ? '1' : display.toFixed(2).replace(/\.00$/, '')}${stat.suffix}`
+      }
+      return `${stat.prefix}${stat.current}${stat.suffix}`
+    },
+    animateStats() {
+      if (this.hasAnimatedStats) return
+      this.hasAnimatedStats = true
+      const durationMs = 1500
+      const startTs = performance.now()
+
+      const step = (now) => {
+        const elapsed = now - startTs
+        const progress = Math.min(1, elapsed / durationMs)
+
+        this.stats.forEach((stat) => {
+          if (stat.isAbbreviated) {
+            // Para o abreviado, animamos até o valor final, mas exibimos como 1M
+            stat.current = Math.floor(stat.value * progress)
+          } else {
+            stat.current = Math.max(1, Math.floor(1 + (stat.value - 1) * progress))
+          }
+        })
+
+        if (progress < 1) {
+          requestAnimationFrame(step)
+        }
+      }
+
+      requestAnimationFrame(step)
     }
+  },
+  mounted() {
+    // Inicia animação quando a seção entra na viewport
+    const section = this.$el.querySelector('.stats-section')
+    if (!section) return
+    this.statsObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          this.animateStats()
+          this.statsObserver && this.statsObserver.disconnect()
+        }
+      })
+    }, { threshold: 0.3 })
+    this.statsObserver.observe(section)
   }
 }
 </script>
@@ -372,6 +457,50 @@ export default {
 /* Parceiros Preview Section */
 .parceiros-preview-section {
   background: var(--black);
+}
+
+/* Stats Section */
+.stats-section {
+  background: var(--black);
+  padding: var(--spacing-xl) 0 var(--spacing-2xl) 0; /* encaixa no espaço entre as seções */
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-2xl);
+}
+
+.stat-card {
+  background: linear-gradient(135deg, #B8860B, #DAA520, #FFD700);
+  border-radius: 16px;
+  padding: var(--spacing-2xl);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 170px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+.stat-number {
+  color: var(--white);
+  font-size: clamp(2.2rem, 6vw, 3rem);
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.stat-label {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: clamp(1rem, 2.5vw, 1.125rem);
+  margin-top: var(--spacing-sm);
+  text-align: center;
+}
+
+@media (max-width: 900px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .section-header {
