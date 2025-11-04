@@ -104,90 +104,45 @@
     <section class="diferenciais-section section">
       <div class="container">
         <div class="section-header">
-          <h2 class="section-title">Nossos Diferenciais</h2>
+          <h2 class="section-title">NOSSOS DIFERENCIAIS</h2>
           <p class="section-subtitle">Por que escolher a Arte Construir para seu projeto</p>
         </div>
         
         <div class="grid grid-3">
           <div class="card">
+            <div class="card-image">
+              <img src="/src/assets/images/madeira-ecologica.avif" alt="Madeira Ecológica" loading="lazy">
+            </div>
             <div class="card-header">
-              <h3 class="card-title">Madeira Ecológica</h3>
+              <h3 class="card-title">GARANTIA DE 50 ANOS</h3>
             </div>
             <div class="card-body">
-              <p>Trabalhamos exclusivamente com madeira de reflorestamento e fornecedores certificados, garantindo sustentabilidade e qualidade.</p>
+              <p>Todo nosso madeiramento passa por tratamento em alto clave, garantindo sua excelência de 50 anos contra cupins e fungos decompositores.</p>
             </div>
           </div>
           
           <div class="card">
+            <div class="card-image">
+              <img src="/src/assets/images/selo-verde.avif" alt="Selo Verde" loading="lazy">
+            </div>
             <div class="card-header">
-              <h3 class="card-title">Parcerias Estratégicas</h3>
+              <h3 class="card-title">REFERÊNCIA EM MATERIAIS SUSTENTÁVEIS</h3>
             </div>
             <div class="card-body">
-              <p>Parceria com TW Brazil e Inbrasil, as melhores madeireiras do país, garantindo materiais de primeira qualidade.</p>
+              <p>Nos orgulhamos de poder fazer parte do movimento em pról do nosso planeta que vem sofrendo cada vez mais com o desgaste dos recursos naturais. Nossa madeira plástica é feita sem madeira nativa ou PVC!</p>
             </div>
           </div>
           
           <div class="card">
+            <div class="card-image">
+              <img src="/src/assets/images/projetos-personalizados.png" alt="Equipe Especializada" loading="lazy">
+            </div>
             <div class="card-header">
-              <h3 class="card-title">Projetos Personalizados</h3>
+              <h3 class="card-title">EQUIPE ESPECIALIZADA</h3>
             </div>
             <div class="card-body">
-              <p>Cada projeto é único e desenvolvido especialmente para atender suas necessidades e preferências pessoais.</p>
+              <p>Todos os nossos projetos tem aprovação junto a prefeitura. Projetos de esgoto, água, luz, hidráulico, 3D, arquitetônico e planta baixa. Garantindo toda excelência na obra que você precisa!</p>
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contato Section -->
-    <section class="contato-section section" id="contato">
-      <div class="container">
-        <div class="grid grid-2">
-          <div>
-            <h2>Solicite Seu Orçamento</h2>
-            <div class="contact-info">
-              <div class="contact-item">
-                <strong>Telefones:</strong>
-                <p>(11) 94311-2721 / (21) 96017-1061</p>
-              </div>
-              <div class="contact-item">
-                <strong>E-mail:</strong>
-                <p>artechales@gmail.com</p>
-              </div>
-              <div class="contact-item">
-                <strong>Endereço:</strong>
-                <p>Av. Feliciano Sodré, 300 - Várzea, Teresópolis - RJ, 25963-081</p>
-              </div>
-            </div>
-          </div>
-          <div>
-            <form class="contact-form" @submit.prevent="submitForm">
-              <div class="form-group">
-                <input type="text" v-model="form.name" placeholder="Seu nome" required>
-              </div>
-              <div class="form-group">
-                <input type="tel" v-model="form.phone" placeholder="Seu telefone" required>
-              </div>
-              <div class="form-group">
-                <select v-model="form.projectType" required>
-                  <option value="">Selecione o tipo de projeto</option>
-                  <option value="chale-aimee">Chalé Aimee</option>
-                  <option value="chale-suico">Chalé Suíço</option>
-                  <option value="chale-montanha">Chalé da Montanha</option>
-                  <option value="chale-aurora">Chalé Aurora</option>
-                  <option value="loft-30m">Loft 30m²</option>
-                  <option value="loft-40m">Loft 40m²</option>
-                  <option value="loft-60m">Loft 60m²</option>
-                  <option value="personalizado">Projeto Personalizado</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <textarea v-model="form.message" rows="5" placeholder="Conte-nos sobre seu projeto..." required></textarea>
-              </div>
-              <button type="submit" class="btn btn-primary w-full">
-                Solicitar Orçamento
-              </button>
-            </form>
           </div>
         </div>
       </div>
@@ -277,11 +232,12 @@ export default {
     const lightboxImages = ref([])
     const showServiceModal = ref(false)
     const currentService = ref({ title: '', paragraphs: [], image: '' })
+    const isSubmitting = ref(false)
 
     const form = reactive({
       name: '',
       phone: '',
-      projectType: '',
+      email: '',
       message: ''
     })
 
@@ -485,15 +441,41 @@ export default {
       }
     }
 
-    const submitForm = () => {
-      // Aqui você pode implementar o envio do formulário
-      console.log('Formulário enviado:', form)
-      alert('Orçamento solicitado com sucesso! Entraremos em contato em breve.')
+    const submitForm = async () => {
+      if (isSubmitting.value) return
       
-      // Reset form
-      Object.keys(form).forEach(key => {
-        form[key] = ''
-      })
+      // Validação básica
+      if (!form.name || !form.phone || !form.email || !form.message) {
+        alert('Por favor, preencha todos os campos.')
+        return
+      }
+      
+      isSubmitting.value = true
+      
+      // Solução que funciona imediatamente: usando mailto
+      // Abre o cliente de e-mail do usuário com tudo preenchido
+      const subject = encodeURIComponent('Solicitação de Orçamento - Arte Construir')
+      const emailBody = `Nome: ${form.name}\n` +
+        `Telefone: ${form.phone}\n` +
+        `E-mail: ${form.email}\n\n` +
+        `Mensagem:\n${form.message}`
+      const body = encodeURIComponent(emailBody)
+      
+      // Criando link mailto
+      const mailtoLink = `mailto:danilofariaspereira90@gmail.com?subject=${subject}&body=${body}`
+      
+      // Abrindo cliente de e-mail
+      window.location.href = mailtoLink
+      
+      // Aguardando um pouco e então mostrando mensagem e resetando formulário
+      setTimeout(() => {
+        alert('O formulário foi preenchido! Verifique seu cliente de e-mail e clique em "Enviar" para finalizar.')
+        // Reset form
+        Object.keys(form).forEach(key => {
+          form[key] = ''
+        })
+        isSubmitting.value = false
+      }, 500)
     }
     const serviceData = {
       mentoria: {
@@ -569,7 +551,9 @@ export default {
       showServiceModal,
       currentService,
       openServiceModal,
-      closeServiceModal
+      closeServiceModal,
+      // Form
+      isSubmitting
     }
   }
 }
@@ -802,7 +786,7 @@ export default {
 
 .servicos-title {
   font-size: clamp(3rem, 6vw, 5rem);
-  font-weight: 900;
+  font-weight: 700;
 }
 
 .servicos-grid {
@@ -934,21 +918,69 @@ export default {
 }
 
 .diferenciais-section {
-  background: linear-gradient(135deg, var(--accent-color), var(--gold-light));
+  background: var(--primary-color);
   color: var(--white);
+}
+
+.diferenciais-section .section-title {
+  color: var(--accent-color);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+}
+
+.diferenciais-section .section-subtitle {
+  color: var(--white);
+  font-size: var(--font-size-lg);
 }
 
 .diferenciais-section .card {
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  flex-direction: column;
+}
+
+.diferenciais-section .card-image {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--spacing-xl);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.diferenciais-section .card-image img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+}
+
+.diferenciais-section .card-header {
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .diferenciais-section .card-title {
   color: var(--white);
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  margin: 0;
+  width: 100%;
 }
 
 .diferenciais-section .card-body p {
   color: rgba(255, 255, 255, 0.9);
+  font-size: var(--font-size-base);
+  line-height: 1.6;
 }
 
 .contato-section {

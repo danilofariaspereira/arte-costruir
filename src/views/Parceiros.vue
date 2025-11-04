@@ -309,7 +309,7 @@
             <div class="contact-info">
               <div class="contact-item">
                 <strong>Telefones:</strong>
-                <p>(11) 94311-2721 / (21) 96017-1061</p>
+                <p>(21) 96017-1061</p>
               </div>
               <div class="contact-item">
                 <strong>E-mail:</strong>
@@ -484,7 +484,7 @@ export default {
       scrollToBottom('leticiaMessages')
       
       setTimeout(() => {
-        const response = leticiaResponses[userMessage] || 'Obrigada pela sua pergunta! Para informações mais específicas, entre em contato conosco pelos telefones (11) 94311-2721 ou (21) 96017-1061.'
+        const response = leticiaResponses[userMessage] || 'Obrigada pela sua pergunta! Para informações mais específicas, entre em contato conosco pelo telefone (21) 96017-1061.'
         
         leticiaMessages.value.push({
           type: 'ai-message',
@@ -517,7 +517,7 @@ export default {
       scrollToBottom('tiagoMessages')
       
       setTimeout(() => {
-        const response = tiagoResponses[userMessage] || 'Obrigado pela sua pergunta! Para informações mais específicas sobre imóveis, entre em contato conosco pelos telefones (11) 94311-2721 ou (21) 96017-1061.'
+        const response = tiagoResponses[userMessage] || 'Obrigado pela sua pergunta! Para informações mais específicas sobre imóveis, entre em contato conosco pelo telefone (21) 96017-1061.'
         
         tiagoMessages.value.push({
           type: 'ai-message',
