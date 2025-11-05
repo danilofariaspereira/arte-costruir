@@ -199,7 +199,10 @@ export default {
   .app-header {
     top: 10px;
     width: calc(100% - 20px);
+    max-width: calc(100vw - 20px);
     border-radius: 15px;
+    left: 50%;
+    transform: translateX(-50%);
   }
   
   .nav {
@@ -209,18 +212,22 @@ export default {
     align-items: center !important;
     justify-content: space-between !important;
     width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
   }
   
   .nav-brand {
     flex: 0 0 auto;
     max-width: calc(100% - 60px);
     z-index: 1;
+    overflow: hidden;
   }
   
   .logo {
     max-height: 50px;
     height: 50px;
     width: auto;
+    max-width: 100%;
   }
   
   .nav-menu {
@@ -242,6 +249,7 @@ export default {
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
     z-index: 999;
     max-width: calc(100vw - 20px);
+    box-sizing: border-box;
   }
   
   .nav-menu.active {
@@ -263,6 +271,7 @@ export default {
     padding: var(--spacing-md);
     font-size: var(--font-size-lg);
     border-radius: 10px;
+    white-space: nowrap;
   }
   
   /* Garantir que o botão hambúrguer sempre apareça */

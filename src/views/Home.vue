@@ -332,6 +332,12 @@ export default {
 </script>
 
 <style scoped>
+.home {
+  width: 100%;
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
 /* Hero Section Styles */
 .hero-section {
   position: relative;
@@ -577,9 +583,24 @@ export default {
 
 .flip-card {
   background-color: transparent;
-  width: 500px;
+  width: 100%;
+  max-width: 500px;
   height: 500px;
   perspective: 1000px;
+}
+
+@media (max-width: 768px) {
+  .flip-card {
+    width: 100%;
+    max-width: 100%;
+    height: 400px;
+  }
+}
+
+@media (max-width: 480px) {
+  .flip-card {
+    height: 350px;
+  }
 }
 
 .margin-card {
@@ -949,11 +970,31 @@ export default {
   .cards-pai {
     flex-direction: column;
     align-items: center;
+    gap: var(--spacing-lg);
+    width: 100%;
+    padding: 0 var(--spacing-md);
   }
 
   .margin-card {
     margin-right: 0;
-    margin-bottom: var(--spacing-lg);
+    margin-bottom: 0;
+  }
+  
+  .flip-card {
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  .quem-somos-section .grid-2 {
+    grid-template-columns: 1fr;
+  }
+  
+  .video-container {
+    height: 300px;
+  }
+  
+  .logo-large {
+    height: 80px;
   }
 }
 
