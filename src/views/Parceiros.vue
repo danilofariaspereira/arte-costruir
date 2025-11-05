@@ -495,7 +495,8 @@ export default {
       openWhatsAppLeticia,
       openWhatsAppTiago,
       scrollToSection,
-      backgroundParceiros
+      backgroundParceiros,
+      getImageUrl
     }
   }
 }
