@@ -157,13 +157,19 @@ export default {
 .menu-toggle {
   display: none;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: 4px;
-  background: rgba(184, 134, 11, 0.1);
-  border: 1px solid rgba(184, 134, 11, 0.3);
+  background: rgba(184, 134, 11, 0.2);
+  border: 2px solid rgba(184, 134, 11, 0.5);
   border-radius: 8px;
   cursor: pointer;
-  padding: var(--spacing-sm);
+  padding: 8px 10px;
   backdrop-filter: blur(10px);
+  z-index: 1001;
+  position: relative;
+  width: 44px;
+  height: 44px;
 }
 
 .hamburger-line {
@@ -172,6 +178,8 @@ export default {
   background: var(--white);
   border-radius: 2px;
   transition: all var(--transition-fast);
+  display: block;
+  opacity: 1;
 }
 
 .menu-toggle.active .hamburger-line:nth-child(1) {
@@ -187,7 +195,7 @@ export default {
 }
 
 /* Mobile Styles */
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
   .app-header {
     top: 10px;
     width: calc(100% - 20px);
@@ -196,30 +204,51 @@ export default {
   
   .nav {
     padding: var(--spacing-sm) var(--spacing-lg);
+    position: relative;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100%;
   }
   
-    .nav-menu {
-      position: fixed;
-      top: 100%;
-      left: 10px;
-      right: 10px;
-      background: rgba(0, 0, 0, 0.5);
-      backdrop-filter: blur(25px);
-      -webkit-backdrop-filter: blur(25px);
-      border-radius: 25px;
-      flex-direction: column;
-      padding: var(--spacing-xl);
-      transform: translateY(-100%);
-      opacity: 0;
-      visibility: hidden;
-      transition: all var(--transition-normal);
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-    }
+  .nav-brand {
+    flex: 0 0 auto;
+    max-width: calc(100% - 60px);
+    z-index: 1;
+  }
+  
+  .logo {
+    max-height: 50px;
+    height: 50px;
+    width: auto;
+  }
+  
+  .nav-menu {
+    display: none !important;
+    position: fixed;
+    top: calc(100% + 10px);
+    left: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border-radius: 25px;
+    flex-direction: column;
+    padding: var(--spacing-xl);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-20px);
+    transition: all var(--transition-normal);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    max-width: calc(100vw - 20px);
+  }
   
   .nav-menu.active {
-    transform: translateY(0);
+    display: flex !important;
     opacity: 1;
     visibility: visible;
+    transform: translateY(0);
   }
   
   .nav-list {
@@ -236,17 +265,42 @@ export default {
     border-radius: 10px;
   }
   
+  /* Garantir que o botão hambúrguer sempre apareça */
   .menu-toggle {
-    display: flex;
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    z-index: 1001 !important;
+    position: relative !important;
+    flex-shrink: 0 !important;
+    width: 44px !important;
+    height: 44px !important;
+    min-width: 44px !important;
+    min-height: 44px !important;
+    order: 2;
+    margin-left: auto;
+    background: rgba(184, 134, 11, 0.3) !important;
+    border: 2px solid rgba(184, 134, 11, 0.6) !important;
+    cursor: pointer !important;
+  }
+  
+  .hamburger-line {
+    display: block !important;
+    width: 25px !important;
+    height: 3px !important;
+    background: var(--white) !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    margin: 0 !important;
   }
 }
 
-  @media (max-width: 480px) {
-    .app-header {
-      top: 5px;
-      width: calc(100% - 10px);
-      border-radius: 20px;
-    }
+@media screen and (max-width: 480px) {
+  .app-header {
+    top: 5px;
+    width: calc(100% - 10px);
+    border-radius: 20px;
+  }
   
   .nav {
     padding: var(--spacing-sm) var(--spacing-md);
@@ -256,10 +310,16 @@ export default {
     height: 40px;
   }
   
-    .nav-menu {
-      left: 5px;
-      right: 5px;
-      border-radius: 20px;
-    }
+  .nav-menu {
+    left: 5px;
+    right: 5px;
+    border-radius: 20px;
+  }
+  
+  .menu-toggle {
+    display: flex !important;
+    width: 44px !important;
+    height: 44px !important;
+  }
 }
 </style>

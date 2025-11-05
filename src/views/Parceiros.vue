@@ -4,16 +4,14 @@
     <section class="hero-section parceiros-hero">
       <div class="container">
         <div class="hero-content">
-          <h1 class="hero-title">Nossos Parceiros e Equipe</h1>
-          <p class="hero-subtitle">Trabalhamos com os melhores fornecedores e temos uma equipe especializada para atender você</p>
-          <div class="hero-buttons">
-            <a href="#parceiros" class="btn btn-primary btn-large">
-              Conheça Nossos Parceiros
-            </a>
-            <a href="#equipe" class="btn btn-secondary btn-large">
-              Nossa Equipe
-            </a>
-          </div>
+          <h1 class="hero-title">Bem-vindo à</h1>
+          <h2 class="hero-brand">Arte Construir</h2>
+          <p class="hero-subtitle">Não fazemos obras, realizamos sonhos</p>
+        </div>
+        <div class="hero-scroll-indicator">
+          <a href="#" @click="scrollToSection">
+            <img src="/src/assets/images/seta-direita 1.png" alt="Seta para baixo" class="arrow-image">
+          </a>
         </div>
       </div>
     </section>
@@ -39,7 +37,7 @@
             <!-- TW Brazil -->
             <div class="parceiro-card">
               <div class="parceiro-logo">
-                <img src="/src/assets/images/logo-tw-brazil.jpg" alt="TW Brazil - Parceiro Estratégico" loading="lazy">
+                <img src="/src/assets/images/TWBrazil.png" alt="TW Brazil - Parceiro Estratégico" loading="lazy">
               </div>
               <div class="parceiro-content">
                 <h3>TW Brazil</h3>
@@ -71,7 +69,7 @@
             <!-- Inbrasil -->
             <div class="parceiro-card">
               <div class="parceiro-logo">
-                <img src="/src/assets/images/logo-inbrasil.jpg" alt="Inbrasil - Parceiro Estratégico" loading="lazy">
+                <img src="/src/assets/images/logo-inbr.png" alt="Inbrasil - Parceiro Estratégico" loading="lazy">
               </div>
               <div class="parceiro-content">
                 <h3>Inbrasil</h3>
@@ -90,7 +88,7 @@
                   </ul>
                 </div>
                 <div class="parceiro-actions">
-                  <a href="https://inbrasil.com.br" target="_blank" class="btn btn-primary">
+                  <a href="https://inbrasil.ind.br/" target="_blank" class="btn btn-primary">
                     Visitar Site
                   </a>
                   <button class="btn btn-secondary" @click="openParceiroModal('inbrasil')">
@@ -163,30 +161,17 @@
                   </div>
                 </div>
                 
-                <div class="chat-messages" ref="leticiaMessages">
+                <div class="chat-messages" ref="leticiaMessagesRef">
                   <div v-for="(message, index) in leticiaMessages" :key="index" class="message-bubble" :class="message.type">
-                    <div class="message-avatar">
-                      <span v-if="message.type === 'ai-message'" class="ai-icon">🤖</span>
-                      <span v-else class="user-icon">👤</span>
-                    </div>
                     <div class="message-content">
-                      <p>{{ message.text }}</p>
+                      <p v-html="message.text"></p>
                       <span class="message-time">{{ message.time }}</span>
+                      <button v-if="message.type === 'ai-message' && message.showWhatsApp" 
+                              class="whatsapp-button" 
+                              @click="openWhatsAppLeticia">
+                        Entrar em contato pelo WhatsApp
+                      </button>
                     </div>
-                  </div>
-                </div>
-                
-                <div class="chat-input">
-                  <div class="input-container">
-                    <input 
-                      type="text" 
-                      v-model="leticiaInput" 
-                      placeholder="Digite sua pergunta..."
-                      @keyup.enter="sendLeticiaMessage"
-                      ref="leticiaInputRef">
-                    <button class="send-button" @click="sendLeticiaMessage" :disabled="!leticiaInput.trim()">
-                      Enviar
-                    </button>
                   </div>
                 </div>
                 
@@ -195,8 +180,7 @@
                     v-for="question in leticiaQuickQuestions" 
                     :key="question"
                     class="quick-question-btn"
-                    @click="sendQuickQuestion(question, 'leticia')"
-                    :disabled="isTyping">
+                    @click="sendQuickQuestion(question, 'leticia')">
                     {{ question }}
                   </button>
                 </div>
@@ -256,30 +240,17 @@
                   </div>
                 </div>
                 
-                <div class="chat-messages" ref="tiagoMessages">
+                <div class="chat-messages" ref="tiagoMessagesRef">
                   <div v-for="(message, index) in tiagoMessages" :key="index" class="message-bubble" :class="message.type">
-                    <div class="message-avatar">
-                      <span v-if="message.type === 'ai-message'" class="ai-icon">🤖</span>
-                      <span v-else class="user-icon">👤</span>
-                    </div>
                     <div class="message-content">
-                      <p>{{ message.text }}</p>
+                      <p v-html="message.text"></p>
                       <span class="message-time">{{ message.time }}</span>
+                      <button v-if="message.type === 'ai-message' && message.showWhatsApp" 
+                              class="whatsapp-button" 
+                              @click="openWhatsAppTiago">
+                        Entrar em contato pelo WhatsApp
+                      </button>
                     </div>
-                  </div>
-                </div>
-                
-                <div class="chat-input">
-                  <div class="input-container">
-                    <input 
-                      type="text" 
-                      v-model="tiagoInput" 
-                      placeholder="Digite sua pergunta..."
-                      @keyup.enter="sendTiagoMessage"
-                      ref="tiagoInputRef">
-                    <button class="send-button" @click="sendTiagoMessage" :disabled="!tiagoInput.trim()">
-                      Enviar
-                    </button>
                   </div>
                 </div>
                 
@@ -288,63 +259,12 @@
                     v-for="question in tiagoQuickQuestions" 
                     :key="question"
                     class="quick-question-btn"
-                    @click="sendQuickQuestion(question, 'tiago')"
-                    :disabled="isTyping">
+                    @click="sendQuickQuestion(question, 'tiago')">
                     {{ question }}
                   </button>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contato Section -->
-    <section class="contato-section section" id="contato">
-      <div class="container">
-        <div class="grid grid-2">
-          <div>
-            <h2>Entre em Contato</h2>
-            <div class="contact-info">
-              <div class="contact-item">
-                <strong>Telefones:</strong>
-                <p>(21) 96017-1061</p>
-              </div>
-              <div class="contact-item">
-                <strong>E-mail:</strong>
-                <p>artechales@gmail.com</p>
-              </div>
-              <div class="contact-item">
-                <strong>Endereço:</strong>
-                <p>Av. Feliciano Sodré, 300 - Várzea, Teresópolis - RJ, 25963-081</p>
-              </div>
-            </div>
-          </div>
-          <div>
-            <form class="contact-form" @submit.prevent="submitForm">
-              <div class="form-group">
-                <input type="text" v-model="form.name" placeholder="Seu nome" required>
-              </div>
-              <div class="form-group">
-                <input type="tel" v-model="form.phone" placeholder="Seu telefone" required>
-              </div>
-              <div class="form-group">
-                <select v-model="form.contactReason" required>
-                  <option value="">Motivo do contato</option>
-                  <option value="projeto">Falar com Letícia - Projeto</option>
-                  <option value="imovel">Falar com Tiago - Imóvel</option>
-                  <option value="orcamento">Solicitar Orçamento</option>
-                  <option value="duvida">Tirar Dúvidas</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <textarea v-model="form.message" rows="5" placeholder="Sua mensagem..." required></textarea>
-              </div>
-              <button type="submit" class="btn btn-primary w-full">
-                Enviar Mensagem
-              </button>
-            </form>
           </div>
         </div>
       </div>
@@ -376,7 +296,7 @@
 </template>
 
 <script>
-import { ref, reactive, onMounted, nextTick } from 'vue'
+import { ref, onMounted, nextTick } from 'vue'
 
 export default {
   name: 'Parceiros',
@@ -386,38 +306,131 @@ export default {
     const showParceiroModal = ref(false)
     const isTyping = ref(false)
     
-    const leticiaInput = ref('')
-    const tiagoInput = ref('')
     const leticiaMessages = ref([])
     const tiagoMessages = ref([])
-    
-    const form = reactive({
-      name: '',
-      phone: '',
-      contactReason: '',
-      message: ''
-    })
+    const leticiaMessagesRef = ref(null)
+    const tiagoMessagesRef = ref(null)
 
     const leticiaQuickQuestions = [
       'Quanto custa um projeto?',
       'Qual o prazo de entrega?',
       'Vocês fazem projetos personalizados?',
-      'Qual tipo de madeira é melhor?'
+      'Qual tipo de madeira é melhor?',
+      'Preciso de orçamento',
+      'Como funciona o processo?'
     ]
 
     const tiagoQuickQuestions = [
       'Vocês vendem imóveis prontos?',
       'Qual a região de atuação?',
       'Como funciona o financiamento?',
-      'Posso visitar os projetos?'
+      'Posso visitar os projetos?',
+      'Preciso de mais informações',
+      'Quero agendar uma visita'
     ]
+
+    const leticiaResponses = {
+      'Quanto custa um projeto?': 'O custo varia conforme o tamanho e complexidade do projeto. Para um orçamento personalizado, preciso conhecer melhor suas necessidades.',
+      'Qual o prazo de entrega?': 'O prazo médio é de 60 a 90 dias, dependendo da complexidade do projeto e condições climáticas.',
+      'Vocês fazem projetos personalizados?': 'Sim! Cada projeto é único e desenvolvido especialmente para atender suas necessidades. Trabalhamos com madeira ecológica e design sustentável.',
+      'Qual tipo de madeira é melhor?': 'Depende do seu projeto! Madeira natural oferece beleza única, enquanto madeira plástica tem baixa manutenção.',
+      'Preciso de orçamento': 'Fico feliz em ajudar! Vamos conversar sobre seu projeto para preparar um orçamento personalizado.',
+      'Como funciona o processo?': 'Nosso processo é simples: consulta inicial, projeto, aprovação, construção e entrega.'
+    }
+
+    const tiagoResponses = {
+      'Vocês vendem imóveis prontos?': 'Sim! Temos chalés e lofts prontos para entrega imediata, além de projetos personalizados.',
+      'Qual a região de atuação?': 'Atendemos todo o Rio de Janeiro, com foco na região serrana.',
+      'Como funciona o financiamento?': 'Trabalhamos com várias opções de financiamento e parcelamento.',
+      'Posso visitar os projetos?': 'Claro! Temos projetos modelo que você pode visitar.',
+      'Preciso de mais informações': 'Fico feliz em ajudar! Vou te passar todas as informações necessárias.',
+      'Quero agendar uma visita': 'Perfeito! Vamos agendar uma visita para você conhecer nossos projetos.'
+    }
+
+    const openWhatsAppLeticia = () => {
+      const message = encodeURIComponent('Olá Letícia, tudo bem? Vim através do site Arte Construir e gostaria de saber mais sobre o seu trabalho.')
+      const whatsappUrl = `https://wa.me/5521960171061?text=${message}`
+      window.open(whatsappUrl, '_blank')
+    }
+
+    const openWhatsAppTiago = () => {
+      const message = encodeURIComponent('Olá Tiago, tudo bem? Vim através do site Arte Construir e gostaria de saber mais sobre o seu trabalho.')
+      const whatsappUrl = `https://wa.me/5521960171061?text=${message}`
+      window.open(whatsappUrl, '_blank')
+    }
+
+    const sendQuickQuestion = async (question, chatbot) => {
+      if (chatbot === 'leticia') {
+        // Adiciona mensagem do usuário
+        leticiaMessages.value.push({
+          type: 'user-message',
+          text: question,
+          time: new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' })
+        })
+        
+        isTyping.value = true
+        await nextTick()
+        scrollToBottom(leticiaMessagesRef.value)
+        
+        setTimeout(() => {
+          const response = leticiaResponses[question] || 'Obrigada pela sua pergunta! Para informações mais específicas, entre em contato conosco.'
+          
+          leticiaMessages.value.push({
+            type: 'ai-message',
+            text: response,
+            time: new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }),
+            showWhatsApp: true
+          })
+          
+          isTyping.value = false
+          
+          nextTick(() => {
+            scrollToBottom(leticiaMessagesRef.value)
+          })
+        }, 1000)
+      } else {
+        // Adiciona mensagem do usuário
+        tiagoMessages.value.push({
+          type: 'user-message',
+          text: question,
+          time: new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' })
+        })
+        
+        isTyping.value = true
+        await nextTick()
+        scrollToBottom(tiagoMessagesRef.value)
+        
+        setTimeout(() => {
+          const response = tiagoResponses[question] || 'Obrigado pela sua pergunta! Para informações mais específicas, entre em contato conosco.'
+          
+          tiagoMessages.value.push({
+            type: 'ai-message',
+            text: response,
+            time: new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }),
+            showWhatsApp: true
+          })
+          
+          isTyping.value = false
+          
+          nextTick(() => {
+            scrollToBottom(tiagoMessagesRef.value)
+          })
+        }, 1000)
+      }
+    }
+
+    const scrollToBottom = (ref) => {
+      if (ref) {
+        ref.scrollTop = ref.scrollHeight
+      }
+    }
 
     const currentParceiro = ref({})
 
     const parceirosData = {
       tw: {
         title: 'TW Brazil',
-        logo: '/src/assets/images/logo-tw-brazil.jpg',
+        logo: '/src/assets/images/TWBrazil.png',
         description: 'Uma das principais madeireiras do país, especializada em madeira certificada e sustentável. A TW Brazil fornece matéria-prima de alta qualidade para nossos projetos de chalés e decks.',
         benefits: [
           'Madeira certificada FSC',
@@ -430,7 +443,7 @@ export default {
       },
       inbrasil: {
         title: 'Inbrasil',
-        logo: '/src/assets/images/logo-inbrasil.jpg',
+        logo: '/src/assets/images/logo-inbr.png',
         description: 'Referência em madeira plástica e materiais sustentáveis. A Inbrasil nos fornece produtos inovadores que combinam durabilidade, sustentabilidade e excelente custo-benefício.',
         benefits: [
           'Madeira plástica de alta qualidade',
@@ -439,23 +452,10 @@ export default {
           'Resistência superior',
           'Variedade de cores e texturas'
         ],
-        website: 'https://inbrasil.com.br'
+        website: 'https://inbrasil.ind.br/'
       }
     }
 
-    const leticiaResponses = {
-      'Quanto custa um projeto?': 'O custo varia conforme o tamanho e complexidade do projeto. Para um orçamento personalizado, preciso conhecer melhor suas necessidades. Posso te ajudar com isso!',
-      'Qual o prazo de entrega?': 'O prazo médio é de 60 a 90 dias, dependendo da complexidade do projeto e condições climáticas. Sempre mantemos nossos clientes informados sobre o progresso.',
-      'Vocês fazem projetos personalizados?': 'Sim! Cada projeto é único e desenvolvido especialmente para atender suas necessidades. Trabalhamos com madeira ecológica e design sustentável.',
-      'Qual tipo de madeira é melhor?': 'Depende do seu projeto! Madeira natural oferece beleza única, enquanto madeira plástica tem baixa manutenção. Posso te ajudar a escolher a melhor opção.'
-    }
-
-    const tiagoResponses = {
-      'Vocês vendem imóveis prontos?': 'Sim! Temos chalés e lofts prontos para entrega imediata, além de projetos personalizados. Posso te mostrar as opções disponíveis.',
-      'Qual a região de atuação?': 'Atendemos todo o Rio de Janeiro, com foco na região serrana. Temos projetos em Teresópolis, Petrópolis, Nova Friburgo e outras cidades.',
-      'Como funciona o financiamento?': 'Trabalhamos com várias opções de financiamento e parcelamento. Posso te apresentar as melhores condições disponíveis.',
-      'Posso visitar os projetos?': 'Claro! Temos projetos modelo que você pode visitar. Agende uma visita e veja a qualidade dos nossos trabalhos pessoalmente.'
-    }
 
     const openParceiroModal = (parceiroKey) => {
       currentParceiro.value = parceirosData[parceiroKey]
@@ -467,96 +467,15 @@ export default {
       currentParceiro.value = {}
     }
 
-    const sendLeticiaMessage = async () => {
-      if (!leticiaInput.value.trim()) return
-      
-      const userMessage = leticiaInput.value.trim()
-      leticiaMessages.value.push({
-        type: 'user-message',
-        text: userMessage,
-        time: new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' })
-      })
-      
-      leticiaInput.value = ''
-      isTyping.value = true
-      
-      await nextTick()
-      scrollToBottom('leticiaMessages')
-      
-      setTimeout(() => {
-        const response = leticiaResponses[userMessage] || 'Obrigada pela sua pergunta! Para informações mais específicas, entre em contato conosco pelo telefone (21) 96017-1061.'
-        
-        leticiaMessages.value.push({
-          type: 'ai-message',
-          text: response,
-          time: new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' })
-        })
-        
-        isTyping.value = false
-        
-        nextTick(() => {
-          scrollToBottom('leticiaMessages')
-        })
-      }, 1500)
-    }
-
-    const sendTiagoMessage = async () => {
-      if (!tiagoInput.value.trim()) return
-      
-      const userMessage = tiagoInput.value.trim()
-      tiagoMessages.value.push({
-        type: 'user-message',
-        text: userMessage,
-        time: new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' })
-      })
-      
-      tiagoInput.value = ''
-      isTyping.value = true
-      
-      await nextTick()
-      scrollToBottom('tiagoMessages')
-      
-      setTimeout(() => {
-        const response = tiagoResponses[userMessage] || 'Obrigado pela sua pergunta! Para informações mais específicas sobre imóveis, entre em contato conosco pelo telefone (21) 96017-1061.'
-        
-        tiagoMessages.value.push({
-          type: 'ai-message',
-          text: response,
-          time: new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' })
-        })
-        
-        isTyping.value = false
-        
-        nextTick(() => {
-          scrollToBottom('tiagoMessages')
-        })
-      }, 1500)
-    }
-
-    const sendQuickQuestion = (question, chatbot) => {
-      if (chatbot === 'leticia') {
-        leticiaInput.value = question
-        sendLeticiaMessage()
-      } else {
-        tiagoInput.value = question
-        sendTiagoMessage()
-      }
-    }
-
-    const scrollToBottom = (refName) => {
-      const element = document.querySelector(`.${refName}`)
+    const scrollToSection = (event) => {
+      event.preventDefault()
+      const element = document.querySelector('.parceiros-section')
       if (element) {
-        element.scrollTop = element.scrollHeight
+        element.scrollIntoView({ 
+          behavior: 'smooth',
+          block: 'start'
+        })
       }
-    }
-
-    const submitForm = () => {
-      console.log('Formulário enviado:', form)
-      alert('Mensagem enviada com sucesso! Entraremos em contato em breve.')
-      
-      Object.keys(form).forEach(key => {
-        form[key] = ''
-      })
     }
 
     onMounted(() => {
@@ -589,20 +508,19 @@ export default {
       tiagoVisible,
       showParceiroModal,
       isTyping,
-      leticiaInput,
-      tiagoInput,
       leticiaMessages,
       tiagoMessages,
+      leticiaMessagesRef,
+      tiagoMessagesRef,
       leticiaQuickQuestions,
       tiagoQuickQuestions,
       currentParceiro,
-      form,
       openParceiroModal,
       closeParceiroModal,
-      sendLeticiaMessage,
-      sendTiagoMessage,
       sendQuickQuestion,
-      submitForm
+      openWhatsAppLeticia,
+      openWhatsAppTiago,
+      scrollToSection
     }
   }
 }
@@ -611,10 +529,114 @@ export default {
 <style scoped>
 /* Page-specific styles */
 .parceiros-hero {
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(184, 134, 11, 0.3)), url('/src/assets/images/parceiros-hero-bg.jpg');
+  background: url('/src/assets/images/bakgroud-parceiros.png');
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   height: 633px;
+}
+
+/* Hero Section Styles */
+.hero-section {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 0;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  color: var(--white);
+}
+
+.hero-title {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 300;
+  margin-bottom: var(--spacing-sm);
+  color: var(--white);
+}
+
+.hero-brand {
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 900;
+  margin-bottom: var(--spacing-md);
+  background: linear-gradient(135deg, var(--accent-color), var(--gold-light));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-weight: 400;
+  margin-bottom: var(--spacing-xl);
+  color: var(--white);
+  opacity: 0.9;
+}
+
+.hero-scroll-indicator {
+  position: absolute;
+  bottom: var(--spacing-xl);
+  left: 50%;
+  transform: translateX(-50%);
+  animation: bounce 2s infinite;
+  z-index: 1;
+}
+
+.hero-scroll-indicator a {
+  display: block;
+  cursor: pointer;
+  transition: transform var(--transition-normal);
+}
+
+.hero-scroll-indicator:hover a {
+  transform: translateY(5px);
+}
+
+.arrow-image {
+  width: 40px;
+  height: auto;
+  filter: brightness(0) invert(1);
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  40% {
+    transform: translateX(-50%) translateY(-10px);
+  }
+  60% {
+    transform: translateX(-50%) translateY(-5px);
+  }
+}
+
+.parceiros-section {
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.parceiros-section .section-title {
+  color: var(--white);
+}
+
+.parceiros-section .section-subtitle {
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .parceiros-intro {
@@ -622,38 +644,58 @@ export default {
   max-width: 800px;
   margin: 0 auto var(--spacing-3xl);
   font-size: var(--font-size-lg);
-  color: var(--text-light);
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .parceiro-card {
-  background: var(--white);
-  border-radius: 12px;
+  background: rgba(20, 20, 20, 0.95);
+  border-radius: 20px;
   overflow: hidden;
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   transition: all var(--transition-normal);
   height: 100%;
 }
 
 .parceiro-card:hover {
   transform: translateY(-4px);
-  box-shadow: var(--shadow-lg);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+  border-color: rgba(184, 134, 11, 0.3);
 }
 
 .parceiro-logo {
   padding: var(--spacing-xl);
   text-align: center;
-  background: var(--light-gray);
-  border-bottom: 1px solid var(--border-color);
+  background: rgba(40, 40, 40, 0.8);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  min-height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .parceiro-logo img {
-  max-height: 80px;
-  max-width: 200px;
+  max-height: 100px;
+  max-width: 220px;
+  width: auto;
+  height: auto;
   object-fit: contain;
+  filter: brightness(1.3) contrast(1.1);
 }
 
 .parceiro-content {
   padding: var(--spacing-xl);
+}
+
+.parceiro-content h3 {
+  color: var(--white);
+  margin-bottom: var(--spacing-md);
+}
+
+.parceiro-description {
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: var(--spacing-md);
+  line-height: 1.6;
 }
 
 .parceiro-benefits {
@@ -661,7 +703,7 @@ export default {
 }
 
 .parceiro-benefits h4 {
-  color: var(--text-dark);
+  color: var(--gold-light);
   margin-bottom: var(--spacing-sm);
 }
 
@@ -674,13 +716,14 @@ export default {
   padding: var(--spacing-xs) 0;
   position: relative;
   padding-left: var(--spacing-lg);
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .parceiro-benefits li::before {
   content: '✓';
   position: absolute;
   left: 0;
-  color: var(--accent-color);
+  color: var(--gold-light);
   font-weight: 600;
 }
 
@@ -695,7 +738,17 @@ export default {
 }
 
 .equipe-section {
-  background-color: var(--light-gray);
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.equipe-section .section-title {
+  color: var(--white);
+}
+
+.equipe-section .section-subtitle {
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .team-card {
@@ -709,7 +762,7 @@ export default {
   grid-template-columns: 1fr 1fr;
   gap: var(--spacing-3xl);
   align-items: start;
-  background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(0, 212, 255, 0.1) 100%);
+  background: rgba(20, 20, 20, 0.95);
   border-radius: 20px;
   padding: var(--spacing-3xl);
   margin: 0 auto;
@@ -717,6 +770,8 @@ export default {
   transform: translateY(50px);
   opacity: 0;
   transition: all 0.5s ease;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .cintia-style-chatbot.visible {
@@ -766,8 +821,9 @@ export default {
 
 .chatbot-subtitle {
   font-size: var(--font-size-lg);
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.9);
   margin: 0;
+  font-weight: 500;
 }
 
 .director-photo {
@@ -991,10 +1047,10 @@ export default {
 
 /* Right Panel - Chat Interface */
 .chatbot-right-panel {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(30, 30, 30, 0.95);
   border-radius: 20px;
-  border: 1px solid rgba(0, 212, 255, 0.2);
-  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
   overflow: hidden;
 }
 
@@ -1008,6 +1064,11 @@ export default {
 .chat-header {
   background: linear-gradient(135deg, #B8860B, #DAA520);
   padding: var(--spacing-lg);
+  border-radius: 20px 20px 0 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   color: white;
 }
 
@@ -1042,6 +1103,7 @@ export default {
   height: 300px;
   overflow-y: auto;
   padding: var(--spacing-lg);
+  background: rgba(20, 20, 20, 0.95);
 }
 
 .message-bubble {
@@ -1059,48 +1121,64 @@ export default {
   flex-direction: row-reverse;
 }
 
-.message-avatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, #B8860B, #DAA520);
-  flex-shrink: 0;
-}
-
-.ai-icon {
-  font-size: var(--font-size-lg);
-}
-
 .message-content {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(40, 40, 40, 0.8);
   padding: var(--spacing-sm) var(--spacing-md);
   border-radius: 15px;
   max-width: 80%;
   position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .message-content p {
   margin: 0 0 var(--spacing-xs) 0;
   line-height: 1.4;
-  color: #ffffff;
+  color: var(--white);
 }
 
 .message-bubble.user-message .message-content {
   background: linear-gradient(135deg, #B8860B, #DAA520);
+  color: white;
+  border: none;
+}
+
+.message-bubble.user-message .message-content p {
   color: white;
 }
 
 .message-time {
   font-size: var(--font-size-xs);
   opacity: 0.7;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.whatsapp-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: var(--spacing-md);
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: linear-gradient(135deg, #B8860B, #DAA520);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.whatsapp-button:hover {
+  background: linear-gradient(135deg, #DAA520, #FFD700);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(184, 134, 11, 0.4);
 }
 
 .chat-input {
   padding: var(--spacing-lg);
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid rgba(184, 134, 11, 0.2);
+  background: var(--white);
 }
 
 .input-container {
@@ -1111,11 +1189,11 @@ export default {
 
 .input-container input {
   flex: 1;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(184, 134, 11, 0.3);
+  background: var(--white);
+  border: 2px solid rgba(184, 134, 11, 0.3);
   border-radius: 25px;
   padding: var(--spacing-sm) var(--spacing-lg);
-  color: #ffffff;
+  color: var(--text-dark);
   font-size: var(--font-size-sm);
 }
 
@@ -1126,7 +1204,7 @@ export default {
 }
 
 .input-container input::placeholder {
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(0, 0, 0, 0.5);
 }
 
 .send-button {
@@ -1156,92 +1234,40 @@ export default {
   gap: var(--spacing-sm);
 }
 
+.quick-questions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-lg);
+  background: rgba(20, 20, 20, 0.95);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
 .quick-question-btn {
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(40, 40, 40, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 20px;
   padding: var(--spacing-sm) var(--spacing-md);
-  color: #ffffff;
+  color: var(--white);
   cursor: pointer;
   transition: all 0.3s ease;
   font-size: var(--font-size-xs);
 }
 
 .quick-question-btn:hover:not(:disabled) {
-  background: rgba(255,255,255,0.12);
-  border-color: rgba(255,255,255,0.25);
-  color: #ffffff;
+  background: rgba(184, 134, 11, 0.3);
+  border-color: rgba(184, 134, 11, 0.5);
+  color: var(--white);
   transform: translateY(-2px);
+}
+
+.quick-question-btn:active {
+  transform: translateY(0);
 }
 
 .quick-question-btn:disabled {
   opacity: 0.5;
   cursor: not-allowed;
-}
-
-.contato-section {
-  background: var(--white);
-  color: var(--text-dark);
-}
-
-.contato-section h2 {
-  color: var(--text-dark);
-}
-
-.contact-info {
-  margin-bottom: var(--spacing-xl);
-}
-
-.contact-item {
-  margin-bottom: var(--spacing-lg);
-}
-
-.contact-item strong {
-  color: var(--accent-color);
-  display: block;
-  margin-bottom: var(--spacing-xs);
-}
-
-.contact-item p {
-  color: var(--text-light);
-  margin: 0;
-}
-
-.contact-form {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-md);
-}
-
-.form-group {
-  display: flex;
-  flex-direction: column;
-}
-
-.form-group input,
-.form-group select,
-.form-group textarea {
-  padding: var(--spacing-md);
-  border: 2px solid var(--border-color);
-  border-radius: 8px;
-  font-size: var(--font-size-base);
-  transition: border-color var(--transition-fast);
-}
-
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
-  outline: none;
-  border-color: var(--accent-color);
-}
-
-.form-group textarea {
-  resize: vertical;
-  min-height: 120px;
-}
-
-.w-full {
-  width: 100%;
 }
 
 /* Parceiro Modal */

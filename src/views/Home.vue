@@ -85,7 +85,7 @@
                 Especialista em design com madeira ecológica e consultoria especializada em chalés.<br>
                 Acompanhamento completo de obra para garantir a qualidade e sustentabilidade do seu projeto.<br>
                 <br>
-                <a href="https://wa.me/5521960171061?text=Ol%C3%A1,%20vim%20atrav%C3%A9s%20do%20seu%20site%20e%20gostaria%20de%20saber%20mais%20informa%C3%A7%C3%B5es." class="partner-cta" target="_blank" rel="noopener">Saiba mais ></a>
+                <a href="#" @click.prevent="goToLeticia" class="partner-cta">Saiba mais ></a>
               </div>
             </div>
           </div>
@@ -101,7 +101,7 @@
                 Especialista em chalés e casas de madeira, oferecendo atendimento personalizado.<br>
                 Conecta clientes aos melhores projetos da Arte Construir com excelência e dedicação.<br>
                 <br>
-                <a href="https://wa.me/5521960171061?text=Ol%C3%A1,%20vim%20atrav%C3%A9s%20do%20seu%20site%20e%20gostaria%20de%20saber%20mais%20informa%C3%A7%C3%B5es." class="partner-cta" target="_blank" rel="noopener">Saiba mais ></a>
+                <a href="#" @click.prevent="goToTiago" class="partner-cta">Saiba mais ></a>
               </div>
             </div>
           </div>
@@ -203,8 +203,66 @@
 </template>
 
 <script>
+import { useRouter } from 'vue-router'
+
 export default {
   name: 'Home',
+  setup() {
+    const router = useRouter()
+    
+    const goToLeticia = () => {
+      router.push('/parceiros').then(() => {
+        setTimeout(() => {
+          const element = document.getElementById('leticia-ia')
+          if (element) {
+            const offset = 80
+            const elementPosition = element.getBoundingClientRect().top
+            const offsetPosition = elementPosition + window.pageYOffset - offset
+            
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth'
+            })
+          }
+        }, 300)
+      })
+    }
+    
+    const goToTiago = () => {
+      router.push('/parceiros').then(() => {
+        setTimeout(() => {
+          const element = document.getElementById('tiago-ia')
+          if (element) {
+            const offset = 80
+            const elementPosition = element.getBoundingClientRect().top
+            const offsetPosition = elementPosition + window.pageYOffset - offset
+            
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth'
+            })
+          }
+        }, 300)
+      })
+    }
+    
+    const scrollToSection = (event) => {
+      event.preventDefault()
+      const element = document.querySelector('.quem-somos-section')
+      if (element) {
+        element.scrollIntoView({ 
+          behavior: 'smooth',
+          block: 'start'
+        })
+      }
+    }
+    
+    return {
+      goToLeticia,
+      goToTiago,
+      scrollToSection
+    }
+  },
   data() {
     return {
       stats: [
@@ -217,16 +275,6 @@ export default {
     }
   },
   methods: {
-    scrollToSection(event) {
-      event.preventDefault()
-      const element = document.querySelector('.quem-somos-section')
-      if (element) {
-        element.scrollIntoView({ 
-          behavior: 'smooth',
-          block: 'start'
-        })
-      }
-    },
     formattedStat(stat) {
       if (stat.isAbbreviated) {
         // Formata 1.000.000 como +1M durante a animação
