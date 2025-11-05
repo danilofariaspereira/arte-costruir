@@ -59,9 +59,6 @@
                   <a href="https://twbrazil.com.br" target="_blank" class="btn btn-primary">
                     Visitar Site
                   </a>
-                  <button class="btn btn-secondary" @click="openParceiroModal('tw')">
-                    Mais Informações
-                  </button>
                 </div>
               </div>
             </div>
@@ -91,9 +88,6 @@
                   <a href="https://inbrasil.ind.br/" target="_blank" class="btn btn-primary">
                     Visitar Site
                   </a>
-                  <button class="btn btn-secondary" @click="openParceiroModal('inbrasil')">
-                    Mais Informações
-                  </button>
                 </div>
               </div>
             </div>
@@ -113,7 +107,7 @@
         <!-- Letícia - Arquiteta -->
         <a id="leticia-ia" style="display: block; position: relative; top: -80px; visibility: hidden;"></a>
         <div class="team-card">
-          <div class="cintia-style-chatbot top" :class="{ visible: leticiaVisible }" ref="leticiaChatbot">
+          <div class="cintia-style-chatbot top" ref="leticiaChatbot">
             <!-- Left Panel - Profile Section -->
             <div class="chatbot-left-panel">
               <div class="chatbot-title-section">
@@ -192,7 +186,7 @@
         <!-- Tiago - Corretor -->
         <a id="tiago-ia" style="display: block; position: relative; top: -80px; visibility: hidden;"></a>
         <div class="team-card">
-          <div class="cintia-style-chatbot bottom" :class="{ visible: tiagoVisible }" ref="tiagoChatbot">
+          <div class="cintia-style-chatbot bottom" ref="tiagoChatbot">
             <!-- Left Panel - Profile Section -->
             <div class="chatbot-left-panel">
               <div class="chatbot-title-section">
@@ -301,8 +295,6 @@ import { ref, onMounted, nextTick } from 'vue'
 export default {
   name: 'Parceiros',
   setup() {
-    const leticiaVisible = ref(false)
-    const tiagoVisible = ref(false)
     const showParceiroModal = ref(false)
     const isTyping = ref(false)
     
@@ -349,13 +341,15 @@ export default {
 
     const openWhatsAppLeticia = () => {
       const message = encodeURIComponent('Olá Letícia, tudo bem? Vim através do site Arte Construir e gostaria de saber mais sobre o seu trabalho.')
+      // Número da Letícia - substitua pelo número correto se necessário
       const whatsappUrl = `https://wa.me/5521960171061?text=${message}`
       window.open(whatsappUrl, '_blank')
     }
 
     const openWhatsAppTiago = () => {
       const message = encodeURIComponent('Olá Tiago, tudo bem? Vim através do site Arte Construir e gostaria de saber mais sobre o seu trabalho.')
-      const whatsappUrl = `https://wa.me/5521960171061?text=${message}`
+      // Número do Tiago
+      const whatsappUrl = `https://wa.me/5521991880697?text=${message}`
       window.open(whatsappUrl, '_blank')
     }
 
@@ -479,33 +473,10 @@ export default {
     }
 
     onMounted(() => {
-      // Animar chatbots quando entrarem na viewport
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            if (entry.target.classList.contains('top')) {
-              setTimeout(() => {
-                leticiaVisible.value = true
-              }, 500)
-            } else if (entry.target.classList.contains('bottom')) {
-              setTimeout(() => {
-                tiagoVisible.value = true
-              }, 1000)
-            }
-          }
-        })
-      }, { threshold: 0.3 })
-
-      const leticiaChatbot = document.querySelector('.cintia-style-chatbot.top')
-      const tiagoChatbot = document.querySelector('.cintia-style-chatbot.bottom')
-      
-      if (leticiaChatbot) observer.observe(leticiaChatbot)
-      if (tiagoChatbot) observer.observe(tiagoChatbot)
+      // Chatbots já estão visíveis imediatamente
     })
 
     return {
-      leticiaVisible,
-      tiagoVisible,
       showParceiroModal,
       isTyping,
       leticiaMessages,
@@ -767,16 +738,8 @@ export default {
   padding: var(--spacing-3xl);
   margin: 0 auto;
   max-width: 1200px;
-  transform: translateY(50px);
-  opacity: 0;
-  transition: all 0.5s ease;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
   border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.cintia-style-chatbot.visible {
-  transform: translateY(0);
-  opacity: 1;
 }
 
 .cintia-style-chatbot.top {

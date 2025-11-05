@@ -844,6 +844,7 @@ export default {
   align-items: center;
   justify-content: center;
   padding: var(--spacing-lg);
+  overflow-y: auto;
 }
 
 .service-modal-content {
@@ -854,6 +855,10 @@ export default {
   width: 100%;
   padding: var(--spacing-2xl);
   position: relative;
+  margin: var(--spacing-lg);
+  max-height: 95vh;
+  overflow-y: auto;
+  box-sizing: border-box;
 }
 
 .service-modal-grid {
@@ -889,10 +894,25 @@ export default {
   position: absolute;
   top: var(--spacing-md);
   right: var(--spacing-md);
-  background: none;
+  background: rgba(0, 0, 0, 0.7);
   border: none;
   font-size: 2rem;
   cursor: pointer;
+  color: var(--white);
+  z-index: 10;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background var(--transition-fast);
+  line-height: 1;
+  font-weight: bold;
+}
+
+.service-modal-close:hover {
+  background: rgba(0, 0, 0, 0.9);
 }
 
 .service-modal-actions {
@@ -902,12 +922,44 @@ export default {
 }
 
 @media (max-width: 768px) {
+  .service-modal {
+    padding: var(--spacing-md);
+    align-items: flex-start;
+    padding-top: var(--spacing-xl);
+  }
+  
+  .service-modal-content {
+    max-width: 100%;
+    width: calc(100% - 20px);
+    margin: 0 auto;
+    padding: var(--spacing-xl);
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+  
   .service-modal-grid {
     grid-template-columns: 1fr;
   }
-  .service-modal-info {
-    padding: var(--spacing-xl);
+  
+  .service-modal-image {
+    min-height: 250px;
   }
+  
+  .service-modal-info {
+    padding: var(--spacing-lg) 0;
+  }
+  
+  .service-modal-close {
+    top: var(--spacing-sm);
+    right: var(--spacing-sm);
+    width: 36px;
+    height: 36px;
+    font-size: 1.5rem;
+    background: rgba(0, 0, 0, 0.8);
+    color: var(--white);
+    z-index: 15;
+  }
+  
   .service-modal-actions {
     justify-content: center;
   }
@@ -1240,30 +1292,33 @@ export default {
   align-items: center;
   justify-content: center;
   padding: var(--spacing-lg);
+  overflow-y: auto;
 }
 
 .project-modal-content {
   background: var(--white);
   border-radius: 16px;
   max-width: 800px;
-  max-height: 90vh;
+  max-height: 95vh;
   overflow-y: auto;
   position: relative;
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0;
+  margin: var(--spacing-lg);
+  box-sizing: border-box;
 }
 
 .project-modal-close {
   position: absolute;
   top: var(--spacing-md);
   right: var(--spacing-md);
-  background: none;
+  background: rgba(0, 0, 0, 0.7);
   border: none;
   font-size: 2rem;
   cursor: pointer;
-  color: var(--text-dark);
+  color: var(--white);
   z-index: 10;
   width: 40px;
   height: 40px;
@@ -1272,10 +1327,12 @@ export default {
   justify-content: center;
   border-radius: 50%;
   transition: background var(--transition-fast);
+  line-height: 1;
+  font-weight: bold;
 }
 
 .project-modal-close:hover {
-  background: rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.9);
 }
 
 .project-modal-image {
@@ -1344,13 +1401,47 @@ export default {
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
+  .project-modal {
+    padding: var(--spacing-md);
+    align-items: flex-start;
+    padding-top: var(--spacing-xl);
+  }
+  
   .project-modal-content {
     grid-template-columns: 1fr;
-    max-height: 95vh;
+    max-height: 90vh;
+    max-width: 100%;
+    width: calc(100% - 20px);
+    margin: 0 auto;
+    padding: var(--spacing-lg);
+    overflow-y: auto;
   }
 
   .project-modal-image {
     min-height: 250px;
+  }
+  
+  .project-modal-info {
+    padding: var(--spacing-lg);
+  }
+  
+  .project-modal-close {
+    top: var(--spacing-sm);
+    right: var(--spacing-sm);
+    width: 36px;
+    height: 36px;
+    font-size: 1.5rem;
+    background: rgba(0, 0, 0, 0.8);
+    color: var(--white);
+    z-index: 15;
+  }
+  
+  .modal-actions {
+    flex-direction: column;
+  }
+  
+  .modal-actions .btn {
+    width: 100%;
   }
 
   .lofts-grid {
