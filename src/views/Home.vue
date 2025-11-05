@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <!-- Hero Section -->
-    <section class="hero-section">
+    <section class="hero-section" :style="{ backgroundImage: `url(${backgroandBannerHomeImg})` }">
       <div class="container">
         <div class="hero-content">
           <h1 class="hero-title">Bem-vindo à</h1>
@@ -10,7 +10,7 @@
         </div>
         <div class="hero-scroll-indicator">
           <a href="#" @click="scrollToSection">
-            <img src="/src/assets/images/seta-direita 1.png" alt="Seta para baixo" class="arrow-image">
+            <img :src="setaDireitaImg" alt="Seta para baixo" class="arrow-image">
           </a>
         </div>
       </div>
@@ -38,7 +38,7 @@
               </div>
               <div class="video-overlay"></div>
               <div class="logo-sobre-video">
-                <img src="/src/assets/images/logo-arte-construir-02.png" alt="Arte Construir" class="logo-large">
+                <img :src="logoArteConstruirImg" alt="Arte Construir" class="logo-large">
               </div>
             </div>
         </div>
@@ -77,7 +77,7 @@
           <!-- Leticia Card -->
           <div class="flip-card margin-card">
             <div class="flip-card-inner">
-              <div class="flip-card-front" style="background-image: url('/src/assets/images/leticia-arquiteta.png');">
+              <div class="flip-card-front" :style="{ backgroundImage: `url(${leticiaArquitetaImg})` }">
                 <h3><b>Leticia</b> Arquiteta</h3>
               </div>
               <div class="flip-card-back">
@@ -93,7 +93,7 @@
           <!-- Tiago Card -->
           <div class="flip-card">
             <div class="flip-card-inner">
-              <div class="flip-card-front" style="background-image: url('/src/assets/images/tiago-corretor.jpeg');">
+              <div class="flip-card-front" :style="{ backgroundImage: `url(${tiagoCorretorImg})` }">
                 <h3><b>Tiago</b> Corretor</h3>
               </div>
               <div class="flip-card-back">
@@ -204,6 +204,7 @@
 
 <script>
 import { useRouter } from 'vue-router'
+import { getImageUrl } from '@/utils/images'
 
 export default {
   name: 'Home',
@@ -274,7 +275,25 @@ export default {
       statsObserver: null
     }
   },
+  computed: {
+    setaDireitaImg() {
+      return getImageUrl('/src/assets/images/seta-direita 1.png')
+    },
+    logoArteConstruirImg() {
+      return getImageUrl('/src/assets/images/logo-arte-construir-02.png')
+    },
+    leticiaArquitetaImg() {
+      return getImageUrl('/src/assets/images/leticia-arquiteta.png')
+    },
+    tiagoCorretorImg() {
+      return getImageUrl('/src/assets/images/tiago-corretor.jpeg')
+    },
+    backgroandBannerHomeImg() {
+      return getImageUrl('/src/assets/images/backgroand-banner-home.png')
+    }
+  },
   methods: {
+    getImageUrl,
     formattedStat(stat) {
       if (stat.isAbbreviated) {
         // Formata 1.000.000 como +1M durante a animação
@@ -345,7 +364,6 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url('/src/assets/images/backgroand-banner-home.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
