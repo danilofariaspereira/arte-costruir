@@ -6,7 +6,7 @@
         <!-- Coluna 1: Brand e Redes Sociais -->
         <div class="footer-brand">
           <div class="brand-logo">
-            <img src="/src/assets/images/logo-arte-construir-02.png" alt="Arte Construir" class="footer-logo">
+            <img :src="getImageUrl('/src/assets/images/logo-arte-construir-02.png')" alt="Arte Construir" class="footer-logo">
           </div>
           <div class="social-icons">
             <a href="https://www.facebook.com/arteconstruir" target="_blank" class="social-icon facebook">
@@ -83,6 +83,7 @@
 
 <script>
 import { computed } from 'vue'
+import { getImageUrl } from '@/utils/images'
 
 export default {
   name: 'AppFooter',
@@ -90,7 +91,8 @@ export default {
     const currentYear = computed(() => new Date().getFullYear())
     
     return {
-      currentYear
+      currentYear,
+      getImageUrl
     }
   }
 }

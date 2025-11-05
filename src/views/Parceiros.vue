@@ -1,7 +1,7 @@
 <template>
   <div class="parceiros">
     <!-- Hero Section -->
-    <section class="hero-section parceiros-hero">
+    <section class="hero-section parceiros-hero" :style="{ backgroundImage: `url(${backgroundParceiros})` }">
       <div class="container">
         <div class="hero-content">
           <h1 class="hero-title">Bem-vindo à</h1>
@@ -10,7 +10,7 @@
         </div>
         <div class="hero-scroll-indicator">
           <a href="#" @click="scrollToSection">
-            <img src="/src/assets/images/seta-direita 1.png" alt="Seta para baixo" class="arrow-image">
+            <img :src="getImageUrl('/src/assets/images/seta-direita 1.png')" alt="Seta para baixo" class="arrow-image">
           </a>
         </div>
       </div>
@@ -37,7 +37,7 @@
             <!-- TW Brazil -->
             <div class="parceiro-card">
               <div class="parceiro-logo">
-                <img src="/src/assets/images/TWBrazil.png" alt="TW Brazil - Parceiro Estratégico" loading="lazy">
+                <img :src="getImageUrl('/src/assets/images/TWBrazil.png')" alt="TW Brazil - Parceiro Estratégico" loading="lazy">
               </div>
               <div class="parceiro-content">
                 <h3>TW Brazil</h3>
@@ -66,7 +66,7 @@
             <!-- Inbrasil -->
             <div class="parceiro-card">
               <div class="parceiro-logo">
-                <img src="/src/assets/images/logo-inbr.png" alt="Inbrasil - Parceiro Estratégico" loading="lazy">
+                <img :src="getImageUrl('/src/assets/images/logo-inbr.png')" alt="Inbrasil - Parceiro Estratégico" loading="lazy">
               </div>
               <div class="parceiro-content">
                 <h3>Inbrasil</h3>
@@ -119,7 +119,7 @@
               
               <div class="chatbot-visual-elements">
                 <div class="director-photo">
-                  <img src="/src/assets/images/leticia-arquiteta.png" alt="Letícia - Arquiteta" class="photo-real">
+                  <img :src="getImageUrl('/src/assets/images/leticia-arquiteta.png')" alt="Letícia - Arquiteta" class="photo-real">
                   <div class="photo-frame"></div>
                   <div class="ai-avatar">
                     <div class="avatar-face">
@@ -198,7 +198,7 @@
               
               <div class="chatbot-visual-elements">
                 <div class="director-photo">
-                  <img src="/src/assets/images/tiago-corretor.jpeg" alt="Tiago - Corretor" class="photo-real">
+                  <img :src="getImageUrl('/src/assets/images/tiago-corretor.jpeg')" alt="Tiago - Corretor" class="photo-real">
                   <div class="photo-frame"></div>
                   <div class="ai-avatar">
                     <div class="avatar-face">
@@ -290,7 +290,8 @@
 </template>
 
 <script>
-import { ref, onMounted, nextTick } from 'vue'
+import { ref, onMounted, nextTick, computed } from 'vue'
+import { getImageUrl } from '@/utils/images'
 
 export default {
   name: 'Parceiros',
@@ -424,7 +425,7 @@ export default {
     const parceirosData = {
       tw: {
         title: 'TW Brazil',
-        logo: '/src/assets/images/TWBrazil.png',
+        logo: getImageUrl('/src/assets/images/TWBrazil.png'),
         description: 'Uma das principais madeireiras do país, especializada em madeira certificada e sustentável. A TW Brazil fornece matéria-prima de alta qualidade para nossos projetos de chalés e decks.',
         benefits: [
           'Madeira certificada FSC',
@@ -437,7 +438,7 @@ export default {
       },
       inbrasil: {
         title: 'Inbrasil',
-        logo: '/src/assets/images/logo-inbr.png',
+        logo: getImageUrl('/src/assets/images/logo-inbr.png'),
         description: 'Referência em madeira plástica e materiais sustentáveis. A Inbrasil nos fornece produtos inovadores que combinam durabilidade, sustentabilidade e excelente custo-benefício.',
         benefits: [
           'Madeira plástica de alta qualidade',
@@ -472,6 +473,8 @@ export default {
       }
     }
 
+    const backgroundParceiros = computed(() => getImageUrl('/src/assets/images/bakgroud-parceiros.png'))
+
     onMounted(() => {
       // Chatbots já estão visíveis imediatamente
     })
@@ -491,7 +494,8 @@ export default {
       sendQuickQuestion,
       openWhatsAppLeticia,
       openWhatsAppTiago,
-      scrollToSection
+      scrollToSection,
+      backgroundParceiros
     }
   }
 }
@@ -500,7 +504,6 @@ export default {
 <style scoped>
 /* Page-specific styles */
 .parceiros-hero {
-  background: url('/src/assets/images/bakgroud-parceiros.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

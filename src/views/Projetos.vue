@@ -1,7 +1,7 @@
 <template>
   <div class="projetos">
     <!-- Hero Section -->
-    <section class="hero-section projects-hero">
+    <section class="hero-section projects-hero" :style="{ backgroundImage: `url(${backgroundProjetos})` }">
       <div class="container">
         <div class="hero-content">
           <h1 class="hero-title">Bem-vindo à</h1>
@@ -10,7 +10,7 @@
         </div>
         <div class="hero-scroll-indicator">
           <a href="#" @click="scrollToSection">
-            <img src="/src/assets/images/seta-direita 1.png" alt="Seta para baixo" class="arrow-image">
+            <img :src="getImageUrl('/src/assets/images/seta-direita 1.png')" alt="Seta para baixo" class="arrow-image">
           </a>
         </div>
       </div>
@@ -27,7 +27,7 @@
           <!-- Chalé Aimee -->
           <div class="simple-card" @click="openProjectModal('aimee')">
             <div class="simple-card-image">
-              <img src="/src/assets/images/chale-aimee.avif" alt="Chalé Aimee" loading="lazy">
+              <img :src="getImageUrl('/src/assets/images/chale-aimee.avif')" alt="Chalé Aimee" loading="lazy">
             </div>
             <div class="simple-card-title">Chalé Aimee</div>
           </div>
@@ -35,7 +35,7 @@
           <!-- Chalé Suíço -->
           <div class="simple-card" @click="openProjectModal('suico')">
             <div class="simple-card-image">
-              <img src="/src/assets/images/chale-suico.avif" alt="Chalé Suíço" loading="lazy">
+              <img :src="getImageUrl('/src/assets/images/chale-suico.avif')" alt="Chalé Suíço" loading="lazy">
             </div>
             <div class="simple-card-title">Chalé Suíço</div>
           </div>
@@ -43,7 +43,7 @@
           <!-- Chalé da Montanha -->
           <div class="simple-card" @click="openProjectModal('montanha')">
             <div class="simple-card-image">
-              <img src="/src/assets/images/chale-da-montanha.avif" alt="Chalé da Montanha" loading="lazy">
+              <img :src="getImageUrl('/src/assets/images/chale-da-montanha.avif')" alt="Chalé da Montanha" loading="lazy">
             </div>
             <div class="simple-card-title">Chalé da Montanha</div>
           </div>
@@ -51,7 +51,7 @@
           <!-- Chalé Aurora -->
           <div class="simple-card" @click="openProjectModal('aurora')">
             <div class="simple-card-image">
-              <img src="/src/assets/images/chale-aurora.avif" alt="Chalé Aurora" loading="lazy">
+              <img :src="getImageUrl('/src/assets/images/chale-aurora.avif')" alt="Chalé Aurora" loading="lazy">
             </div>
             <div class="simple-card-title">Chalé Aurora</div>
           </div>
@@ -70,7 +70,7 @@
           <!-- Serviço 1 -->
           <div class="servico-card" @click="openServiceModal('mentoria')">
             <div class="servico-card-image">
-              <img src="/src/assets/images/planejamento-e-mentoria.jpg" alt="Planejamento e Mentoria" loading="lazy">
+              <img :src="getImageUrl('/src/assets/images/planejamento-e-mentoria.jpg')" alt="Planejamento e Mentoria" loading="lazy">
             </div>
             <div class="servico-card-content">
               <h3>Planejamento e Mentoria</h3>
@@ -80,7 +80,7 @@
           <!-- Serviço 2 -->
           <div class="servico-card" @click="openServiceModal('execucao')">
             <div class="servico-card-image">
-              <img src="/src/assets/images/execucao-de-obra-completa-projetos.jpg" alt="Execução de obra completa" loading="lazy">
+              <img :src="getImageUrl('/src/assets/images/execucao-de-obra-completa-projetos.jpg')" alt="Execução de obra completa" loading="lazy">
             </div>
             <div class="servico-card-content">
               <h3>Execução de obra completa</h3>
@@ -90,7 +90,7 @@
           <!-- Serviço 3 -->
           <div class="servico-card" @click="openServiceModal('reuniao')">
             <div class="servico-card-image">
-              <img src="/src/assets/images/reuniao-de-trabalho-projetos.jpg" alt="Reunião de trabalho" loading="lazy">
+              <img :src="getImageUrl('/src/assets/images/reuniao-de-trabalho-projetos.jpg')" alt="Reunião de trabalho" loading="lazy">
             </div>
             <div class="servico-card-content">
               <h3>Reunião de trabalho</h3>
@@ -111,7 +111,7 @@
         <div class="grid grid-3">
           <div class="card">
             <div class="card-image">
-              <img src="/src/assets/images/madeira-ecologica.avif" alt="Madeira Ecológica" loading="lazy">
+              <img :src="getImageUrl('/src/assets/images/madeira-ecologica.avif')" alt="Madeira Ecológica" loading="lazy">
             </div>
             <div class="card-header">
               <h3 class="card-title">GARANTIA DE 50 ANOS</h3>
@@ -123,7 +123,7 @@
           
           <div class="card">
             <div class="card-image">
-              <img src="/src/assets/images/selo-verde.avif" alt="Selo Verde" loading="lazy">
+              <img :src="getImageUrl('/src/assets/images/selo-verde.avif')" alt="Selo Verde" loading="lazy">
             </div>
             <div class="card-header">
               <h3 class="card-title">REFERÊNCIA EM MATERIAIS SUSTENTÁVEIS</h3>
@@ -135,7 +135,7 @@
           
           <div class="card">
             <div class="card-image">
-              <img src="/src/assets/images/projetos-personalizados.png" alt="Equipe Especializada" loading="lazy">
+              <img :src="getImageUrl('/src/assets/images/projetos-personalizados.png')" alt="Equipe Especializada" loading="lazy">
             </div>
             <div class="card-header">
               <h3 class="card-title">EQUIPE ESPECIALIZADA</h3>
@@ -218,7 +218,8 @@
 </template>
 
 <script>
-import { ref, reactive } from 'vue'
+import { ref, reactive, computed } from 'vue'
+import { getImageUrl } from '@/utils/images'
 
 export default {
   name: 'Projetos',
@@ -244,7 +245,7 @@ export default {
     const projectData = {
       aimee: {
         title: 'Chalé Aimee',
-        image: '/src/assets/images/chale-aimee.avif',
+        image: getImageUrl('/src/assets/images/chale-aimee.avif'),
         description: 'Chalé moderno com design contemporâneo, perfeito para famílias que buscam conforto e sofisticação.',
         features: [
           '90m² de área construída',
@@ -257,7 +258,7 @@ export default {
       },
       suico: {
         title: 'Chalé Suíço',
-        image: '/src/assets/images/chale-suico.avif',
+        image: getImageUrl('/src/assets/images/chale-suico.avif'),
         description: 'Inspirado na arquitetura alpina, oferece aconchego e charme rústico em meio à natureza.',
         features: [
           '90m² de área construída',
@@ -270,7 +271,7 @@ export default {
       },
       montanha: {
         title: 'Chalé da Montanha',
-        image: '/src/assets/images/chale-da-montanha.avif',
+        image: getImageUrl('/src/assets/images/chale-da-montanha.avif'),
         description: 'Ideal para regiões serranas, combina robustez e elegância com acabamentos de alta qualidade.',
         features: [
           '90m² de área construída',
@@ -283,7 +284,7 @@ export default {
       },
       aurora: {
         title: 'Chalé Aurora',
-        image: '/src/assets/images/chale-aurora.avif',
+        image: getImageUrl('/src/assets/images/chale-aurora.avif'),
         description: 'Design único com grandes janelas, aproveitando a luz natural e proporcionando vista panorâmica.',
         features: [
           '90m² de área construída',
@@ -296,7 +297,7 @@ export default {
       },
       loft30: {
         title: 'Loft Compacto',
-        image: '/src/assets/images/loft-30m.jpg',
+        image: getImageUrl('/src/assets/images/loft-30m.jpg'),
         description: 'Ideal para casais ou uso como escritório, com design inteligente que maximiza o espaço.',
         features: [
           '30m² de área construída',
@@ -309,7 +310,7 @@ export default {
       },
       loft40: {
         title: 'Loft Conforto',
-        image: '/src/assets/images/loft-40m.jpg',
+        image: getImageUrl('/src/assets/images/loft-40m.jpg'),
         description: 'Perfeito equilíbrio entre espaço e praticidade, com quarto separado e área social ampla.',
         features: [
           '40m² de área construída',
@@ -322,7 +323,7 @@ export default {
       },
       loft60: {
         title: 'Loft Premium',
-        image: '/src/assets/images/loft-60m.jpg',
+        image: getImageUrl('/src/assets/images/loft-60m.jpg'),
         description: 'Espaçoso e elegante, ideal para pequenas famílias que buscam conforto e modernidade.',
         features: [
           '60m² de área construída',
@@ -339,57 +340,57 @@ export default {
       aimee: {
         title: 'Chalé Aimee',
         images: [
-          '/src/assets/images/chale-aimee.jpg',
-          '/src/assets/images/chale-aimee-2.jpg',
-          '/src/assets/images/chale-aimee-3.jpg'
+          getImageUrl('/src/assets/images/chale-aimee.jpg'),
+          getImageUrl('/src/assets/images/chale-aimee-2.jpg'),
+          getImageUrl('/src/assets/images/chale-aimee-3.jpg')
         ]
       },
       suico: {
         title: 'Chalé Suíço',
         images: [
-          '/src/assets/images/chale-suico.jpg',
-          '/src/assets/images/chale-suico-2.jpg',
-          '/src/assets/images/chale-suico-3.jpg'
+          getImageUrl('/src/assets/images/chale-suico.jpg'),
+          getImageUrl('/src/assets/images/chale-suico-2.jpg'),
+          getImageUrl('/src/assets/images/chale-suico-3.jpg')
         ]
       },
       montanha: {
         title: 'Chalé da Montanha',
         images: [
-          '/src/assets/images/chale-montanha.jpg',
-          '/src/assets/images/chale-montanha-2.jpg',
-          '/src/assets/images/chale-montanha-3.jpg'
+          getImageUrl('/src/assets/images/chale-montanha.jpg'),
+          getImageUrl('/src/assets/images/chale-montanha-2.jpg'),
+          getImageUrl('/src/assets/images/chale-montanha-3.jpg')
         ]
       },
       aurora: {
         title: 'Chalé Aurora',
         images: [
-          '/src/assets/images/chale-aurora.jpg',
-          '/src/assets/images/chale-aurora-2.jpg',
-          '/src/assets/images/chale-aurora-3.jpg'
+          getImageUrl('/src/assets/images/chale-aurora.jpg'),
+          getImageUrl('/src/assets/images/chale-aurora-2.jpg'),
+          getImageUrl('/src/assets/images/chale-aurora-3.jpg')
         ]
       },
       loft30: {
         title: 'Loft 30m²',
         images: [
-          '/src/assets/images/loft-30m.jpg',
-          '/src/assets/images/loft-30m-2.jpg',
-          '/src/assets/images/loft-30m-3.jpg'
+          getImageUrl('/src/assets/images/loft-30m.jpg'),
+          getImageUrl('/src/assets/images/loft-30m-2.jpg'),
+          getImageUrl('/src/assets/images/loft-30m-3.jpg')
         ]
       },
       loft40: {
         title: 'Loft 40m²',
         images: [
-          '/src/assets/images/loft-40m.jpg',
-          '/src/assets/images/loft-40m-2.jpg',
-          '/src/assets/images/loft-40m-3.jpg'
+          getImageUrl('/src/assets/images/loft-40m.jpg'),
+          getImageUrl('/src/assets/images/loft-40m-2.jpg'),
+          getImageUrl('/src/assets/images/loft-40m-3.jpg')
         ]
       },
       loft60: {
         title: 'Loft 60m²',
         images: [
-          '/src/assets/images/loft-60m.jpg',
-          '/src/assets/images/loft-60m-2.jpg',
-          '/src/assets/images/loft-60m-3.jpg'
+          getImageUrl('/src/assets/images/loft-60m.jpg'),
+          getImageUrl('/src/assets/images/loft-60m-2.jpg'),
+          getImageUrl('/src/assets/images/loft-60m-3.jpg')
         ]
       }
     }
@@ -484,7 +485,7 @@ export default {
           'Caso já possua empreiteiro de confiança, temos planos para venda do madeiramento (Kit) e projetos.',
           'E além disso, podemos fazer uma mentoria durante toda sua obra para que siga todos os passos corretamente.'
         ],
-        image: '/src/assets/images/planejamento-e-mentoria.jpg'
+        image: getImageUrl('/src/assets/images/planejamento-e-mentoria.jpg')
       },
       execucao: {
         title: 'Execução de obra completa',
@@ -493,7 +494,7 @@ export default {
           'Modalidade exclusiva para cidades da Região serrana, Angra dos Reis e Região dos lagos do RJ.',
           'Opção para quem deseja uma obra completa sem dor de cabeça.'
         ],
-        image: '/src/assets/images/execucao-de-obra-completa-projetos.jpg'
+        image: getImageUrl('/src/assets/images/execucao-de-obra-completa-projetos.jpg')
       },
       reuniao: {
         title: 'Reunião de trabalho',
@@ -502,7 +503,7 @@ export default {
           'Você é empresário? Não sabe como aumentar o faturamento da empresa atualmente?',
           'Temos planos de negócios que podem aumentar seu faturamento em até 600%! Agende sua reunião com nossos especialistas.'
         ],
-        image: '/src/assets/images/reuniao-de-trabalho-projetos.jpg'
+        image: getImageUrl('/src/assets/images/reuniao-de-trabalho-projetos.jpg')
       }
     }
 
@@ -527,6 +528,8 @@ export default {
         })
       }
     }
+
+    const backgroundProjetos = computed(() => getImageUrl('/src/assets/images/background-projetos.png'))
 
     return {
       showGallery,
@@ -553,7 +556,9 @@ export default {
       openServiceModal,
       closeServiceModal,
       // Form
-      isSubmitting
+      isSubmitting,
+      getImageUrl,
+      backgroundProjetos
     }
   }
 }
@@ -562,7 +567,6 @@ export default {
 <style scoped>
 /* Page-specific styles */
 .projects-hero {
-  background: url('/src/assets/images/background-projetos.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

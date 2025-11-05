@@ -1,7 +1,7 @@
 <template>
   <div class="decks">
     <!-- Hero Section -->
-    <section class="hero-section decks-hero">
+    <section class="hero-section decks-hero" :style="{ backgroundImage: `url(${backgroundBannerDacks})` }">
       <div class="container">
         <div class="hero-content">
           <h1 class="hero-title">Bem-vindo à</h1>
@@ -10,7 +10,7 @@
         </div>
         <div class="hero-scroll-indicator">
           <a href="#" @click="scrollToSection">
-            <img src="/src/assets/images/seta-direita 1.png" alt="Seta para baixo" class="arrow-image">
+            <img :src="getImageUrl('/src/assets/images/seta-direita 1.png')" alt="Seta para baixo" class="arrow-image">
           </a>
         </div>
       </div>
@@ -168,6 +168,7 @@
 
 <script>
 import { ref, reactive, computed, onMounted } from 'vue'
+import { getImageUrl } from '@/utils/images'
 
 export default {
   name: 'Decks',
@@ -182,18 +183,18 @@ export default {
 
     // Lista de imagens dos serviços
     const servicosImagens = ref([
-      { id: 1, src: '/src/assets/images/01.png', alt: 'Deck 1' },
-      { id: 2, src: '/src/assets/images/02.png', alt: 'Deck 2' },
-      { id: 3, src: '/src/assets/images/03.png', alt: 'Deck 3' },
-      { id: 4, src: '/src/assets/images/04.png', alt: 'Deck 4' },
-      { id: 5, src: '/src/assets/images/05.png', alt: 'Deck 5' },
-      { id: 6, src: '/src/assets/images/06.png', alt: 'Deck 6' },
-      { id: 7, src: '/src/assets/images/07.png', alt: 'Deck 7' },
-      { id: 8, src: '/src/assets/images/08.png', alt: 'Deck 8' },
-      { id: 9, src: '/src/assets/images/09.png', alt: 'Deck 9' },
-      { id: 10, src: '/src/assets/images/10.png', alt: 'Deck 10' },
-      { id: 11, src: '/src/assets/images/image 11.png', alt: 'Deck 11' },
-      { id: 13, src: '/src/assets/images/image 13.png', alt: 'Deck 13' }
+      { id: 1, src: getImageUrl('/src/assets/images/01.png'), alt: 'Deck 1' },
+      { id: 2, src: getImageUrl('/src/assets/images/02.png'), alt: 'Deck 2' },
+      { id: 3, src: getImageUrl('/src/assets/images/03.png'), alt: 'Deck 3' },
+      { id: 4, src: getImageUrl('/src/assets/images/04.png'), alt: 'Deck 4' },
+      { id: 5, src: getImageUrl('/src/assets/images/05.png'), alt: 'Deck 5' },
+      { id: 6, src: getImageUrl('/src/assets/images/06.png'), alt: 'Deck 6' },
+      { id: 7, src: getImageUrl('/src/assets/images/07.png'), alt: 'Deck 7' },
+      { id: 8, src: getImageUrl('/src/assets/images/08.png'), alt: 'Deck 8' },
+      { id: 9, src: getImageUrl('/src/assets/images/09.png'), alt: 'Deck 9' },
+      { id: 10, src: getImageUrl('/src/assets/images/10.png'), alt: 'Deck 10' },
+      { id: 11, src: getImageUrl('/src/assets/images/image 11.png'), alt: 'Deck 11' },
+      { id: 13, src: getImageUrl('/src/assets/images/image 13.png'), alt: 'Deck 13' }
     ])
 
     const filters = [
@@ -208,66 +209,66 @@ export default {
         category: 'natural',
         title: 'Deck Natural Premium',
         location: 'Residencial em Teresópolis',
-        image: '/src/assets/images/deck-natural-1.jpg',
+        image: getImageUrl('/src/assets/images/deck-natural-1.jpg'),
         images: [
-          '/src/assets/images/deck-natural-1.jpg',
-          '/src/assets/images/deck-natural-2.jpg',
-          '/src/assets/images/deck-natural-3.jpg'
+          getImageUrl('/src/assets/images/deck-natural-1.jpg'),
+          getImageUrl('/src/assets/images/deck-natural-2.jpg'),
+          getImageUrl('/src/assets/images/deck-natural-3.jpg')
         ]
       },
       {
         category: 'plastic',
         title: 'Deck Plástico Sustentável',
         location: 'Residencial em Petrópolis',
-        image: '/src/assets/images/deck-plastica-1.jpg',
+        image: getImageUrl('/src/assets/images/deck-plastica-1.jpg'),
         images: [
-          '/src/assets/images/deck-plastica-1.jpg',
-          '/src/assets/images/deck-plastica-2.jpg',
-          '/src/assets/images/deck-plastica-3.jpg'
+          getImageUrl('/src/assets/images/deck-plastica-1.jpg'),
+          getImageUrl('/src/assets/images/deck-plastica-2.jpg'),
+          getImageUrl('/src/assets/images/deck-plastica-3.jpg')
         ]
       },
       {
         category: 'before-after',
         title: 'Transformação Completa',
         location: 'Antes e Depois',
-        image: '/src/assets/images/deck-before-after-1.jpg',
+        image: getImageUrl('/src/assets/images/deck-before-after-1.jpg'),
         images: [
-          '/src/assets/images/deck-before-after-1.jpg',
-          '/src/assets/images/deck-before-after-2.jpg',
-          '/src/assets/images/deck-before-after-3.jpg'
+          getImageUrl('/src/assets/images/deck-before-after-1.jpg'),
+          getImageUrl('/src/assets/images/deck-before-after-2.jpg'),
+          getImageUrl('/src/assets/images/deck-before-after-3.jpg')
         ]
       },
       {
         category: 'natural',
         title: 'Deck Natural Moderno',
         location: 'Residencial em Nova Friburgo',
-        image: '/src/assets/images/deck-natural-2.jpg',
+        image: getImageUrl('/src/assets/images/deck-natural-2.jpg'),
         images: [
-          '/src/assets/images/deck-natural-2.jpg',
-          '/src/assets/images/deck-natural-1.jpg',
-          '/src/assets/images/deck-natural-3.jpg'
+          getImageUrl('/src/assets/images/deck-natural-2.jpg'),
+          getImageUrl('/src/assets/images/deck-natural-1.jpg'),
+          getImageUrl('/src/assets/images/deck-natural-3.jpg')
         ]
       },
       {
         category: 'plastic',
         title: 'Deck Plástico Econômico',
         location: 'Residencial em Teresópolis',
-        image: '/src/assets/images/deck-plastica-2.jpg',
+        image: getImageUrl('/src/assets/images/deck-plastica-2.jpg'),
         images: [
-          '/src/assets/images/deck-plastica-2.jpg',
-          '/src/assets/images/deck-plastica-1.jpg',
-          '/src/assets/images/deck-plastica-3.jpg'
+          getImageUrl('/src/assets/images/deck-plastica-2.jpg'),
+          getImageUrl('/src/assets/images/deck-plastica-1.jpg'),
+          getImageUrl('/src/assets/images/deck-plastica-3.jpg')
         ]
       },
       {
         category: 'before-after',
         title: 'Reforma Completa',
         location: 'Antes e Depois',
-        image: '/src/assets/images/deck-before-after-2.jpg',
+        image: getImageUrl('/src/assets/images/deck-before-after-2.jpg'),
         images: [
-          '/src/assets/images/deck-before-after-2.jpg',
-          '/src/assets/images/deck-before-after-1.jpg',
-          '/src/assets/images/deck-before-after-3.jpg'
+          getImageUrl('/src/assets/images/deck-before-after-2.jpg'),
+          getImageUrl('/src/assets/images/deck-before-after-1.jpg'),
+          getImageUrl('/src/assets/images/deck-before-after-3.jpg')
         ]
       }
     ]
@@ -321,19 +322,19 @@ export default {
         natural: {
           title: 'Madeira Natural',
           images: [
-            '/src/assets/images/madeira-natural.jpg',
-            '/src/assets/images/deck-natural-1.jpg',
-            '/src/assets/images/deck-natural-2.jpg',
-            '/src/assets/images/deck-natural-3.jpg'
+            getImageUrl('/src/assets/images/madeira-natural.jpg'),
+            getImageUrl('/src/assets/images/deck-natural-1.jpg'),
+            getImageUrl('/src/assets/images/deck-natural-2.jpg'),
+            getImageUrl('/src/assets/images/deck-natural-3.jpg')
           ]
         },
         plastic: {
           title: 'Madeira Plástica',
           images: [
-            '/src/assets/images/madeira-plastica.jpg',
-            '/src/assets/images/deck-plastica-1.jpg',
-            '/src/assets/images/deck-plastica-2.jpg',
-            '/src/assets/images/deck-plastica-3.jpg'
+            getImageUrl('/src/assets/images/madeira-plastica.jpg'),
+            getImageUrl('/src/assets/images/deck-plastica-1.jpg'),
+            getImageUrl('/src/assets/images/deck-plastica-2.jpg'),
+            getImageUrl('/src/assets/images/deck-plastica-3.jpg')
           ]
         }
       }
@@ -447,6 +448,8 @@ export default {
       animateCounter()
     })
 
+    const backgroundBannerDacks = computed(() => getImageUrl('/src/assets/images/background-banner-dacks.png'))
+    
     return {
       activeFilter,
       filters,
@@ -470,7 +473,9 @@ export default {
       currentSlide,
       nextSlide,
       prevSlide,
-      goToSlide
+      goToSlide,
+      backgroundBannerDacks,
+      getImageUrl
     }
   }
 }
@@ -479,7 +484,6 @@ export default {
 <style scoped>
 /* Page-specific styles */
 .decks-hero {
-  background: url('/src/assets/images/background-banner-dacks.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -1060,7 +1064,9 @@ export default {
   left: 0;
   right: 0;
   bottom: 0;
-  background: url('/src/assets/images/background-banner-dacks.png') center/cover;
+  background-image: v-bind('`url(${backgroundBannerDacks})`');
+  background-position: center;
+  background-size: cover;
   opacity: 0.1;
   z-index: 0;
 }

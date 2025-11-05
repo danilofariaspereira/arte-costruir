@@ -4,7 +4,7 @@
       <nav class="nav">
         <div class="nav-brand">
           <router-link to="/" class="brand-link">
-            <img src="/src/assets/images/logo-arte-construir-02.png" alt="Arte Construir" class="logo">
+            <img :src="getImageUrl('/src/assets/images/logo-arte-construir-02.png')" alt="Arte Construir" class="logo">
           </router-link>
         </div>
         
@@ -37,6 +37,7 @@
 
 <script>
 import { ref, onMounted, onUnmounted } from 'vue'
+import { getImageUrl } from '@/utils/images'
 
 export default {
   name: 'AppHeader',
@@ -68,7 +69,8 @@ export default {
       isScrolled,
       isMenuOpen,
       toggleMenu,
-      closeMenu
+      closeMenu,
+      getImageUrl
     }
   }
 }

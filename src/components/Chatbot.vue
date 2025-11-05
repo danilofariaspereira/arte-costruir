@@ -2,14 +2,14 @@
   <div class="chatbot-container">
     <!-- Botão principal do chatbot -->
     <div class="chatbot-toggle" @click="toggleChatbot" v-if="!isOpen">
-      <img src="/src/assets/images/icone-arte-construir.png" alt="Arte Construir" class="chatbot-logo">
+      <img :src="getImageUrl('/src/assets/images/icone-arte-construir.png')" alt="Arte Construir" class="chatbot-logo">
     </div>
 
     <!-- Chatbot aberto -->
     <div class="chatbot-window" v-if="isOpen">
       <div class="chatbot-header">
         <div class="chatbot-header-content">
-          <img src="/src/assets/images/icone-arte-construir.png" alt="Arte Construir" class="chatbot-header-logo">
+          <img :src="getImageUrl('/src/assets/images/icone-arte-construir.png')" alt="Arte Construir" class="chatbot-header-logo">
           <div class="chatbot-header-text">
             <h3>Arte Construir</h3>
             <div class="online-status">
@@ -24,7 +24,7 @@
       <div class="chatbot-messages">
         <!-- Mensagem de boas-vindas -->
         <div class="bot-message welcome-message">
-          <img src="/src/assets/images/icone-arte-construir.png" alt="Arte Construir" class="bot-avatar">
+          <img :src="getImageUrl('/src/assets/images/icone-arte-construir.png')" alt="Arte Construir" class="bot-avatar">
           <div class="message-content">
             <strong>Seja bem-vindo à Arte Construir!</strong>
           </div>
@@ -83,6 +83,8 @@
 </template>
 
 <script>
+import { getImageUrl } from '@/utils/images'
+
 export default {
   name: 'Chatbot',
   data() {
@@ -93,6 +95,7 @@ export default {
     }
   },
   methods: {
+    getImageUrl,
     toggleChatbot() {
       this.isOpen = !this.isOpen
       if (!this.isOpen) {
