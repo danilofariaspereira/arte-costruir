@@ -3,6 +3,8 @@ import Home from '@/views/Home.vue'
 import Projetos from '@/views/Projetos.vue'
 import Decks from '@/views/Decks.vue'
 import Parceiros from '@/views/Parceiros.vue'
+import Blog from '@/views/Blog.vue'
+import BlogPost from '@/views/BlogPost.vue'
 
 const routes = [
   {
@@ -24,6 +26,16 @@ const routes = [
     path: '/parceiros',
     name: 'Parceiros',
     component: Parceiros
+  },
+  {
+    path: '/blog',
+    name: 'Blog',
+    component: Blog
+  },
+  {
+    path: '/blog/:id',
+    name: 'BlogPost',
+    component: BlogPost
   }
 ]
 

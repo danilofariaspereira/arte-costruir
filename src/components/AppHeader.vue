@@ -22,6 +22,9 @@
             <li class="nav-item">
               <router-link to="/parceiros" class="nav-link" @click="closeMenu">Parceiros</router-link>
             </li>
+            <li class="nav-item">
+              <router-link to="/blog" class="nav-link" @click="closeMenu">Blog</router-link>
+            </li>
           </ul>
         </div>
         

@@ -19,6 +19,7 @@ import backgroandBannerHome from '@/assets/images/backgroand-banner-home.png'
 import backgroundProjetos from '@/assets/images/background-projetos.png'
 import backgroundBannerDacks from '@/assets/images/background-banner-dacks.png'
 import bakgroudParceiros from '@/assets/images/bakgroud-parceiros.png'
+import backgroundBannerBlog from '@/assets/images/backgroud-banner-blog.png'
 
 // Chalés
 import chaleAimee from '@/assets/images/chale-aimee.avif'
@@ -80,6 +81,10 @@ import deckBeforeAfter1 from '@/assets/images/deck-before-after-1.jpg'
 import deckBeforeAfter2 from '@/assets/images/deck-before-after-2.jpg'
 import deckBeforeAfter3 from '@/assets/images/deck-before-after-3.jpg'
 
+// Blog images
+import primeiroFeirao from '@/assets/images/primeiro-feirao.png'
+import artigoBlogConstrucao from '@/assets/images/artigo-blog-costrucao.png'
+
 // Export image map
 export const images = {
   // Hero arrows
@@ -100,6 +105,7 @@ export const images = {
   backgroundProjetos,
   backgroundBannerDacks,
   bakgroudParceiros,
+  backgroundBannerBlog,
   
   // Chalés
   chaleAimee,
@@ -154,6 +160,10 @@ export const images = {
   deckPlastica1,
   deckPlastica2,
   deckPlastica3,
+  // Blog images
+  primeiroFeirao,
+  artigoBlogConstrucao,
+  
   deckBeforeAfter1,
   deckBeforeAfter2,
   deckBeforeAfter3
@@ -178,6 +188,7 @@ export function getImageUrl(imagePath) {
     'src/assets/images/background-projetos.png': backgroundProjetos,
     'src/assets/images/background-banner-dacks.png': backgroundBannerDacks,
     'src/assets/images/bakgroud-parceiros.png': bakgroudParceiros,
+    'src/assets/images/backgroud-banner-blog.png': backgroundBannerBlog,
     'src/assets/images/chale-aimee.avif': chaleAimee,
     'src/assets/images/chale-aimee-2.jpg': chaleAimee2,
     'src/assets/images/chale-aimee-3.jpg': chaleAimee3,
@@ -224,7 +235,9 @@ export function getImageUrl(imagePath) {
     'src/assets/images/deck-plastica-3.jpg': deckPlastica3,
     'src/assets/images/deck-before-after-1.jpg': deckBeforeAfter1,
     'src/assets/images/deck-before-after-2.jpg': deckBeforeAfter2,
-    'src/assets/images/deck-before-after-3.jpg': deckBeforeAfter3
+    'src/assets/images/deck-before-after-3.jpg': deckBeforeAfter3,
+    'src/assets/images/primeiro-feirao.png': primeiroFeirao,
+    'src/assets/images/artigo-blog-costrucao.png': artigoBlogConstrucao
   }
   
   // Return mapped image or fallback to original path
