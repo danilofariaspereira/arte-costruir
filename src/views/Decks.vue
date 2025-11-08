@@ -4,9 +4,9 @@
     <section class="hero-section decks-hero" :style="{ backgroundImage: `url(${backgroundBannerDacks})` }">
       <div class="container">
         <div class="hero-content">
-          <h1 class="hero-title">Bem-vindo à</h1>
+          <h1 class="hero-title">Portfólio de Construções</h1>
           <h2 class="hero-brand">Arte Construir</h2>
-          <p class="hero-subtitle">Não fazemos obras, realizamos sonhos</p>
+          <p class="hero-subtitle">Decks, chalés e espaços que transformam o seu viver</p>
         </div>
         <div class="hero-scroll-indicator">
           <a href="#" @click="scrollToSection">
@@ -20,8 +20,8 @@
     <section class="servicos-galeria-section section">
       <div class="container">
         <div class="section-header">
-          <h2 class="section-title">Alguns dos Nossos Serviços</h2>
-          <p class="section-subtitle">Aqui está um pouco dos decks que fizemos</p>
+          <h2 class="section-title">Portfólio em Destaque</h2>
+          <p class="section-subtitle">Decks, passarelas e ambientes personalizados em madeira e materiais sustentáveis</p>
         </div>
         
         <!-- Grid Desktop -->
@@ -58,6 +58,32 @@
                 @click="goToSlide(index)"
               ></span>
             </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Chalés Section -->
+    <section class="chales-section section" id="chales">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Chalés Assinados</h2>
+          <p class="section-subtitle">
+            Conheça alguns dos nossos chalés em madeira tratada, pensados para unir conforto, design autoral e sustentabilidade.
+          </p>
+        </div>
+
+        <div class="chales-grid">
+          <div
+            class="simple-card"
+            v-for="chale in chalesCards"
+            :key="chale.key"
+            @click="openChaleModal(chale.key)"
+          >
+            <div class="simple-card-image">
+              <img :src="chale.image" :alt="chale.title" loading="lazy">
+            </div>
+            <div class="simple-card-title">{{ chale.title }}</div>
           </div>
         </div>
       </div>
@@ -100,7 +126,7 @@
     <section class="contato-section section" id="contato">
       <div class="container">
         <div class="section-header">
-          <h2 class="section-title">Peça Seu Orçamento de Deck</h2>
+          <h2 class="section-title">Peça Seu Orçamento Personalizado</h2>
         </div>
         <div class="grid grid-2">
           <div>
@@ -138,6 +164,37 @@
         </div>
       </div>
     </section>
+
+    <!-- Chalé Modal -->
+    <div v-if="showChaleModal" class="project-modal" @click="closeChaleModal">
+      <div class="project-modal-content" @click.stop>
+        <button class="project-modal-close" @click="closeChaleModal">&times;</button>
+        <div class="project-modal-image">
+          <img :src="currentChale.image" :alt="currentChale.title">
+        </div>
+        <div class="project-modal-info">
+          <h3>{{ currentChale.title }}</h3>
+          <p>{{ currentChale.description }}</p>
+          <ul class="modal-features">
+            <li v-for="(feature, index) in currentChale.features" :key="index">
+              {{ feature }}
+            </li>
+          </ul>
+          <div class="modal-actions">
+            <a href="#contato" class="btn btn-primary" @click="closeChaleModal">Solicitar Orçamento</a>
+            <a
+              v-if="currentChale.pdfUrl"
+              :href="currentChale.pdfUrl"
+              class="btn btn-secondary"
+              target="_blank"
+              rel="noopener"
+            >
+              Download
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- Gallery Modal -->
     <div v-if="showGalleryModal" class="gallery-modal" @click="closeGalleryModal">
@@ -180,6 +237,14 @@ export default {
     const currentLightboxIndex = ref(0)
     const lightboxImages = ref([])
     const currentSlide = ref(0)
+    const showChaleModal = ref(false)
+    const currentChale = ref({
+      title: '',
+      description: '',
+      features: [],
+      image: '',
+      pdfUrl: ''
+    })
 
     // Lista de imagens dos serviços
     const servicosImagens = ref([
@@ -196,6 +261,68 @@ export default {
       { id: 11, src: getImageUrl('/src/assets/images/image 11.png'), alt: 'Deck 11' },
       { id: 13, src: getImageUrl('/src/assets/images/image 13.png'), alt: 'Deck 13' }
     ])
+
+    const chalesCards = [
+      { key: 'aimee', title: 'Chalé Aimee', image: getImageUrl('/src/assets/images/chale-aimee.avif') },
+      { key: 'suico', title: 'Chalé Suíço', image: getImageUrl('/src/assets/images/chale-suico.avif') },
+      { key: 'montanha', title: 'Chalé da Montanha', image: getImageUrl('/src/assets/images/chale-da-montanha.avif') },
+      { key: 'aurora', title: 'Chalé Aurora', image: getImageUrl('/src/assets/images/chale-aurora.avif') }
+    ]
+
+    const chalesDetails = {
+      aimee: {
+        title: 'Chalé Aimee',
+        image: getImageUrl('/src/assets/images/chale-aimee.avif'),
+        description: 'Chalé moderno com design contemporâneo, perfeito para famílias que buscam conforto e sofisticação.',
+        features: [
+          '90m² de área construída',
+          '2 quartos espaçosos',
+          '2 banheiros completos',
+          'Até 8 pessoas',
+          'Madeira ecológica'
+        ],
+        pdfUrl: 'https://drive.google.com/file/d/14VnQ4uDXF1EJM_pjK2o5t_ss7Qv5-eEl/view'
+      },
+      suico: {
+        title: 'Chalé Suíço',
+        image: getImageUrl('/src/assets/images/chale-suico.avif'),
+        description: 'Inspirado na arquitetura alpina, oferece aconchego e charme rústico em meio à natureza.',
+        features: [
+          '90m² de área construída',
+          '2 quartos espaçosos',
+          '2 banheiros completos',
+          'Até 8 pessoas',
+          'Design alpino'
+        ],
+        pdfUrl: ''
+      },
+      montanha: {
+        title: 'Chalé da Montanha',
+        image: getImageUrl('/src/assets/images/chale-da-montanha.avif'),
+        description: 'Ideal para regiões serranas, combina robustez e elegância com acabamentos de alta qualidade.',
+        features: [
+          '90m² de área construída',
+          '2 quartos espaçosos',
+          '2 banheiros completos',
+          'Até 8 pessoas',
+          'Resistente ao clima'
+        ],
+        pdfUrl: 'https://drive.google.com/file/d/1-nGeXTGorijjRp6OCsSbd19Nmcq-acSj/view'
+      },
+      aurora: {
+        title: 'Chalé Aurora',
+        image: getImageUrl('/src/assets/images/chale-aurora.avif'),
+        description: 'Design único com grandes janelas, aproveitando a luz natural e proporcionando vista panorâmica.',
+        features: [
+          '90m² de área construída',
+          '2 quartos espaçosos',
+          '2 banheiros completos',
+          'Até 8 pessoas',
+          'Vista panorâmica'
+        ],
+        pdfUrl: 'https://drive.google.com/file/d/13Uf4XLEMn7_3rWzMEnaTgAFwZ6UE2lp-/view'
+      }
+    }
 
     const filters = [
       { key: 'all', label: 'Todos' },
@@ -364,6 +491,22 @@ export default {
       lightboxImages.value = []
     }
 
+    const openChaleModal = (key) => {
+      currentChale.value = chalesDetails[key]
+      showChaleModal.value = true
+    }
+
+    const closeChaleModal = () => {
+      showChaleModal.value = false
+      currentChale.value = {
+        title: '',
+        description: '',
+        features: [],
+        image: '',
+        pdfUrl: ''
+      }
+    }
+
     const prevImage = () => {
       if (currentLightboxIndex.value > 0) {
         currentLightboxIndex.value--
@@ -402,7 +545,7 @@ export default {
 
     const scrollToSection = (event) => {
       event.preventDefault()
-      const element = document.getElementById('processo')
+      const element = document.getElementById('chales')
       if (element) {
         element.scrollIntoView({ 
           behavior: 'smooth',
@@ -475,7 +618,12 @@ export default {
       prevSlide,
       goToSlide,
       backgroundBannerDacks,
-      getImageUrl
+      getImageUrl,
+      chalesCards,
+      openChaleModal,
+      closeChaleModal,
+      showChaleModal,
+      currentChale
     }
   }
 }
@@ -596,6 +744,180 @@ export default {
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: var(--spacing-lg);
   margin-top: var(--spacing-2xl);
+}
+
+.chales-section {
+  background: var(--light-gray);
+}
+
+.chales-section .section-title {
+  color: var(--text-dark);
+}
+
+.chales-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-xl);
+  margin-top: var(--spacing-2xl);
+}
+
+.simple-card {
+  cursor: pointer;
+  background: var(--white);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-normal);
+}
+
+.simple-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.simple-card-image {
+  height: 300px;
+  overflow: hidden;
+  position: relative;
+}
+
+.simple-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.simple-card:hover .simple-card-image img {
+  transform: scale(1.05);
+}
+
+.simple-card-title {
+  padding: var(--spacing-lg);
+  text-align: center;
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--text-dark);
+  background: var(--white);
+}
+
+.project-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-lg);
+  overflow-y: auto;
+}
+
+.project-modal-content {
+  background: var(--white);
+  border-radius: 16px;
+  max-width: 800px;
+  max-height: 95vh;
+  overflow-y: auto;
+  position: relative;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  margin: var(--spacing-lg);
+  box-sizing: border-box;
+}
+
+.project-modal-close {
+  position: absolute;
+  top: var(--spacing-md);
+  right: var(--spacing-md);
+  background: rgba(0, 0, 0, 0.7);
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: var(--white);
+  z-index: 10;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background var(--transition-fast);
+  line-height: 1;
+  font-weight: bold;
+}
+
+.project-modal-close:hover {
+  background: rgba(0, 0, 0, 0.9);
+}
+
+.project-modal-image {
+  height: 100%;
+  min-height: 400px;
+  overflow: hidden;
+}
+
+.project-modal-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.project-modal-info {
+  padding: var(--spacing-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.project-modal-info h3 {
+  color: var(--text-dark);
+  font-size: var(--font-size-2xl);
+  margin: 0;
+}
+
+.project-modal-info p {
+  color: var(--text-light);
+  line-height: 1.6;
+}
+
+.modal-features {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.modal-features li {
+  padding: var(--spacing-xs) 0;
+  padding-left: var(--spacing-lg);
+  position: relative;
+  color: var(--text-light);
+}
+
+.modal-features li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--accent-color);
+  font-weight: 600;
+}
+
+.modal-actions {
+  display: flex;
+  gap: var(--spacing-md);
+  margin-top: auto;
+}
+
+.modal-actions .btn {
+  flex: 1;
 }
 
 .desktop-only {
@@ -1338,6 +1660,10 @@ export default {
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
+  .chales-grid {
+    grid-template-columns: 1fr;
+  }
+
   .stats-container {
     grid-template-columns: 1fr;
     gap: var(--spacing-md);
@@ -1382,6 +1708,43 @@ export default {
   
   .stats-container {
     grid-template-columns: 1fr;
+  }
+
+  .project-modal-content {
+    grid-template-columns: 1fr;
+    max-height: 90vh;
+    max-width: 100%;
+    width: calc(100% - 20px);
+    margin: 0 auto;
+    padding: var(--spacing-lg);
+    overflow-y: auto;
+  }
+
+  .project-modal-image {
+    min-height: 250px;
+  }
+
+  .project-modal-info {
+    padding: var(--spacing-lg);
+  }
+
+  .project-modal-close {
+    top: var(--spacing-sm);
+    right: var(--spacing-sm);
+    width: 36px;
+    height: 36px;
+    font-size: 1.5rem;
+    background: rgba(0, 0, 0, 0.8);
+    color: var(--white);
+    z-index: 15;
+  }
+
+  .modal-actions {
+    flex-direction: column;
+  }
+
+  .modal-actions .btn {
+    width: 100%;
   }
 }
 

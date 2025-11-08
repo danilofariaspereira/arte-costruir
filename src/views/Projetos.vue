@@ -16,44 +16,77 @@
       </div>
     </section>
 
-    <!-- Chalés Section -->
-    <section class="projetos-section section" id="chales">
+    <!-- Obra Destaque Section -->
+    <section class="obra-destaque-section section" id="obra-destaque">
       <div class="container">
-        <div class="section-header">
-          <h2 class="section-title gold-text">Nossos Chalés de Madeira</h2>
+        <div class="obra-destaque-content">
+          <div class="obra-destaque-text">
+            <h2 class="obra-destaque-title">Projetos Exclusivos</h2>
+            <p>
+              Projeto de alto padrão desenvolvido para Alessandro e Luiz, combinando estrutura em alvenaria, madeira tratada e soluções sustentáveis.
+              Tudo foi concebido em parceria com a arquiteta Letícia para refletir exatamente o estilo de vida dos clientes.
+            </p>
+            <p>
+              Integramos ambientes internos e externos, priorizamos conforto térmico e acústico e utilizamos acabamentos nobres com origem certificada.
+              Cada detalhe foi pensado para entregar uma residência sofisticada, funcional e pronta para receber momentos inesquecíveis.
+            </p>
+          </div>
+
+          <div class="obra-highlight-card">
+            <div class="obra-highlight-inner">
+              <div class="obra-highlight-overlay"></div>
+              <img :src="obraImagemDestaque.src" :alt="obraImagemDestaque.alt" loading="lazy">
+            </div>
+          </div>
         </div>
-        
-        <div class="chales-grid">
-          <!-- Chalé Aimee -->
-          <div class="simple-card" @click="openProjectModal('aimee')">
-            <div class="simple-card-image">
-              <img :src="getImageUrl('/src/assets/images/chale-aimee.avif')" alt="Chalé Aimee" loading="lazy">
-            </div>
-            <div class="simple-card-title">Chalé Aimee</div>
-          </div>
 
-          <!-- Chalé Suíço -->
-          <div class="simple-card" @click="openProjectModal('suico')">
-            <div class="simple-card-image">
-              <img :src="getImageUrl('/src/assets/images/chale-suico.avif')" alt="Chalé Suíço" loading="lazy">
-            </div>
-            <div class="simple-card-title">Chalé Suíço</div>
+        <div class="obra-destaque-grid desktop-only">
+          <div
+            class="obra-item"
+            v-for="imagem in obraImagensGrid"
+            :key="imagem.src"
+          >
+            <img :src="imagem.src" :alt="imagem.alt" loading="lazy">
           </div>
+        </div>
 
-          <!-- Chalé da Montanha -->
-          <div class="simple-card" @click="openProjectModal('montanha')">
-            <div class="simple-card-image">
-              <img :src="getImageUrl('/src/assets/images/chale-da-montanha.avif')" alt="Chalé da Montanha" loading="lazy">
+        <div class="obra-destaque-carousel mobile-only" v-if="obraImagensGrid.length">
+          <div class="carousel-container">
+            <div
+              class="carousel-track"
+              :style="{ transform: `translateX(-${obraSlideAtual * 100}%)` }"
+            >
+              <div
+                class="carousel-slide"
+                v-for="imagem in obraImagensGrid"
+                :key="imagem.src"
+              >
+                <img :src="imagem.src" :alt="imagem.alt" loading="lazy">
+              </div>
             </div>
-            <div class="simple-card-title">Chalé da Montanha</div>
-          </div>
-
-          <!-- Chalé Aurora -->
-          <div class="simple-card" @click="openProjectModal('aurora')">
-            <div class="simple-card-image">
-              <img :src="getImageUrl('/src/assets/images/chale-aurora.avif')" alt="Chalé Aurora" loading="lazy">
+            <button
+              class="carousel-btn carousel-prev"
+              @click="prevObraSlide"
+              v-if="obraImagensGrid.length > 1"
+            >
+              ‹
+            </button>
+            <button
+              class="carousel-btn carousel-next"
+              @click="nextObraSlide"
+              v-if="obraImagensGrid.length > 1"
+            >
+              ›
+            </button>
+            <div class="carousel-dots" v-if="obraImagensGrid.length > 1">
+              <span
+                v-for="(imagem, index) in obraImagensGrid"
+                :key="imagem.src"
+                class="dot"
+                :class="{ active: obraSlideAtual === index }"
+                @click="irParaObraSlide(index)"
+              ></span>
             </div>
-            <div class="simple-card-title">Chalé Aurora</div>
           </div>
         </div>
       </div>
@@ -148,52 +181,6 @@
       </div>
     </section>
 
-    <!-- Project Modal -->
-    <div v-if="showProjectModal" class="project-modal" @click="closeProjectModal">
-      <div class="project-modal-content" @click.stop>
-        <button class="project-modal-close" @click="closeProjectModal">&times;</button>
-        <div class="project-modal-image">
-          <img :src="currentProject.image" :alt="currentProject.title">
-        </div>
-        <div class="project-modal-info">
-          <h3>{{ currentProject.title }}</h3>
-          <p>{{ currentProject.description }}</p>
-          <ul class="modal-features">
-            <li v-for="(feature, index) in currentProject.features" :key="index">{{ feature }}</li>
-          </ul>
-          <div class="modal-actions">
-            <a href="#contato" class="btn btn-primary" @click="closeProjectModal">Solicitar Orçamento</a>
-          <a v-if="currentProject.pdfUrl" :href="currentProject.pdfUrl" class="btn btn-secondary" target="_blank">Download</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Gallery Modal -->
-    <div v-if="showGallery" class="gallery-modal" @click="closeGallery">
-      <div class="gallery-content" @click.stop>
-        <button class="gallery-close" @click="closeGallery">&times;</button>
-        <h3>{{ currentGallery.title }}</h3>
-        <div class="gallery-images">
-          <img v-for="(image, index) in currentGallery.images" 
-               :key="index" 
-               :src="image" 
-               :alt="`${currentGallery.title} - Imagem ${index + 1}`"
-               @click="openLightbox(index)">
-        </div>
-      </div>
-    </div>
-
-    <!-- Lightbox Modal -->
-    <div v-if="showLightbox" class="lightbox-modal" @click="closeLightbox">
-      <div class="lightbox-content" @click.stop>
-        <button class="lightbox-close" @click="closeLightbox">&times;</button>
-        <button class="lightbox-prev" @click="prevImage" v-if="lightboxImages.length > 1">‹</button>
-        <img :src="lightboxImages[currentLightboxIndex]" :alt="`${currentGallery.title} - Imagem ${currentLightboxIndex + 1}`">
-        <button class="lightbox-next" @click="nextImage" v-if="lightboxImages.length > 1">›</button>
-      </div>
-    </div>
-
     <!-- Service Modal -->
     <div v-if="showServiceModal" class="service-modal" @click="closeServiceModal">
       <div class="service-modal-content" @click.stop>
@@ -224,16 +211,63 @@ import { getImageUrl } from '@/utils/images'
 export default {
   name: 'Projetos',
   setup() {
-    const showGallery = ref(false)
-    const showLightbox = ref(false)
-    const showProjectModal = ref(false)
-    const currentGallery = ref({})
-    const currentProject = ref({})
-    const currentLightboxIndex = ref(0)
-    const lightboxImages = ref([])
     const showServiceModal = ref(false)
     const currentService = ref({ title: '', paragraphs: [], image: '' })
     const isSubmitting = ref(false)
+
+    const obraImagemDestaque = {
+      src: getImageUrl('/src/assets/images/alessandra-luiz-projeto-0.png.png'),
+      alt: 'Fachada principal do projeto Alessandro e Luiz'
+    }
+
+    const obraImagensGrid = [
+      {
+        src: getImageUrl('/src/assets/images/alessandra-luiz-projeto-02.png.png'),
+        alt: 'Detalhe da área externa integrada à natureza'
+      },
+      {
+        src: getImageUrl('/src/assets/images/alessandra-luiz-projeto-03.png.png'),
+        alt: 'Sala de estar com acabamentos de alto padrão'
+      },
+      {
+        src: getImageUrl('/src/assets/images/alessandra-luiz-projeto-04.png.png'),
+        alt: 'Vista lateral destacando a volumetria do projeto'
+      },
+      {
+        src: getImageUrl('/src/assets/images/alessandra-luiz-projeto-05.png.png'),
+        alt: 'Cozinha planejada com materiais sustentáveis'
+      },
+      {
+        src: getImageUrl('/src/assets/images/alessandra-luiz-projeto-06.png.png'),
+        alt: 'Suíte principal com iluminação natural abundante'
+      },
+      {
+        src: getImageUrl('/src/assets/images/alessandra-luiz-projeto-07.png.png'),
+        alt: 'Ambiente integrado com marcenaria personalizada'
+      }
+    ]
+
+    const obraSlideAtual = ref(0)
+
+    const nextObraSlide = () => {
+      if (obraSlideAtual.value < obraImagensGrid.length - 1) {
+        obraSlideAtual.value++
+      } else {
+        obraSlideAtual.value = 0
+      }
+    }
+
+    const prevObraSlide = () => {
+      if (obraSlideAtual.value > 0) {
+        obraSlideAtual.value--
+      } else {
+        obraSlideAtual.value = obraImagensGrid.length - 1
+      }
+    }
+
+    const irParaObraSlide = (index) => {
+      obraSlideAtual.value = index
+    }
 
     const form = reactive({
       name: '',
@@ -242,242 +276,6 @@ export default {
       message: ''
     })
 
-    const projectData = {
-      aimee: {
-        title: 'Chalé Aimee',
-        image: getImageUrl('/src/assets/images/chale-aimee.avif'),
-        description: 'Chalé moderno com design contemporâneo, perfeito para famílias que buscam conforto e sofisticação.',
-        features: [
-          '90m² de área construída',
-          '2 quartos espaçosos',
-          '2 banheiros completos',
-          'Até 8 pessoas',
-          'Madeira ecológica'
-        ],
-        pdfUrl: 'https://drive.google.com/file/d/14VnQ4uDXF1EJM_pjK2o5t_ss7Qv5-eEl/view'
-      },
-      suico: {
-        title: 'Chalé Suíço',
-        image: getImageUrl('/src/assets/images/chale-suico.avif'),
-        description: 'Inspirado na arquitetura alpina, oferece aconchego e charme rústico em meio à natureza.',
-        features: [
-          '90m² de área construída',
-          '2 quartos espaçosos',
-          '2 banheiros completos',
-          'Até 8 pessoas',
-          'Design alpino'
-        ],
-        pdfUrl: ''
-      },
-      montanha: {
-        title: 'Chalé da Montanha',
-        image: getImageUrl('/src/assets/images/chale-da-montanha.avif'),
-        description: 'Ideal para regiões serranas, combina robustez e elegância com acabamentos de alta qualidade.',
-        features: [
-          '90m² de área construída',
-          '2 quartos espaçosos',
-          '2 banheiros completos',
-          'Até 8 pessoas',
-          'Resistente ao clima'
-        ],
-        pdfUrl: 'https://drive.google.com/file/d/1-nGeXTGorijjRp6OCsSbd19Nmcq-acSj/view'
-      },
-      aurora: {
-        title: 'Chalé Aurora',
-        image: getImageUrl('/src/assets/images/chale-aurora.avif'),
-        description: 'Design único com grandes janelas, aproveitando a luz natural e proporcionando vista panorâmica.',
-        features: [
-          '90m² de área construída',
-          '2 quartos espaçosos',
-          '2 banheiros completos',
-          'Até 8 pessoas',
-          'Vista panorâmica'
-        ],
-        pdfUrl: 'https://drive.google.com/file/d/13Uf4XLEMn7_3rWzMEnaTgAFwZ6UE2lp-/view'
-      },
-      loft30: {
-        title: 'Loft Compacto',
-        image: getImageUrl('/src/assets/images/loft-30m.jpg'),
-        description: 'Ideal para casais ou uso como escritório, com design inteligente que maximiza o espaço.',
-        features: [
-          '30m² de área construída',
-          'Ambiente integrado',
-          'Banheiro completo',
-          'Até 2 pessoas',
-          'Design moderno'
-        ],
-        pdfUrl: '#'
-      },
-      loft40: {
-        title: 'Loft Conforto',
-        image: getImageUrl('/src/assets/images/loft-40m.jpg'),
-        description: 'Perfeito equilíbrio entre espaço e praticidade, com quarto separado e área social ampla.',
-        features: [
-          '40m² de área construída',
-          '1 quarto separado',
-          'Banheiro completo',
-          'Até 3 pessoas',
-          'Área social ampla'
-        ],
-        pdfUrl: '#'
-      },
-      loft60: {
-        title: 'Loft Premium',
-        image: getImageUrl('/src/assets/images/loft-60m.jpg'),
-        description: 'Espaçoso e elegante, ideal para pequenas famílias que buscam conforto e modernidade.',
-        features: [
-          '60m² de área construída',
-          '2 quartos',
-          'Banheiro completo',
-          'Até 4 pessoas',
-          'Acabamento premium'
-        ],
-        pdfUrl: '#'
-      }
-    }
-
-    const galleryData = {
-      aimee: {
-        title: 'Chalé Aimee',
-        images: [
-          getImageUrl('/src/assets/images/chale-aimee.jpg'),
-          getImageUrl('/src/assets/images/chale-aimee-2.jpg'),
-          getImageUrl('/src/assets/images/chale-aimee-3.jpg')
-        ]
-      },
-      suico: {
-        title: 'Chalé Suíço',
-        images: [
-          getImageUrl('/src/assets/images/chale-suico.jpg'),
-          getImageUrl('/src/assets/images/chale-suico-2.jpg'),
-          getImageUrl('/src/assets/images/chale-suico-3.jpg')
-        ]
-      },
-      montanha: {
-        title: 'Chalé da Montanha',
-        images: [
-          getImageUrl('/src/assets/images/chale-montanha.jpg'),
-          getImageUrl('/src/assets/images/chale-montanha-2.jpg'),
-          getImageUrl('/src/assets/images/chale-montanha-3.jpg')
-        ]
-      },
-      aurora: {
-        title: 'Chalé Aurora',
-        images: [
-          getImageUrl('/src/assets/images/chale-aurora.jpg'),
-          getImageUrl('/src/assets/images/chale-aurora-2.jpg'),
-          getImageUrl('/src/assets/images/chale-aurora-3.jpg')
-        ]
-      },
-      loft30: {
-        title: 'Loft 30m²',
-        images: [
-          getImageUrl('/src/assets/images/loft-30m.jpg'),
-          getImageUrl('/src/assets/images/loft-30m-2.jpg'),
-          getImageUrl('/src/assets/images/loft-30m-3.jpg')
-        ]
-      },
-      loft40: {
-        title: 'Loft 40m²',
-        images: [
-          getImageUrl('/src/assets/images/loft-40m.jpg'),
-          getImageUrl('/src/assets/images/loft-40m-2.jpg'),
-          getImageUrl('/src/assets/images/loft-40m-3.jpg')
-        ]
-      },
-      loft60: {
-        title: 'Loft 60m²',
-        images: [
-          getImageUrl('/src/assets/images/loft-60m.jpg'),
-          getImageUrl('/src/assets/images/loft-60m-2.jpg'),
-          getImageUrl('/src/assets/images/loft-60m-3.jpg')
-        ]
-      }
-    }
-
-    const openProjectModal = (projectKey) => {
-      currentProject.value = projectData[projectKey]
-      showProjectModal.value = true
-    }
-
-    const closeProjectModal = () => {
-      showProjectModal.value = false
-      currentProject.value = {}
-    }
-
-    const openGallery = (galleryKey) => {
-      currentGallery.value = galleryData[galleryKey]
-      showGallery.value = true
-    }
-
-    const closeGallery = () => {
-      showGallery.value = false
-      currentGallery.value = {}
-    }
-
-    const openLightbox = (index) => {
-      currentLightboxIndex.value = index
-      lightboxImages.value = currentGallery.value.images
-      showLightbox.value = true
-    }
-
-    const closeLightbox = () => {
-      showLightbox.value = false
-      lightboxImages.value = []
-    }
-
-    const prevImage = () => {
-      if (currentLightboxIndex.value > 0) {
-        currentLightboxIndex.value--
-      } else {
-        currentLightboxIndex.value = lightboxImages.value.length - 1
-      }
-    }
-
-    const nextImage = () => {
-      if (currentLightboxIndex.value < lightboxImages.value.length - 1) {
-        currentLightboxIndex.value++
-      } else {
-        currentLightboxIndex.value = 0
-      }
-    }
-
-    const submitForm = async () => {
-      if (isSubmitting.value) return
-      
-      // Validação básica
-      if (!form.name || !form.phone || !form.email || !form.message) {
-        alert('Por favor, preencha todos os campos.')
-        return
-      }
-      
-      isSubmitting.value = true
-      
-      // Solução que funciona imediatamente: usando mailto
-      // Abre o cliente de e-mail do usuário com tudo preenchido
-      const subject = encodeURIComponent('Solicitação de Orçamento - Arte Construir')
-      const emailBody = `Nome: ${form.name}\n` +
-        `Telefone: ${form.phone}\n` +
-        `E-mail: ${form.email}\n\n` +
-        `Mensagem:\n${form.message}`
-      const body = encodeURIComponent(emailBody)
-      
-      // Criando link mailto
-      const mailtoLink = `mailto:danilofariaspereira90@gmail.com?subject=${subject}&body=${body}`
-      
-      // Abrindo cliente de e-mail
-      window.location.href = mailtoLink
-      
-      // Aguardando um pouco e então mostrando mensagem e resetando formulário
-      setTimeout(() => {
-        alert('O formulário foi preenchido! Verifique seu cliente de e-mail e clique em "Enviar" para finalizar.')
-        // Reset form
-        Object.keys(form).forEach(key => {
-          form[key] = ''
-        })
-        isSubmitting.value = false
-      }, 500)
-    }
     const serviceData = {
       mentoria: {
         title: 'Planejamento e Mentoria de montagem do seu chalé',
@@ -517,12 +315,41 @@ export default {
       currentService.value = { title: '', paragraphs: [], image: '' }
     }
 
+    const submitForm = async () => {
+      if (isSubmitting.value) return
+
+      if (!form.name || !form.phone || !form.email || !form.message) {
+        alert('Por favor, preencha todos os campos.')
+        return
+      }
+
+      isSubmitting.value = true
+
+      const subject = encodeURIComponent('Solicitação de Orçamento - Arte Construir')
+      const emailBody = `Nome: ${form.name}\n` +
+        `Telefone: ${form.phone}\n` +
+        `E-mail: ${form.email}\n\n` +
+        `Mensagem:\n${form.message}`
+      const body = encodeURIComponent(emailBody)
+
+      const mailtoLink = `mailto:danilofariaspereira90@gmail.com?subject=${subject}&body=${body}`
+
+      window.location.href = mailtoLink
+
+      setTimeout(() => {
+        alert('O formulário foi preenchido! Verifique seu cliente de e-mail e clique em "Enviar" para finalizar.')
+        Object.keys(form).forEach(key => {
+          form[key] = ''
+        })
+        isSubmitting.value = false
+      }, 500)
+    }
 
     const scrollToSection = (event) => {
       event.preventDefault()
-      const element = document.getElementById('chales')
+      const element = document.getElementById('obra-destaque')
       if (element) {
-        element.scrollIntoView({ 
+        element.scrollIntoView({
           behavior: 'smooth',
           block: 'start'
         })
@@ -532,30 +359,19 @@ export default {
     const backgroundProjetos = computed(() => getImageUrl('/src/assets/images/background-projetos.png'))
 
     return {
-      showGallery,
-      showLightbox,
-      showProjectModal,
-      currentGallery,
-      currentProject,
-      currentLightboxIndex,
-      lightboxImages,
+      obraImagemDestaque,
+      obraImagensGrid,
+      obraSlideAtual,
+      nextObraSlide,
+      prevObraSlide,
+      irParaObraSlide,
       form,
-      openProjectModal,
-      closeProjectModal,
-      openGallery,
-      closeGallery,
-      openLightbox,
-      closeLightbox,
-      prevImage,
-      nextImage,
       submitForm,
       scrollToSection,
-      // Serviços
       showServiceModal,
       currentService,
       openServiceModal,
       closeServiceModal,
-      // Form
       isSubmitting,
       getImageUrl,
       backgroundProjetos
@@ -580,6 +396,268 @@ export default {
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
+
+.obra-destaque-section {
+  background: var(--white);
+}
+
+.obra-destaque-layout {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2xl);
+}
+
+.obra-destaque-content {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.95fr);
+  gap: var(--spacing-2xl);
+  align-items: stretch;
+}
+
+.obra-destaque-text {
+  max-width: 680px;
+  color: var(--text-light);
+  font-size: var(--font-size-lg);
+  line-height: 1.8;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.obra-destaque-title {
+  font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+  font-weight: 700;
+  line-height: 1.1;
+  margin: 0 0 var(--spacing-xl);
+  color: var(--accent-color);
+}
+
+.obra-highlight-card {
+  perspective: 1200px;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  width: 100%;
+  height: 100%;
+}
+
+.obra-highlight-inner {
+  position: relative;
+  width: 100%;
+  max-width: 560px;
+  height: 100%;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+  transform: rotateY(-15deg) rotateX(3deg);
+  transform-origin: center;
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.9), rgba(40, 40, 40, 0.4));
+}
+
+.obra-highlight-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg, rgba(0, 0, 0, 0.45) 0%, rgba(184, 134, 11, 0.25) 100%);
+  z-index: 1;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+.obra-highlight-inner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(1.05) contrast(1.05);
+  position: relative;
+}
+
+.obra-highlight-inner:hover {
+  transform: rotateY(-6deg) rotateX(2deg) translateY(-10px);
+  box-shadow: 0 35px 70px rgba(0, 0, 0, 0.45);
+}
+
+.obra-destaque-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-xl);
+  margin-top: var(--spacing-2xl);
+}
+
+.desktop-only {
+  display: grid;
+}
+
+.mobile-only {
+  display: none;
+}
+
+.obra-destaque-carousel {
+  margin-top: var(--spacing-xl);
+}
+
+.obra-destaque-carousel .carousel-container {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: var(--shadow-lg);
+}
+
+.obra-destaque-carousel .carousel-track {
+  display: flex;
+  transition: transform 0.5s ease;
+  will-change: transform;
+}
+
+.obra-destaque-carousel .carousel-slide {
+  min-width: 100%;
+  aspect-ratio: 4 / 3;
+}
+
+.obra-destaque-carousel .carousel-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.obra-destaque-carousel .carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  font-size: 2rem;
+  color: var(--accent-color);
+  cursor: pointer;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-fast);
+}
+
+.obra-destaque-carousel .carousel-btn:hover {
+  background: var(--white);
+  transform: translateY(-50%) scale(1.05);
+}
+
+.obra-destaque-carousel .carousel-prev {
+  left: var(--spacing-md);
+}
+
+.obra-destaque-carousel .carousel-next {
+  right: var(--spacing-md);
+}
+
+.obra-destaque-carousel .carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  margin: var(--spacing-lg) 0;
+}
+
+.obra-destaque-carousel .dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.obra-destaque-carousel .dot.active {
+  background: var(--accent-color);
+  transform: scale(1.2);
+}
+
+.obra-destaque-carousel .dot:hover {
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.obra-item {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+
+.obra-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-normal), filter var(--transition-normal);
+}
+
+.obra-item:hover img {
+  transform: scale(1.05);
+  filter: brightness(1.05);
+}
+
+@media (max-width: 1200px) {
+  .obra-destaque-content {
+    grid-template-columns: 1fr 0.95fr;
+  }
+}
+
+@media (max-width: 992px) {
+  .obra-destaque-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .obra-highlight-inner {
+    transform: rotateY(-14deg) rotateX(3deg);
+    max-width: 460px;
+  }
+}
+
+@media (max-width: 768px) {
+  .desktop-only {
+    display: none;
+  }
+
+  .mobile-only {
+    display: block;
+  }
+
+  .obra-destaque-content {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xl);
+  }
+
+  .obra-destaque-text {
+    font-size: var(--font-size-base);
+  }
+
+  .obra-highlight-card {
+    justify-content: flex-start;
+    max-width: 420px;
+  }
+}
+
+@media (max-width: 480px) {
+  .obra-destaque-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .obra-highlight-inner {
+    width: 100%;
+    max-width: 100%;
+    transform: rotateY(-10deg) rotateX(2deg);
+  }
+
+  .obra-destaque-carousel .carousel-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 1.6rem;
+  }
+}
+
 
 /* Hero Section Styles */
 .hero-section {
@@ -1405,6 +1483,16 @@ export default {
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
+  .obra-destaque-text {
+    text-align: left;
+    font-size: var(--font-size-base);
+  }
+
+  .obra-destaque-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-lg);
+  }
+
   .project-modal {
     padding: var(--spacing-md);
     align-items: flex-start;
@@ -1488,6 +1576,10 @@ export default {
 }
 
 @media (max-width: 480px) {
+  .obra-destaque-grid {
+    grid-template-columns: 1fr;
+  }
+
   .chales-grid,
   .lofts-grid {
     grid-template-columns: 1fr;

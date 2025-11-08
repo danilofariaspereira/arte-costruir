@@ -17,7 +17,7 @@
               <router-link to="/projetos" class="nav-link" @click="closeMenu">Projetos</router-link>
             </li>
             <li class="nav-item">
-              <router-link to="/decks" class="nav-link" @click="closeMenu">Decks</router-link>
+              <router-link to="/decks" class="nav-link" @click="closeMenu">Portfólio</router-link>
             </li>
             <li class="nav-item">
               <router-link to="/parceiros" class="nav-link" @click="closeMenu">Parceiros</router-link>
