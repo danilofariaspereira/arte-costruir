@@ -606,6 +606,14 @@ export default {
   transform: rotateY(-6deg) rotateX(2deg) translateY(-10px);
   box-shadow: 0 35px 70px rgba(0, 0, 0, 0.45);
 }
+ 
+.obra-destaque-content.reverse .obra-highlight-inner {
+  transform: rotateY(15deg) rotateX(3deg);
+}
+
+.obra-destaque-content.reverse .obra-highlight-inner:hover {
+  transform: rotateY(6deg) rotateX(2deg) translateY(-10px);
+}
 
 .obra-destaque-grid {
   display: grid;
@@ -615,10 +623,23 @@ export default {
 }
 
 .obra-destaque-divider {
-  height: 1px;
-  width: 100%;
-  background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.08), transparent);
-  margin: var(--spacing-3xl) 0;
+  position: relative;
+  height: 4px;
+  width: 80%;
+  max-width: 960px;
+  margin: var(--spacing-3xl) auto;
+  border-radius: 999px;
+  background: linear-gradient(90deg, transparent, rgba(218, 165, 32, 0.65), transparent);
+  overflow: hidden;
+}
+
+.obra-destaque-divider::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.25), transparent);
+  mix-blend-mode: soft-light;
 }
 
 .obra-destaque-content.reverse {
