@@ -20,7 +20,7 @@
     <section class="servicos-galeria-section section">
       <div class="container">
         <div class="section-header">
-          <h2 class="section-title">Portfólio em Destaque</h2>
+          <h2 class="section-title">Decks</h2>
           <p class="section-subtitle">Decks, passarelas e ambientes personalizados em madeira e materiais sustentáveis</p>
         </div>
         
@@ -67,7 +67,7 @@
     <section class="chales-section section" id="chales">
       <div class="container">
         <div class="section-header">
-          <h2 class="section-title">Chalés Assinados</h2>
+          <h2 class="section-title chales-title">Chalés</h2>
           <p class="section-subtitle">
             Conheça alguns dos nossos chalés em madeira tratada, pensados para unir conforto, design autoral e sustentabilidade.
           </p>
@@ -751,7 +751,11 @@ export default {
 }
 
 .chales-section .section-title {
-  color: var(--text-dark);
+  color: var(--accent-color);
+}
+
+.chales-title {
+  font-weight: 700;
 }
 
 .chales-grid {
