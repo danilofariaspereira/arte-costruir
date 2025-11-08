@@ -89,6 +89,79 @@
             </div>
           </div>
         </div>
+
+        <div class="obra-destaque-divider"></div>
+
+        <div class="obra-destaque-content reverse">
+          <div class="obra-highlight-card">
+            <div class="obra-highlight-inner">
+              <div class="obra-highlight-overlay"></div>
+              <img :src="obraSerranaImagemDestaque.src" :alt="obraSerranaImagemDestaque.alt" loading="lazy">
+            </div>
+          </div>
+
+          <div class="obra-destaque-text">
+            <h2 class="obra-destaque-title">Residência Serrana</h2>
+            <p>
+              Projeto personalizado para os clientes Camila e Marco, pensado para aproveitar a vista da serra com conforto térmico
+              e acabamentos de alto padrão. Integramos madeira tratada, panos de vidro e iluminação natural para criar um refúgio elegante.
+            </p>
+            <p>
+              Os ambientes sociais foram planejados para encontros em família, com área gourmet conectada ao deck externo e suítes ventiladas
+              naturalmente. Toda a execução considerou materiais sustentáveis e soluções sob medida para o clima serrano.
+            </p>
+          </div>
+        </div>
+
+        <div class="obra-destaque-grid desktop-only">
+          <div
+            class="obra-item"
+            v-for="imagem in obraSerranaImagensGrid"
+            :key="imagem.src"
+          >
+            <img :src="imagem.src" :alt="imagem.alt" loading="lazy">
+          </div>
+        </div>
+
+        <div class="obra-destaque-carousel mobile-only" v-if="obraSerranaImagensGrid.length">
+          <div class="carousel-container">
+            <div
+              class="carousel-track"
+              :style="{ transform: `translateX(-${obraSerranaSlideAtual * 100}%)` }"
+            >
+              <div
+                class="carousel-slide"
+                v-for="imagem in obraSerranaImagensGrid"
+                :key="imagem.src"
+              >
+                <img :src="imagem.src" :alt="imagem.alt" loading="lazy">
+              </div>
+            </div>
+            <button
+              class="carousel-btn carousel-prev"
+              @click="prevObraSerranaSlide"
+              v-if="obraSerranaImagensGrid.length > 1"
+            >
+              ‹
+            </button>
+            <button
+              class="carousel-btn carousel-next"
+              @click="nextObraSerranaSlide"
+              v-if="obraSerranaImagensGrid.length > 1"
+            >
+              ›
+            </button>
+            <div class="carousel-dots" v-if="obraSerranaImagensGrid.length > 1">
+              <span
+                v-for="(imagem, index) in obraSerranaImagensGrid"
+                :key="imagem.src"
+                class="dot"
+                :class="{ active: obraSerranaSlideAtual === index }"
+                @click="irParaObraSerranaSlide(index)"
+              ></span>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -269,6 +342,57 @@ export default {
       obraSlideAtual.value = index
     }
 
+    // Projeto 2 - Residência Serrana (Camila e Marco)
+    const obraSerranaImagemDestaque = {
+      src: getImageUrl('/src/assets/images/chale-do-cedrinhos-01.png.png'),
+      alt: 'Living integrado da Residência Serrana'
+    }
+
+    const obraSerranaImagensGrid = [
+      {
+        src: getImageUrl('/src/assets/images/chale-do-cedrinhos-02.png.png'),
+        alt: 'Fachada frontal da Residência Serrana'
+      },
+      {
+        src: getImageUrl('/src/assets/images/chale-do-cedrinhos-03.png.png'),
+        alt: 'Deck suspenso com vista panorâmica'
+      },
+      {
+        src: getImageUrl('/src/assets/images/chale-do-cedrinhos-04.png.png'),
+        alt: 'Área gourmet integrada ao estar externo'
+      },
+      {
+        src: getImageUrl('/src/assets/images/chale-do-cedrinhos-05.png.png'),
+        alt: 'Detalhe dos acabamentos internos em madeira tratada'
+      },
+      {
+        src: getImageUrl('/src/assets/images/chale-do-cedrinhos-06.png.png'),
+        alt: 'Suíte principal com iluminação natural abundante'
+      }
+    ]
+
+    const obraSerranaSlideAtual = ref(0)
+
+    const nextObraSerranaSlide = () => {
+      if (obraSerranaSlideAtual.value < obraSerranaImagensGrid.length - 1) {
+        obraSerranaSlideAtual.value++
+      } else {
+        obraSerranaSlideAtual.value = 0
+      }
+    }
+
+    const prevObraSerranaSlide = () => {
+      if (obraSerranaSlideAtual.value > 0) {
+        obraSerranaSlideAtual.value--
+      } else {
+        obraSerranaSlideAtual.value = obraSerranaImagensGrid.length - 1
+      }
+    }
+
+    const irParaObraSerranaSlide = (index) => {
+      obraSerranaSlideAtual.value = index
+    }
+
     const form = reactive({
       name: '',
       phone: '',
@@ -365,6 +489,12 @@ export default {
       nextObraSlide,
       prevObraSlide,
       irParaObraSlide,
+      obraSerranaImagemDestaque,
+      obraSerranaImagensGrid,
+      obraSerranaSlideAtual,
+      nextObraSerranaSlide,
+      prevObraSerranaSlide,
+      irParaObraSerranaSlide,
       form,
       submitForm,
       scrollToSection,
@@ -482,6 +612,26 @@ export default {
   grid-template-columns: repeat(3, 1fr);
   gap: var(--spacing-xl);
   margin-top: var(--spacing-2xl);
+}
+
+.obra-destaque-divider {
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.08), transparent);
+  margin: var(--spacing-3xl) 0;
+}
+
+.obra-destaque-content.reverse {
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1fr);
+}
+
+.obra-destaque-content.reverse .obra-highlight-card {
+  order: 1;
+  justify-content: flex-end;
+}
+
+.obra-destaque-content.reverse .obra-destaque-text {
+  order: 2;
 }
 
 .desktop-only {
@@ -637,6 +787,16 @@ export default {
   .obra-highlight-card {
     justify-content: flex-start;
     max-width: 420px;
+  }
+
+  .obra-destaque-content.reverse {
+    grid-template-columns: 1fr;
+  }
+
+  .obra-destaque-content.reverse .obra-highlight-card,
+  .obra-destaque-content.reverse .obra-destaque-text {
+    order: initial;
+    justify-content: flex-start;
   }
 }
 

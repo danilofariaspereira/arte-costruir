@@ -44,6 +44,14 @@ import chaleAurora2 from '@/assets/images/chale-aurora-2.jpg'
 import chaleAurora3 from '@/assets/images/chale-aurora-3.jpg'
 import chaleAuroraJpg from '@/assets/images/chale-aurora.jpg'
 
+// Projetos exclusivos
+import chaleCedrinhos01 from '@/assets/images/chale-do-cedrinhos-01.png.png'
+import chaleCedrinhos02 from '@/assets/images/chale-do-cedrinhos-02.png.png'
+import chaleCedrinhos03 from '@/assets/images/chale-do-cedrinhos-03.png.png'
+import chaleCedrinhos04 from '@/assets/images/chale-do-cedrinhos-04.png.png'
+import chaleCedrinhos05 from '@/assets/images/chale-do-cedrinhos-05.png.png'
+import chaleCedrinhos06 from '@/assets/images/chale-do-cedrinhos-06.png.png'
+
 // Services
 import planejamentoMentoria from '@/assets/images/planejamento-e-mentoria.jpg'
 import execucaoObra from '@/assets/images/execucao-de-obra-completa-projetos.jpg'
@@ -69,6 +77,15 @@ import deck09 from '@/assets/images/09.png'
 import deck10 from '@/assets/images/10.png'
 import deck11 from '@/assets/images/image 11.png'
 import deck13 from '@/assets/images/image 13.png'
+
+// Projetos Alessandro & Luiz
+import alessandroLuiz01 from '@/assets/images/alessandra-luiz-projeto-0.png.png'
+import alessandroLuiz02 from '@/assets/images/alessandra-luiz-projeto-02.png.png'
+import alessandroLuiz03 from '@/assets/images/alessandra-luiz-projeto-03.png.png'
+import alessandroLuiz04 from '@/assets/images/alessandra-luiz-projeto-04.png.png'
+import alessandroLuiz05 from '@/assets/images/alessandra-luiz-projeto-05.png.png'
+import alessandroLuiz06 from '@/assets/images/alessandra-luiz-projeto-06.png.png'
+import alessandroLuiz07 from '@/assets/images/alessandra-luiz-projeto-07.png.png'
 
 // Deck types
 import deckNatural1 from '@/assets/images/deck-natural-1.jpg'
@@ -126,6 +143,12 @@ export const images = {
   chaleAurora2,
   chaleAurora3,
   chaleAuroraJpg,
+  chaleCedrinhos01,
+  chaleCedrinhos02,
+  chaleCedrinhos03,
+  chaleCedrinhos04,
+  chaleCedrinhos05,
+  chaleCedrinhos06,
   
   // Services
   planejamentoMentoria,
@@ -152,6 +175,13 @@ export const images = {
   deck10,
   deck11,
   deck13,
+  alessandroLuiz01,
+  alessandroLuiz02,
+  alessandroLuiz03,
+  alessandroLuiz04,
+  alessandroLuiz05,
+  alessandroLuiz06,
+  alessandroLuiz07,
   
   // Deck types
   deckNatural1,
@@ -207,6 +237,19 @@ export function getImageUrl(imagePath) {
     'src/assets/images/chale-aurora-2.jpg': chaleAurora2,
     'src/assets/images/chale-aurora-3.jpg': chaleAurora3,
     'src/assets/images/chale-aurora.jpg': chaleAuroraJpg,
+    'src/assets/images/chale-do-cedrinhos-01.png.png': chaleCedrinhos01,
+    'src/assets/images/chale-do-cedrinhos-02.png.png': chaleCedrinhos02,
+    'src/assets/images/chale-do-cedrinhos-03.png.png': chaleCedrinhos03,
+    'src/assets/images/chale-do-cedrinhos-04.png.png': chaleCedrinhos04,
+    'src/assets/images/chale-do-cedrinhos-05.png.png': chaleCedrinhos05,
+    'src/assets/images/chale-do-cedrinhos-06.png.png': chaleCedrinhos06,
+    'src/assets/images/alessandra-luiz-projeto-0.png.png': alessandroLuiz01,
+    'src/assets/images/alessandra-luiz-projeto-02.png.png': alessandroLuiz02,
+    'src/assets/images/alessandra-luiz-projeto-03.png.png': alessandroLuiz03,
+    'src/assets/images/alessandra-luiz-projeto-04.png.png': alessandroLuiz04,
+    'src/assets/images/alessandra-luiz-projeto-05.png.png': alessandroLuiz05,
+    'src/assets/images/alessandra-luiz-projeto-06.png.png': alessandroLuiz06,
+    'src/assets/images/alessandra-luiz-projeto-07.png.png': alessandroLuiz07,
     'src/assets/images/planejamento-e-mentoria.jpg': planejamentoMentoria,
     'src/assets/images/execucao-de-obra-completa-projetos.jpg': execucaoObra,
     'src/assets/images/reuniao-de-trabalho-projetos.jpg': reuniaoTrabalho,
